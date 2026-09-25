@@ -15,17 +15,17 @@
     <link rel="preload" href="%BASE_URL%terms.json" as="fetch" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- 웹폰트 CSS 는 렌더를 막지 않게 비동기로 (시스템 한글 폰트가 먼저 보이고 Plex 로 교체) -->
+    <!-- 웹폰트 CSS 는 비동기 + display=optional: 첫 방문엔 시스템 한글 폰트로 그대로 두고(교체로 인한 CLS 없음), SW 가 캐시한 뒤부터 Plex 가 뜬다 -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=optional"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=optional"
       />
     </noscript>
     <title>Devpedia</title>
