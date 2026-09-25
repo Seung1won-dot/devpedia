@@ -80,6 +80,22 @@ describe('App', () => {
     expect(links).toHaveLength(4)
   })
 
+  it('opens the detail on #<id> and keeps the list scoped to that category on cold start', async () => {
+    window.location.hash = '#ssh'
+    render(<App />)
+    expect((await screen.findByRole('heading', { level: 1 })).textContent).toBe('SSH')
+    const selected = screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')
+    expect(selected?.textContent).toContain('서버')
+    expect(document.title).toBe('SSH · Devpedia')
+  })
+
+  it('unknown term id renders not-found state', async () => {
+    window.location.hash = '#nonexistent'
+    render(<App />)
+    expect(await screen.findByText(/해당 용어가 없/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: /홈으로/ })).toBeTruthy()
+  })
+
   it('shows a loading error when the bundle cannot be fetched', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 404, json: async () => ({}) })))
     render(<App />)
