@@ -1,0 +1,54 @@
+# Devpedia 13개 대분류. 순서가 곧 탭 순서다. code 는 변경 금지(폴더명·URL 에 쓰임).
+categories:
+  - code: os
+    name: 컴퓨터 구조 & 운영체제
+    icon: "🧠"
+    description: CPU·메모리·프로세스·파일시스템 — 컴퓨터가 프로그램을 굴리는 방식
+  - code: network
+    name: 네트워크
+    icon: "🌐"
+    description: 인터넷이 동작하는 원리 — 주소, 포트, 프로토콜, 보안 통신
+  - code: algo
+    name: 자료구조 & 알고리즘
+    icon: "🧩"
+    description: 문제를 푸는 도구와 그 비용
+  - code: lang
+    name: 프로그래밍 언어 & 패러다임
+    icon: "💬"
+    description: 언어를 가리지 않는 공통 개념 — 타입, OOP, 함수형, 비동기
+  - code: frontend
+    name: 프론트엔드
+    icon: "🖥️"
+    description: 브라우저에서 보이는 것 — HTML/CSS/JS, 프레임워크, 렌더링, PWA
+  - code: backend
+    name: 백엔드 & API
+    icon: "⚙️"
+    description: 요청을 받아 처리하는 것 — REST, 인증/인가, 세션, 캐시, 큐
+  - code: database
+    name: 데이터베이스
+    icon: "🗄️"
+    description: 데이터를 저장하고 조회하는 것 — SQL, 인덱스, 트랜잭션, NoSQL
+  - code: infra
+    name: 서버 & 인프라 & 클라우드
+    icon: "🖧"
+    description: 코드가 실제로 돌아가는 곳 — 가상화, 컨테이너, 리눅스 운영, 클라우드
+  - code: devops
+    name: DevOps & 개발 도구
+    icon: "🔧"
+    description: 만들고 배포하고 지키는 과정 — Git, CI/CD, 모니터링, 크론
+  - code: security
+    name: 보안
+    icon: "🔒"
+    description: 공격과 방어 — 암호화, 인증 공격, 웹 취약점, 키 관리
+  - code: ai
+    name: AI / ML / LLM
+    icon: "🤖"
+    description: 학습하는 소프트웨어 — ML 기초, 딥러닝, LLM, RAG, 에이전트
+  - code: medical
+    name: 의료 IT
+    icon: "🏥"
+    description: 병원·헬스케어 시스템 — HL7/FHIR/DICOM, EMR/PACS, 규제, 의료 AI
+  - code: swe
+    name: 소프트웨어 공학 & 협업
+    icon: "📐"
+    description: 함께 잘 만드는 방법 — 방법론, 설계 원칙, 테스트, 문서화
