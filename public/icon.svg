@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="112" fill="#141419"/>
+  <!-- 책갈피 -->
+  <path d="M336 96h64v320l-32-24-32 24z" fill="#f2b84b" opacity="0.9"/>
+  <!-- D 글자 -->
+  <path d="M132 128h92c72 0 124 52 124 128s-52 128-124 128h-92zm56 50v156h36c42 0 68-30 68-78s-26-78-68-78z" fill="#f2b84b"/>
+</svg>
