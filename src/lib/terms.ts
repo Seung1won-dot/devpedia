@@ -35,7 +35,14 @@ export function indexById(terms: Term[]): Map<string, Term> {
   return new Map(terms.map((t) => [t.id, t]))
 }
 
+const withBase = (base: string, file: string) => `${base.endsWith('/') ? base : base + '/'}${file}`
+
 /** Vite 의 BASE_URL 을 붙인 terms.json 경로 (GitHub Pages 의 /<repo>/ 대응) */
 export function bundleUrl(base: string): string {
-  return `${base.endsWith('/') ? base : base + '/'}terms.json`
+  return withBase(base, 'terms.json')
+}
+
+/** 본문(HTML + 검색 텍스트) 파일 경로. 첫 화면을 그린 뒤에 받는다. */
+export function bodiesUrl(base: string): string {
+  return withBase(base, 'terms-body.json')
 }

@@ -1,5 +1,6 @@
 // scripts/(빌드) 와 src/(앱) 가 공유하는 유일한 데이터 계약.
-// 빌드가 public/terms.json 으로 내보내고, 앱이 그대로 읽는다.
+// 빌드가 public/terms.json(인덱스) + public/terms-body.json(본문)으로 내보내고, 앱이 그대로 읽는다.
+// 인덱스만으로 목록·검색·카드 헤더를 그리고, 본문은 첫 화면 뒤에 받아 상세와 본문 검색에 쓴다.
 
 export type Level = 1 | 2 | 3
 export type Status = 'draft' | 'review' | 'published'
@@ -12,6 +13,7 @@ export interface Category {
   order: number
 }
 
+/** 목록·검색·카드 헤더에 필요한 가벼운 필드 (terms.json) */
 export interface Term {
   id: string
   term: string
@@ -27,12 +29,16 @@ export interface Term {
   updated: string
   /** 한 줄 정의 plain text (검색·목록용) */
   definition: string
+}
+
+/** 빌드 시 렌더한 본문 HTML 과 검색용 plain text (terms-body.json) */
+export interface TermBody {
   /** 한 줄 정의 inline markdown 렌더 */
   definitionHtml: string
   analogyHtml: string
   exampleHtml: string
   confusionsHtml: string | null
-  /** 본문 plain text (검색용) */
+  /** 비유·예시·헷갈리기 쉬운 것 plain text (본문 검색용) */
   searchText: string
 }
 
@@ -53,4 +59,10 @@ export interface Bundle {
   tags: string[]
   terms: Term[]
   stats: Stats
+}
+
+export interface BodyBundle {
+  version: 1
+  generatedAt: string
+  bodies: Record<string, TermBody>
 }

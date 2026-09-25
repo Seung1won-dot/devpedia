@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { sortTerms, filterTerms, tagsIn, bundleUrl, indexById } from './terms'
+import { sortTerms, filterTerms, tagsIn, bundleUrl, bodiesUrl, indexById } from './terms'
 import { TERMS, makeTerm } from '../test/fixtures'
 
 describe('sortTerms', () => {
@@ -52,6 +52,7 @@ describe('bundleUrl / indexById', () => {
     expect(bundleUrl('/devpedia/')).toBe('/devpedia/terms.json')
     expect(bundleUrl('/')).toBe('/terms.json')
     expect(bundleUrl('/x')).toBe('/x/terms.json')
+    expect(bodiesUrl('/devpedia/')).toBe('/devpedia/terms-body.json')
   })
   it('indexes by id', () => {
     expect(indexById(TERMS).get('rag')?.term).toBe('RAG')

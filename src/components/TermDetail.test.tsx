@@ -2,7 +2,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { TermDetail } from './TermDetail'
-import { TERMS, CATEGORIES } from '../test/fixtures'
+import { TERMS, CATEGORIES, BODIES } from '../test/fixtures'
 import { indexById } from '../lib/terms'
 
 const byId = indexById(TERMS)
@@ -16,6 +16,7 @@ function renderDetail(id: string, over: Partial<Parameters<typeof TermDetail>[0]
   render(
     <TermDetail
       term={term}
+      body={BODIES[id]}
       byId={byId}
       categories={categories}
       starred={false}
@@ -40,6 +41,14 @@ describe('TermDetail', () => {
     expect(screen.queryByRole('heading', { name: '헷갈리기 쉬운 것' })).toBeNull()
     expect(document.querySelector('.detail__definition strong')?.textContent).toBe('대신 받아')
     expect(document.querySelector('.detail__example code.language-bash')).toBeTruthy()
+  })
+
+  it('shows the plain definition and a skeleton while the body is still loading', () => {
+    renderDetail('reverse-proxy', { body: undefined })
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('리버스 프록시')
+    expect(document.querySelector('.detail__definition')?.textContent).toBe('외부 요청을 대신 받아 뒤의 서버로 나눠 전달하는 중간 서버.')
+    expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
+    expect(document.querySelector('.detail__example code')).toBeNull()
   })
 
   it('renders related chips: existing ones navigate, missing ones are disabled', () => {

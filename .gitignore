@@ -1,6 +1,7 @@
 node_modules/
 dist/
 public/terms.json
+public/terms-body.json
 .superpowers/
 .DS_Store
 *.log

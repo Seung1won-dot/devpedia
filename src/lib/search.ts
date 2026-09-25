@@ -1,5 +1,5 @@
 import MiniSearch from 'minisearch'
-import type { Term } from '../types'
+import type { Term, TermBody } from '../types'
 import { isChosungQuery, toChosung } from './hangul'
 
 export interface SearchHit {
@@ -27,8 +27,9 @@ const compact = (s: string) => s.toLowerCase().replace(/\s+/g, '')
  * 1) MiniSearch: 토큰 접두 매칭 + 4글자 이상 퍼지, 여러 단어는 AND
  * 2) 초성 질의("ㄹㅂㅅ")는 초성 필드만 검색
  * 3) 폴백: 토큰 중간 부분 문자열("록시")은 term/aliases 를 includes 로 훑는다
+ * bodies(본문 검색 텍스트)는 나중에 도착할 수 있다 — 없으면 term/aliases/정의/태그만으로 검색한다.
  */
-export function createSearch(terms: Term[]) {
+export function createSearch(terms: Term[], bodies?: Map<string, TermBody>) {
   const mini = new MiniSearch<Doc>({
     fields: ['term', 'aliases', 'definition', 'tags', 'chosung', 'body'],
     storeFields: [],
@@ -41,7 +42,7 @@ export function createSearch(terms: Term[]) {
       definition: t.definition,
       tags: t.tags.join(' '),
       chosung: toChosung(`${t.term} ${t.aliases.join(' ')}`),
-      body: t.searchText,
+      body: bodies?.get(t.id)?.searchText ?? '',
     })),
   )
 
@@ -81,7 +82,7 @@ export function createSearch(terms: Term[]) {
     return hits.slice(0, limit)
   }
 
-  return { search }
+  return { search, hasBodies: Boolean(bodies) }
 }
 
 export type TermSearch = ReturnType<typeof createSearch>

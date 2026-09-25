@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { createSearch } from './search'
-import { TERMS } from '../test/fixtures'
+import { TERMS, BODY_MAP } from '../test/fixtures'
 
-const search = createSearch(TERMS)
+const search = createSearch(TERMS, BODY_MAP)
 const ids = (q: string) => search.search(q).map((h) => h.id)
 
 describe('createSearch', () => {
@@ -30,6 +30,13 @@ describe('createSearch', () => {
   it('searches definition and body text', () => {
     expect(ids('오픈북')).toEqual(['rag'])
     expect(ids('중간 서버')).toContain('reverse-proxy')
+  })
+
+  it('works before bodies arrive (index-only phase)', () => {
+    const light = createSearch(TERMS)
+    expect(light.search('오픈북')).toEqual([])
+    expect(light.search('SSH')[0].id).toBe('ssh')
+    expect(light.search('중간 서버').map((h) => h.id)).toContain('reverse-proxy')
   })
 
   it('returns [] for empty or whitespace query', () => {

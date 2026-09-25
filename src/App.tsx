@@ -13,6 +13,7 @@ import { TermList } from './components/TermList'
 import { EmptyState } from './components/EmptyState'
 import { TermDetail } from './components/TermDetail'
 import { StatsView } from './components/StatsView'
+import { ListSkeleton } from './components/Skeleton'
 import { toHash } from './lib/route'
 import { APP_NAME, REPO_URL } from './config'
 
@@ -114,9 +115,29 @@ export function App() {
   }, [data, selectedId, route.kind])
 
   if (data.state === 'loading') {
+    // 인덱스를 받는 동안에도 셸(헤더·탭·목록 자리)을 먼저 그려 레이아웃 이동을 막는다
     return (
-      <div className="app app--center">
-        <p className="muted">사전을 여는 중…</p>
+      <div className="app">
+        <Header
+          query={query}
+          onQueryChange={setQuery}
+          searchRef={searchRef}
+          resultCount={null}
+          themePref={theme.pref}
+          onCycleTheme={theme.cycle}
+          statsActive={false}
+        />
+        <nav className="tabs" aria-hidden="true">
+          {Array.from({ length: 6 }, (_, i) => (
+            <span key={i} className="skeleton__pill" />
+          ))}
+        </nav>
+        <main className="main" data-detail-open={false}>
+          <section className="pane pane--list" aria-label="용어 목록" aria-busy="true">
+            <ListSkeleton />
+          </section>
+          <section className="pane pane--detail" aria-label="상세" />
+        </main>
       </div>
     )
   }
@@ -165,6 +186,7 @@ export function App() {
     detailBody = t ? (
       <TermDetail
         term={t}
+        body={data.bodies?.get(t.id)}
         byId={data.byId}
         categories={categories}
         starred={stars.has(t.id)}
