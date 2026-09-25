@@ -160,10 +160,12 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
 
 ## 배포 (GitHub Pages)
 
-1. 저장소를 GitHub 에 올린다. **Settings → Pages → Source: GitHub Actions**.
+저장소: <https://github.com/Seung1won-dot/shared> · 사이트: <https://seung1won-dot.github.io/shared/>
+
+1. GitHub 저장소 **Settings → Pages → Source: GitHub Actions** (처음 한 번).
 2. `main` 에 push 하면 `.github/workflows/ci.yml` 이 validate → typecheck → test → build → Lighthouse(경고만) → Pages 배포를 돈다.
-3. 주소는 `https://<id>.github.io/<repo>/`. 하위 경로는 CI 가 `BASE_PATH=/<repo>/` 로 넣는다. 커스텀 도메인이면 `BASE_PATH=/` 로 바꾼다.
-4. 카드 하단 "GitHub에서 편집" 링크를 켜려면 `src/config.ts` 의 `REPO_URL` 에 저장소 주소를 넣는다.
+3. 하위 경로 `/shared/` 는 CI 가 저장소 이름으로 `BASE_PATH` 를 넣는다. 저장소를 이름을 바꾸면 주소도 따라간다. 커스텀 도메인이면 `BASE_PATH=/` 로 바꾼다.
+4. 카드 하단 "GitHub에서 편집" 링크는 `src/config.ts` 의 `REPO_URL` 을 쓴다.
 
 Vercel/Cloudflare Pages 에서는 빌드 명령 `npm run build`, 출력 `dist`, `BASE_PATH` 없이 그대로 된다.
 
