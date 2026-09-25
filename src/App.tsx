@@ -12,6 +12,7 @@ import { FilterBar } from './components/FilterBar'
 import { TermList } from './components/TermList'
 import { EmptyState } from './components/EmptyState'
 import { TermDetail } from './components/TermDetail'
+import { StatsView } from './components/StatsView'
 import { toHash } from './lib/route'
 import { APP_NAME, REPO_URL } from './config'
 
@@ -180,6 +181,8 @@ export function App() {
         action={<a className="btn btn--primary" href={toHash({ kind: 'home' })}>홈으로</a>}
       />
     )
+  } else if (route.kind === 'stats') {
+    detailBody = <StatsView bundle={bundle} starredCount={starredCount} onNavigate={navigate} onClose={closeDetail} />
   } else {
     detailBody = (
       <div className="placeholder">

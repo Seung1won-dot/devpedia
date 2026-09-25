@@ -96,6 +96,45 @@ describe('App', () => {
     expect(screen.getByRole('link', { name: /홈으로/ })).toBeTruthy()
   })
 
+  it('cycles the theme system → light → dark → system on the html element', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await screen.findByText('리버스 프록시')
+    const toggle = screen.getByRole('button', { name: /테마/ })
+    expect(document.documentElement.dataset.theme).toBeUndefined()
+    await user.click(toggle)
+    expect(document.documentElement.dataset.theme).toBe('light')
+    await user.click(toggle)
+    expect(document.documentElement.dataset.theme).toBe('dark')
+    await user.click(toggle)
+    expect(document.documentElement.dataset.theme).toBeUndefined()
+  })
+
+  it('lists only starred terms on #starred', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await screen.findByText('리버스 프록시')
+    const list = screen.getByTestId('term-list')
+    const stars = within(list).getAllByRole('button', { name: /별표/ })
+    await user.click(stars[1]) // 두 번째 행 (정렬: 포트, SSH, RAG, 리버스 프록시 → SSH)
+    await setHash('#starred')
+    const links = within(screen.getByTestId('term-list')).getAllByRole('link')
+    expect(links).toHaveLength(1)
+    expect(links[0].textContent).toContain('SSH')
+    expect(screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')?.textContent).toContain('별표')
+  })
+
+  it('shows the stats view on #stats with totals and per-category bars', async () => {
+    render(<App />)
+    await screen.findByText('리버스 프록시')
+    await setHash('#stats')
+    expect(await screen.findByRole('heading', { name: /통계/ })).toBeTruthy()
+    expect(screen.getByTestId('stats-total').textContent).toBe('4')
+    const bars = screen.getAllByTestId('stats-cat-bar')
+    expect(bars).toHaveLength(3)
+    expect(bars[1].getAttribute('aria-valuenow')).toBe('2') // infra
+  })
+
   it('shows a loading error when the bundle cannot be fetched', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 404, json: async () => ({}) })))
     render(<App />)
