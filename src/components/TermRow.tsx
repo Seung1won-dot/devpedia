@@ -25,16 +25,12 @@ export function Highlighted({ text, query }: { text: string; query: string }) {
   )
 }
 
+/** 목록 한 줄. 별표 버튼은 링크 안에 중첩하지 않고(nested-interactive) 형제로 두고 CSS 로 오른쪽에 겹친다. */
 export function TermRow({ term, category, query, selected, starred, onToggleStar, showCategory }: Props) {
   const status = STATUS_LABEL[term.status]
   return (
-    <li className="row-item">
-      <a
-        className="row"
-        href={toHash({ kind: 'term', id: term.id })}
-        aria-current={selected ? 'page' : undefined}
-        style={catStyle(term.category)}
-      >
+    <li className="row-item" style={catStyle(term.category)}>
+      <a className="row" href={toHash({ kind: 'term', id: term.id })} aria-current={selected ? 'page' : undefined}>
         <span className="row__dot" aria-hidden="true" />
         <span className="row__body">
           <span className="row__title">
@@ -47,8 +43,8 @@ export function TermRow({ term, category, query, selected, starred, onToggleStar
           </span>
           <span className="row__def"><Highlighted text={term.definition} query={query} /></span>
         </span>
-        <StarButton starred={starred} onToggle={onToggleStar} size={16} />
       </a>
+      <StarButton starred={starred} onToggle={onToggleStar} size={16} className="row__star" />
     </li>
   )
 }

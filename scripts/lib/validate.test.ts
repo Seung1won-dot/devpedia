@@ -123,6 +123,26 @@ describe('validateTerms', () => {
     expect(warns(r).join()).toMatch(/10개/)
   })
 
+  it('rejects raw HTML, inline event handlers and javascript: links in body text', () => {
+    const bad = (body: string) => errors(validateTerms([parseTermMarkdown(card({}, body), 'terms/infra/ssh.md'), port], TAX)).join()
+    expect(bad('## 한 줄 정의\n\n정의.\n\n## 비유\n\n<script>alert(1)</script>\n\n## 예시\n\n예')).toMatch(/HTML/)
+    expect(bad('## 한 줄 정의\n\n정의.\n\n## 비유\n\n<img src=x onerror=alert(1)>\n\n## 예시\n\n예')).toMatch(/HTML/)
+    expect(bad('## 한 줄 정의\n\n정의.\n\n## 비유\n\n[클릭](javascript:alert(1))\n\n## 예시\n\n예')).toMatch(/javascript:/)
+    expect(bad('## 한 줄 정의\n\n정의.\n\n## 비유\n\n<iframe src="https://x"></iframe>\n\n## 예시\n\n예')).toMatch(/HTML/)
+  })
+
+  it('allows angle brackets inside code fences and inline code', () => {
+    const body = '## 한 줄 정의\n\n정의.\n\n## 비유\n\n`<script>` 태그와 `onerror=` 속성.\n\n## 예시\n\n```html\n<script src="app.js"></script>\n<img src=x onerror="alert(1)">\n```\n'
+    expect(errors(validateTerms([parseTermMarkdown(card({}, body), 'terms/infra/ssh.md'), port], TAX))).toEqual([])
+  })
+
+  it('accepts only http(s) URLs in see_also', () => {
+    const ok = validateTerms([parseTermMarkdown(card({ see_also: '["https://example.com/x"]' }), 'terms/infra/ssh.md'), port], TAX)
+    expect(errors(ok)).toEqual([])
+    const bad = validateTerms([parseTermMarkdown(card({ see_also: '["javascript:alert(1)"]' }), 'terms/infra/ssh.md'), port], TAX)
+    expect(errors(bad).join()).toMatch(/see_also/)
+  })
+
   it('reports schema errors with the file path', () => {
     const r = validateTerms([parseTermMarkdown(card({ level: '9' }), 'terms/infra/ssh.md'), port], TAX)
     const e = r.issues.find((i) => i.level === 'error' && /level/.test(i.message))

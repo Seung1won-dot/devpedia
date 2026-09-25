@@ -44,6 +44,28 @@ export function stripInline(md: string): string {
     .trim()
 }
 
+/** 코드 펜스와 인라인 코드를 걷어낸 본문 (코드 안의 `<script>` 같은 예시는 검사 대상이 아니다) */
+export function stripCode(md: string): string {
+  return md.replace(/```[\s\S]*?```|~~~[\s\S]*?~~~/g, ' ').replace(/`[^`\n]*`/g, ' ')
+}
+
+const RAW_HTML_TAG = /<\/?[a-zA-Z][^>\n]*>/
+const UNSAFE_URL = /\b(?:javascript|vbscript):\S|\bdata:[a-z]+\/[a-z]/i
+
+/**
+ * 콘텐츠 신뢰 경계: 본문은 마크다운만 허용한다. 빌드가 본문을 HTML 로 그대로 넣으므로(dangerouslySetInnerHTML)
+ * raw HTML 태그·이벤트 핸들러·javascript: 링크는 여기서 막는다. 자동링크(<https://…>)는 허용.
+ */
+export function unsafeMarkdownIssues(md: string): string[] {
+  const text = stripCode(md).replace(/<https?:\/\/[^>\s]+>/g, ' ')
+  const out: string[] = []
+  const tag = RAW_HTML_TAG.exec(text)
+  if (tag) out.push(`본문에 raw HTML 태그(${tag[0].slice(0, 30)})는 쓸 수 없음 — 마크다운만 허용 (코드는 \`\`\` 펜스 안에)`)
+  const url = UNSAFE_URL.exec(text)
+  if (url) out.push(`javascript:/data: 링크는 쓸 수 없음 (${url[0].slice(0, 30)})`)
+  return out
+}
+
 /** 마침표·물음표·느낌표 뒤 공백 기준 문장 수 (한국어 문장 휴리스틱) */
 export function sentenceCount(text: string): number {
   const t = text.trim()
@@ -119,6 +141,10 @@ export function validateTerms(raws: RawTerm[], taxonomy: Taxonomy, opts: { lenie
     const analogy = raw.sections[SECTION_NAMES.analogy] ?? ''
     const example = raw.sections[SECTION_NAMES.example] ?? ''
     const confusions = raw.sections[SECTION_NAMES.confusions] ?? null
+
+    for (const [name, text] of Object.entries(raw.sections)) {
+      for (const problem of unsafeMarkdownIssues(text)) err(`"## ${name}": ${problem}`, id)
+    }
 
     if (!definition) strict(`"## ${SECTION_NAMES.definition}" 섹션이 비어 있음`)
     if (!analogy) strict(`"## ${SECTION_NAMES.analogy}" 섹션이 비어 있음`)

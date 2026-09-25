@@ -18,9 +18,16 @@
     "icons": "node scripts/make-icons.mjs",
     "check": "npm run validate && npm run typecheck && npm run test && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "glossary",
+    "pwa",
+    "korean",
+    "it-terms",
+    "vite",
+    "react"
+  ],
+  "author": "Seung1_dot (ECLAB)",
+  "license": "MIT",
   "dependencies": {
     "minisearch": "^7.2.0",
     "react": "^19.3.0",

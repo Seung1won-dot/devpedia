@@ -31,6 +31,11 @@ jobs:
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+      # Lighthouse 는 루트(/)에서 서빙하므로 BASE_PATH 없는 빌드를 따로 만든다 (Pages 빌드는 /<repo>/ 절대 경로라 404 남)
+      - name: Lighthouse 용 루트 경로 빌드
+        run: npx vite build --outDir dist-lh
+        env:
+          BASE_PATH: /
       - name: Lighthouse (성능 90 미만이면 경고)
         uses: treosh/lighthouse-ci-action@v12
         continue-on-error: true
