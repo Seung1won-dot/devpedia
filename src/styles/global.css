@@ -1,0 +1,108 @@
+/* Devpedia design tokens — dark by default, light via data-theme or system preference */
+:root {
+  --bg: #141419;
+  --bg-elev: #1b1b22;
+  --bg-hover: #22222b;
+  --bg-sunken: #0f0f13;
+  --border: #2a2a35;
+  --border-strong: #3a3a48;
+  --text: #ecebf3;
+  --text-dim: #a6a4b8;
+  --text-faint: #7f7d93;
+  --accent: #f2b84b;
+  --accent-strong: #ffca5f;
+  --accent-ink: #1d1300;
+  --accent-soft: rgba(242, 184, 75, 0.14);
+  --accent-ring: rgba(242, 184, 75, 0.4);
+  --danger: #f0708a;
+  --ok: #4fd1a5;
+  --mark-bg: rgba(242, 184, 75, 0.32);
+  --font: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  --radius-xs: 4px;
+  --radius-control: 8px;
+  --radius-container: 12px;
+  --radius-pill: 999px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur: 160ms;
+  --cat-sat: 62%;
+  --cat-lum: 64%;
+  --hue-os: 262;
+  --hue-network: 205;
+  --hue-algo: 150;
+  --hue-lang: 330;
+  --hue-frontend: 20;
+  --hue-backend: 45;
+  --hue-database: 180;
+  --hue-infra: 230;
+  --hue-devops: 95;
+  --hue-security: 0;
+  --hue-ai: 280;
+  --hue-medical: 355;
+  --hue-swe: 120;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #f5f4f8;
+    --bg-elev: #ffffff;
+    --bg-hover: #ebeaf1;
+    --bg-sunken: #ecebf2;
+    --border: #dcdae5;
+    --border-strong: #c5c3d1;
+    --text: #1c1b24;
+    --text-dim: #5e5c70;
+    --text-faint: #75738a;
+    --accent: #9a6300;
+    --accent-strong: #7d5000;
+    --accent-ink: #ffffff;
+    --accent-soft: rgba(154, 99, 0, 0.12);
+    --accent-ring: rgba(154, 99, 0, 0.35);
+    --mark-bg: rgba(242, 184, 75, 0.45);
+    --cat-sat: 55%;
+    --cat-lum: 38%;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme='light'] {
+  --bg: #f5f4f8;
+  --bg-elev: #ffffff;
+  --bg-hover: #ebeaf1;
+  --bg-sunken: #ecebf2;
+  --border: #dcdae5;
+  --border-strong: #c5c3d1;
+  --text: #1c1b24;
+  --text-dim: #5e5c70;
+  --text-faint: #75738a;
+  --accent: #9a6300;
+  --accent-strong: #7d5000;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(154, 99, 0, 0.12);
+  --accent-ring: rgba(154, 99, 0, 0.35);
+  --mark-bg: rgba(242, 184, 75, 0.45);
+  --cat-sat: 55%;
+  --cat-lum: 38%;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
