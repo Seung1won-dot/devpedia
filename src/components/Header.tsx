@@ -19,7 +19,7 @@ interface Props {
 export function Header({ query, onQueryChange, searchRef, resultCount, themePref, onCycleTheme, statsActive }: Props) {
   return (
     <header className="header">
-      <a className="brand" href={toHash({ kind: 'home' })} aria-label={`${APP_NAME} 홈`}>
+      <a className="brand" href={toHash({ kind: 'home' })} title={`${APP_NAME} 홈`}>
         <span className="brand__mark" aria-hidden="true">D</span>
         <span className="brand__name">{APP_NAME}</span>
       </a>

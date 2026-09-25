@@ -18,7 +18,7 @@ export function makeFrontmatterSchema(categoryCodes: string[], tags: string[]) {
     tags: z.array(z.enum(tags as [string, ...string[]])).default([]),
     level: z.union([z.literal(1), z.literal(2), z.literal(3)]),
     related: z.array(z.string().regex(ID_RE, 'related 의 id 형식이 잘못됨')).default([]),
-    see_also: z.array(z.url()).default([]),
+    see_also: z.array(z.url({ protocol: /^https?$/, error: 'see_also 는 http(s) URL 만 허용' })).default([]),
     status: z.enum(['draft', 'review', 'published']).default('draft'),
     created: dateish,
     updated: dateish.optional(),

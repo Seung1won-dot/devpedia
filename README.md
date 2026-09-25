@@ -96,6 +96,7 @@ updated: 2026-09-25
 | 파일 경로가 `terms/<category>/<id>.md` 와 일치 | 빌드 실패 |
 | `tags` 는 `taxonomy/tags.yml` 에 정의된 것만 | 빌드 실패 |
 | `related` 는 존재하는 id 만, 자기 자신·중복 금지 | 빌드 실패 |
+| 본문에 raw HTML 태그·`javascript:` 링크 (코드 펜스 밖) | 빌드 실패 |
 | 한 줄 정의 60자 이내(마크다운 기호 제외)·문장 하나 | review/published 는 실패, draft 는 경고 |
 | `## 한 줄 정의` `## 비유` `## 예시` 필수, 그 외 섹션 금지 | review/published 는 실패, draft 는 경고 |
 | `id` 가 `c` `starred` `stats` `all` 또는 카테고리 코드와 같음 | 빌드 실패 (해시 라우트 예약어) |
@@ -126,14 +127,14 @@ updated: 2026-09-25
 ## 어떻게 동작하나
 
 ```
-terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ public/terms.json
-                                                              (HTML 렌더 완료 · 역링크 · 통계)
-                                                                     │ fetch 1회
+terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ public/terms.json       (인덱스: 목록·검색·카드 헤더, ~135KB)
+                                                          └─▶ public/terms-body.json  (본문 HTML + 본문 검색 텍스트, ~600KB)
+                                                                     │ ① 인덱스 → 목록 즉시   ② 본문 → 상세·본문 검색
 브라우저 / PWA ◀── vite build (index.html + app.js + sw.js + manifest) ◀──┘
-  MiniSearch 메모리 인덱스 · 해시 라우팅 · localStorage(별표·테마) · Service Worker 프리캐시
+  MiniSearch 메모리 인덱스 · 해시 라우팅 · localStorage(별표·테마) · Service Worker 가 둘 다 프리캐시
 ```
 
-- **서버 없음.** 300장 ≈ 300KB JSON 을 통째로 내려 클라이언트에서 검색한다.
+- **서버 없음.** JSON 두 개를 내려 클라이언트에서 검색한다. 인덱스가 먼저 와서 목록이 뜨고, 본문은 그 뒤에 온다(도착 전엔 상세가 스켈레톤, 검색은 제목·정의·태그만). GitHub Pages 는 gzip 으로 보내므로 실제 전송량은 238장 기준 인덱스 ~40KB, 본문 ~140KB.
 - **콘텐츠와 코드 분리.** `terms/` 만 만지면 사이트가 갱신된다. 마크다운은 빌드 때 한 번만 렌더한다.
 - **검증이 곧 품질.** `scripts/lib/validate.ts` 가 위 규칙을 검사한다. CI 에서 실패하면 배포되지 않는다.
 
@@ -154,7 +155,7 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
 
 ### 콘텐츠 신뢰 경계
 
-카드 본문 HTML 은 **이 저장소의 Markdown 을 빌드 때 우리가 렌더한 것**만 화면에 넣는다(`dangerouslySetInnerHTML`). 사용자 입력이나 외부 데이터가 HTML 로 들어오는 경로는 없다. PR 로 카드를 받을 때는 리뷰어가 본문에 raw HTML/스크립트가 없는지 본다.
+카드 본문 HTML 은 **이 저장소의 Markdown 을 빌드 때 우리가 렌더한 것**만 화면에 넣는다(`dangerouslySetInnerHTML`). 사용자 입력이나 외부 데이터가 HTML 로 들어오는 경로는 없다. 그리고 **빌드가 막는다**: 본문(코드 펜스·인라인 코드 밖)에 raw HTML 태그, `javascript:`/`data:` 링크가 있으면 `validate` 가 error 를 내고, `see_also` 는 http(s) URL 만 받는다. 그래서 PR 로 카드를 받아도 마크다운 이외의 것은 배포되지 않는다.
 
 ## 배포 (GitHub Pages)
 
