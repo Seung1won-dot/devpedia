@@ -1,0 +1,87 @@
+import MiniSearch from 'minisearch'
+import type { Term } from '../types'
+import { isChosungQuery, toChosung } from './hangul'
+
+export interface SearchHit {
+  id: string
+  score: number
+}
+
+interface Doc {
+  id: string
+  term: string
+  aliases: string
+  definition: string
+  tags: string
+  chosung: string
+  body: string
+}
+
+const FIELD_BOOST = { term: 5, aliases: 4, definition: 1.5, tags: 1, chosung: 3, body: 0.5 }
+const FALLBACK_SCORE = 0.1
+
+const compact = (s: string) => s.toLowerCase().replace(/\s+/g, '')
+
+/**
+ * 클라이언트 검색 인덱스.
+ * 1) MiniSearch: 토큰 접두 매칭 + 4글자 이상 퍼지, 여러 단어는 AND
+ * 2) 초성 질의("ㄹㅂㅅ")는 초성 필드만 검색
+ * 3) 폴백: 토큰 중간 부분 문자열("록시")은 term/aliases 를 includes 로 훑는다
+ */
+export function createSearch(terms: Term[]) {
+  const mini = new MiniSearch<Doc>({
+    fields: ['term', 'aliases', 'definition', 'tags', 'chosung', 'body'],
+    storeFields: [],
+  })
+  mini.addAll(
+    terms.map((t) => ({
+      id: t.id,
+      term: t.term,
+      aliases: t.aliases.join(' '),
+      definition: t.definition,
+      tags: t.tags.join(' '),
+      chosung: toChosung(`${t.term} ${t.aliases.join(' ')}`),
+      body: t.searchText,
+    })),
+  )
+
+  const names = terms.map((t) => {
+    const text = `${t.term} ${t.aliases.join(' ')}`
+    return { id: t.id, plain: compact(text), chosung: compact(toChosung(text)) }
+  })
+
+  function search(query: string, limit = 50): SearchHit[] {
+    const q = query.trim()
+    if (!q) return []
+    const chosung = isChosungQuery(q)
+
+    const raw = chosung
+      ? mini.search(q, { fields: ['chosung'], prefix: true, combineWith: 'AND' })
+      : mini.search(q, {
+          prefix: true,
+          fuzzy: (t) => (t.length >= 4 ? 0.2 : false),
+          combineWith: 'AND',
+          boost: FIELD_BOOST,
+        })
+
+    const hits: SearchHit[] = raw.map((h) => ({ id: String(h.id), score: h.score }))
+    const seen = new Set(hits.map((h) => h.id))
+
+    const needle = compact(q)
+    if (needle) {
+      for (const n of names) {
+        if (seen.has(n.id)) continue
+        const hay = chosung ? n.chosung : n.plain
+        if (hay.includes(needle)) {
+          hits.push({ id: n.id, score: FALLBACK_SCORE })
+          seen.add(n.id)
+        }
+      }
+    }
+    return hits.slice(0, limit)
+  }
+
+  return { search }
+}
+
+export type TermSearch = ReturnType<typeof createSearch>
