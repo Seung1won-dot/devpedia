@@ -10,7 +10,7 @@
   --border-strong: #3a3a48;
   --text: #ecebf3;
   --text-dim: #a6a4b8;
-  --text-faint: #7f7d93;
+  --text-faint: #8f8da5;
   --accent: #f2b84b;
   --accent-strong: #ffca5f;
   --accent-ink: #1d1300;
@@ -567,12 +567,16 @@ pre {
   gap: 2px;
 }
 
+.row-item {
+  position: relative;
+}
+
 .row {
   display: grid;
-  grid-template-columns: 10px 1fr auto;
+  grid-template-columns: 10px 1fr;
   gap: 12px;
   align-items: start;
-  padding: 10px 10px 10px 12px;
+  padding: 10px 48px 10px 12px;
   border-radius: var(--radius-container);
   border: 1px solid transparent;
   color: inherit;
@@ -687,6 +691,12 @@ pre {
 
 .star:active {
   transform: scale(0.9);
+}
+
+.row__star {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 /* ==========================================================================
@@ -1222,4 +1232,72 @@ button.bars__label:hover {
   background: var(--bg-elev);
   box-shadow: var(--shadow-float);
   font-size: 14px;
+}
+
+/* ==========================================================================
+   Skeleton (loading placeholders — same heights as real content to avoid CLS)
+   ========================================================================== */
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeleton__line,
+.skeleton__dot,
+.skeleton__pill {
+  display: block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--bg-hover) 25%, var(--bg-elev) 50%, var(--bg-hover) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeleton__line {
+  height: 12px;
+}
+
+.skeleton__line:first-child {
+  height: 14px;
+  width: 45%;
+}
+
+.skeleton__line:last-child {
+  width: 80%;
+}
+
+.skeleton--block .skeleton__line {
+  width: 100%;
+}
+
+.skeleton--block .skeleton__line:first-child {
+  width: 100%;
+}
+
+.skeleton__dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 7px;
+  border-radius: 50%;
+}
+
+.skeleton__pill {
+  width: 96px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  flex: none;
+}
+
+.row--skeleton {
+  min-height: 62px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }

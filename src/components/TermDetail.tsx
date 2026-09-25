@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import type { Category, Term } from '../types'
+import type { Category, Term, TermBody } from '../types'
 import type { Route } from '../lib/route'
 import { toHash } from '../lib/route'
 import { catStyle } from '../lib/catStyle'
 import { Icon } from './Icon'
 import { StarButton } from './StarButton'
 import { RelatedChips } from './RelatedChips'
+import { Skeleton } from './Skeleton'
 import { LEVEL_LABEL } from './FilterBar'
 import { STATUS_LABEL } from './TermRow'
 
 interface Props {
   term: Term
+  /** 본문은 인덱스보다 늦게 도착할 수 있다. 없으면 스켈레톤. */
+  body: TermBody | undefined
   byId: Map<string, Term>
   categories: Map<string, Category>
   starred: boolean
@@ -25,10 +28,10 @@ function shareUrl(id: string): string {
 }
 
 /**
- * 카드 상세. 본문 HTML 은 빌드 시 우리가 marked 로 렌더한 것만 들어온다(terms/*.md → terms.json).
+ * 카드 상세. 본문 HTML 은 빌드 시 우리가 marked 로 렌더한 것만 들어온다(terms/*.md → terms-body.json).
  * 외부 입력이 아니므로 dangerouslySetInnerHTML 을 쓴다. README "콘텐츠 신뢰 경계" 참고.
  */
-export function TermDetail({ term, byId, categories, starred, onToggleStar, onNavigate, onClose, repoUrl }: Props) {
+export function TermDetail({ term, body, byId, categories, starred, onToggleStar, onNavigate, onClose, repoUrl }: Props) {
   const cat = categories.get(term.category)
   const status = STATUS_LABEL[term.status]
   const [copied, setCopied] = useState(false)
@@ -96,23 +99,31 @@ export function TermDetail({ term, byId, categories, starred, onToggleStar, onNa
 
       <section className="detail__section">
         <h2>한 줄 정의</h2>
-        <p className="detail__definition" dangerouslySetInnerHTML={{ __html: term.definitionHtml }} />
+        {body ? (
+          <p className="detail__definition" dangerouslySetInnerHTML={{ __html: body.definitionHtml }} />
+        ) : (
+          <p className="detail__definition">{term.definition}</p>
+        )}
       </section>
 
       <section className="detail__section">
         <h2>비유</h2>
-        <div className="detail__prose" dangerouslySetInnerHTML={{ __html: term.analogyHtml }} />
+        {body ? <div className="detail__prose" dangerouslySetInnerHTML={{ __html: body.analogyHtml }} /> : <Skeleton lines={2} />}
       </section>
 
       <section className="detail__section">
         <h2>예시</h2>
-        <div className="detail__prose detail__example" dangerouslySetInnerHTML={{ __html: term.exampleHtml }} />
+        {body ? (
+          <div className="detail__prose detail__example" dangerouslySetInnerHTML={{ __html: body.exampleHtml }} />
+        ) : (
+          <Skeleton lines={4} className="skeleton--block" />
+        )}
       </section>
 
-      {term.confusionsHtml && (
+      {body?.confusionsHtml && (
         <section className="detail__section">
           <h2>헷갈리기 쉬운 것</h2>
-          <div className="detail__prose" dangerouslySetInnerHTML={{ __html: term.confusionsHtml }} />
+          <div className="detail__prose" dangerouslySetInnerHTML={{ __html: body.confusionsHtml }} />
         </section>
       )}
 

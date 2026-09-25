@@ -3,10 +3,19 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, within, cleanup, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { App } from './App'
-import { BUNDLE } from './test/fixtures'
+import { BUNDLE, BODY_BUNDLE } from './test/fixtures'
+
+function fetchStub(opts: { index?: unknown; bodies?: unknown; indexOk?: boolean; hang?: boolean } = {}) {
+  return vi.fn(async (input: RequestInfo | URL) => {
+    const url = String(input)
+    if (opts.hang) return new Promise(() => {})
+    if (url.endsWith('terms-body.json')) return { ok: true, status: 200, json: async () => opts.bodies ?? BODY_BUNDLE }
+    return { ok: opts.indexOk ?? true, status: opts.indexOk === false ? 404 : 200, json: async () => opts.index ?? BUNDLE }
+  })
+}
 
 function stubEnvironment() {
-  vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, status: 200, json: async () => BUNDLE })))
+  vi.stubGlobal('fetch', fetchStub())
   const matchMedia = vi.fn((query: string) => ({
     matches: false, media: query, onchange: null,
     addEventListener: () => {}, removeEventListener: () => {}, addListener: () => {}, removeListener: () => {}, dispatchEvent: () => false,
@@ -32,6 +41,13 @@ describe('App', () => {
     vi.unstubAllGlobals()
   })
 
+  it('renders the shell (header + search) immediately while the index is loading', () => {
+    vi.stubGlobal('fetch', fetchStub({ hang: true }))
+    render(<App />)
+    expect(screen.getByRole('searchbox')).toBeTruthy()
+    expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
+  })
+
   it('renders category tabs and the term list from the bundle', async () => {
     render(<App />)
     expect(await screen.findByText('리버스 프록시')).toBeTruthy()
@@ -41,6 +57,9 @@ describe('App', () => {
     expect(tabs.map((t) => t.textContent)).toEqual(expect.arrayContaining([expect.stringContaining('네트워크')]))
     const list = screen.getByTestId('term-list')
     expect(within(list).getAllByRole('link')).toHaveLength(4)
+    // 별표 버튼은 링크 안에 중첩되면 안 된다 (nested-interactive)
+    expect(list.querySelector('a button')).toBeNull()
+    expect(within(list).getAllByRole('button', { name: /별표/ })).toHaveLength(4)
   })
 
   it('filters the list instantly as the user types', async () => {
@@ -52,6 +71,16 @@ describe('App', () => {
     expect(links).toHaveLength(1)
     expect(links[0].textContent).toMatch(/리버스\s*프록시/)
     expect(links[0].querySelector('mark')?.textContent).toBe('프록시')
+  })
+
+  it('searches body text once the body bundle has arrived', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await screen.findByText('리버스 프록시')
+    await user.type(screen.getByRole('searchbox'), '오픈북')
+    const list = screen.getByTestId('term-list')
+    expect(await within(list).findByText('RAG')).toBeTruthy()
+    expect(within(list).getAllByRole('link')).toHaveLength(1)
   })
 
   it('shows only that category on #c/<code> and marks the tab selected', async () => {
@@ -87,6 +116,7 @@ describe('App', () => {
     const selected = screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')
     expect(selected?.textContent).toContain('서버')
     expect(document.title).toBe('SSH · Devpedia')
+    expect(await screen.findByText('열쇠 달린 뒷문', { exact: false })).toBeTruthy()
   })
 
   it('unknown term id renders not-found state', async () => {
@@ -135,8 +165,8 @@ describe('App', () => {
     expect(bars[1].getAttribute('aria-valuenow')).toBe('2') // infra
   })
 
-  it('shows a loading error when the bundle cannot be fetched', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 404, json: async () => ({}) })))
+  it('shows a loading error when the index cannot be fetched', async () => {
+    vi.stubGlobal('fetch', fetchStub({ indexOk: false }))
     render(<App />)
     expect(await screen.findByText(/불러오지 못했/)).toBeTruthy()
   })

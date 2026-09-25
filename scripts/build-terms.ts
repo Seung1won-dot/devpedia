@@ -1,4 +1,4 @@
-// terms/**/*.md → public/terms.json.  npm run build:terms [-- --lenient]
+// terms/**/*.md → public/terms.json (인덱스) + public/terms-body.json (본문).  npm run build:terms [-- --lenient]
 // 검증(validate)에 실패하면 JSON 을 쓰지 않고 exit 1 → 잘못된 카드는 배포되지 않는다. (스펙 8장 "검증이 곧 품질")
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -22,8 +22,12 @@ if (!result.ok) {
   process.exit(1)
 }
 
-const bundle = buildBundle(result.terms, taxonomy)
-const json = JSON.stringify(bundle)
+const { index, bodies } = buildBundle(result.terms, taxonomy)
 mkdirSync(join(root, 'public'), { recursive: true })
-writeFileSync(join(root, 'public', 'terms.json'), json)
-console.log(`public/terms.json 생성 — 용어 ${bundle.terms.length}개, ${(Buffer.byteLength(json) / 1024).toFixed(1)} KB`)
+const kb = (s: string) => (Buffer.byteLength(s) / 1024).toFixed(1)
+const indexJson = JSON.stringify(index)
+const bodyJson = JSON.stringify(bodies)
+writeFileSync(join(root, 'public', 'terms.json'), indexJson)
+writeFileSync(join(root, 'public', 'terms-body.json'), bodyJson)
+console.log(`public/terms.json 생성 — 용어 ${index.terms.length}개, ${kb(indexJson)} KB (인덱스)`)
+console.log(`public/terms-body.json 생성 — ${kb(bodyJson)} KB (본문 HTML + 검색 텍스트)`)
