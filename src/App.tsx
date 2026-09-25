@@ -11,7 +11,9 @@ import { CategoryTabs } from './components/CategoryTabs'
 import { FilterBar } from './components/FilterBar'
 import { TermList } from './components/TermList'
 import { EmptyState } from './components/EmptyState'
-import { APP_NAME } from './config'
+import { TermDetail } from './components/TermDetail'
+import { toHash } from './lib/route'
+import { APP_NAME, REPO_URL } from './config'
 
 type ListRoute = Extract<Route, { kind: 'home' | 'category' | 'starred' }>
 
@@ -156,6 +158,36 @@ export function App() {
     listBody = <EmptyState icon="inbox" title="여기엔 아직 카드가 없어요" hint="필터를 풀거나 다른 카테고리를 열어 보세요." />
   }
 
+  let detailBody
+  if (route.kind === 'term') {
+    const t = data.byId.get(route.id)
+    detailBody = t ? (
+      <TermDetail
+        term={t}
+        byId={data.byId}
+        categories={categories}
+        starred={stars.has(t.id)}
+        onToggleStar={() => toggleStar(t.id)}
+        onNavigate={navigate}
+        onClose={closeDetail}
+        repoUrl={REPO_URL}
+      />
+    ) : (
+      <EmptyState
+        icon="inbox"
+        title="해당 용어가 없습니다"
+        hint={`'${route.id}' 카드는 아직 없어요. 링크가 오래됐거나 id 가 바뀌었을 수 있어요.`}
+        action={<a className="btn btn--primary" href={toHash({ kind: 'home' })}>홈으로</a>}
+      />
+    )
+  } else {
+    detailBody = (
+      <div className="placeholder">
+        <p className="muted">왼쪽에서 카드를 고르면 여기에 정의·비유·예시가 나옵니다.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="app">
       <Header
@@ -180,9 +212,7 @@ export function App() {
           {listBody}
         </section>
         <section className="pane pane--detail" aria-label="상세">
-          <div className="placeholder">
-            <p className="muted">왼쪽에서 카드를 고르면 여기에 정의·비유·예시가 나옵니다.</p>
-          </div>
+          {detailBody}
         </section>
       </main>
     </div>
