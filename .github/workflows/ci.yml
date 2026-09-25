@@ -57,5 +57,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Pages 사이트가 없으면 만들고(Source: GitHub Actions), 있으면 그대로 둔다 — Settings 클릭 불필요
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - id: deployment
         uses: actions/deploy-pages@v4
