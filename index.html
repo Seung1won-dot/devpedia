@@ -5,30 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content="카테고리별 IT 용어 사전 — 한 줄 정의, 비유, 예시, 관련 용어로 10초 안에 이해하기" />
     <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141419" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f4f8" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0f11" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafaf7" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.png" />
-    <!-- 인덱스 JSON 을 JS 파싱 전에 미리 받는다 (첫 목록이 빨라진다) -->
+    <!-- 인덱스 JSON 을 JS 파싱 전에 미리 받는다 (첫 화면이 빨라진다) -->
     <link rel="preload" href="%BASE_URL%terms.json" as="fetch" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- 웹폰트 CSS 는 비동기 + display=optional: 첫 방문엔 시스템 한글 폰트로 그대로 두고(교체로 인한 CLS 없음), SW 가 캐시한 뒤부터 Plex 가 뜬다 -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=optional"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=optional"
-      />
-    </noscript>
-    <title>Devpedia</title>
+    <!-- 저장된 테마를 첫 페인트 전에 적용해 깜빡임을 막는다 (useTheme 과 같은 키) -->
+    <script>
+      try {
+        var t = localStorage.getItem('devpedia:theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <title>Devpedia — IT 용어 사전</title>
   </head>
   <body>
     <div id="root"></div>

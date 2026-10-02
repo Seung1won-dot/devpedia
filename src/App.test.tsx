@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, within, cleanup, act } from '@testing-library/react'
+import { render, screen, cleanup, act, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { App } from './App'
 import { BUNDLE, BODY_BUNDLE } from './test/fixtures'
@@ -14,12 +14,17 @@ function fetchStub(opts: { index?: unknown; bodies?: unknown; indexOk?: boolean;
   })
 }
 
-function stubEnvironment() {
+export function stubEnvironment(width = 1024) {
   vi.stubGlobal('fetch', fetchStub())
-  const matchMedia = vi.fn((query: string) => ({
-    matches: false, media: query, onchange: null,
-    addEventListener: () => {}, removeEventListener: () => {}, addListener: () => {}, removeListener: () => {}, dispatchEvent: () => false,
-  }))
+  vi.stubGlobal('scrollTo', vi.fn())
+  const matchMedia = vi.fn((query: string) => {
+    const m = /min-width:\s*(\d+)px/.exec(query)
+    return {
+      matches: m ? width >= Number(m[1]) : false,
+      media: query, onchange: null,
+      addEventListener: () => {}, removeEventListener: () => {}, addListener: () => {}, removeListener: () => {}, dispatchEvent: () => false,
+    }
+  })
   Object.defineProperty(window, 'matchMedia', { value: matchMedia, writable: true, configurable: true })
 }
 
@@ -30,10 +35,10 @@ async function setHash(hash: string) {
   })
 }
 
-describe('App', () => {
+describe('App shell', () => {
   beforeEach(() => {
     stubEnvironment()
-    window.location.hash = ''
+    history.replaceState(null, '', window.location.pathname)
     try { localStorage.clear() } catch { /* ignore */ }
   })
   afterEach(() => {
@@ -41,97 +46,61 @@ describe('App', () => {
     vi.unstubAllGlobals()
   })
 
-  it('renders the shell (header + search) immediately while the index is loading', () => {
+  it('renders the header and a skeleton while the index is loading', () => {
     vi.stubGlobal('fetch', fetchStub({ hang: true }))
     render(<App />)
-    expect(screen.getByRole('searchbox')).toBeTruthy()
+    expect(screen.getByRole('button', { name: /용어 검색/ })).toBeTruthy()
     expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 
-  it('renders category tabs and the term list from the bundle', async () => {
-    render(<App />)
-    expect(await screen.findByText('리버스 프록시')).toBeTruthy()
-    const tabs = screen.getAllByRole('tab')
-    // 전체 + 카테고리 3 + 별표
-    expect(tabs).toHaveLength(5)
-    expect(tabs.map((t) => t.textContent)).toEqual(expect.arrayContaining([expect.stringContaining('네트워크')]))
-    const list = screen.getByTestId('term-list')
-    expect(within(list).getAllByRole('link')).toHaveLength(4)
-    // 별표 버튼은 링크 안에 중첩되면 안 된다 (nested-interactive)
-    expect(list.querySelector('a button')).toBeNull()
-    expect(within(list).getAllByRole('button', { name: /별표/ })).toHaveLength(4)
-  })
-
-  it('filters the list instantly as the user types', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    await user.type(screen.getByRole('searchbox'), '프록시')
-    const links = within(screen.getByTestId('term-list')).getAllByRole('link')
-    expect(links).toHaveLength(1)
-    expect(links[0].textContent).toMatch(/리버스\s*프록시/)
-    expect(links[0].querySelector('mark')?.textContent).toBe('프록시')
-  })
-
-  it('searches body text once the body bundle has arrived', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    await user.type(screen.getByRole('searchbox'), '오픈북')
-    const list = screen.getByTestId('term-list')
-    expect(await within(list).findByText('RAG')).toBeTruthy()
-    expect(within(list).getAllByRole('link')).toHaveLength(1)
-  })
-
-  it('shows only that category on #c/<code> and marks the tab selected', async () => {
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    await setHash('#c/ai')
-    const list = screen.getByTestId('term-list')
-    expect(await within(list).findByText('RAG')).toBeTruthy()
-    expect(within(list).queryByText('SSH')).toBeNull()
-    const selected = screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')
-    expect(selected?.textContent).toContain('AI')
-  })
-
-  it('narrows the list with the level filter', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    // 기본은 전체 표시. '기초' 를 누르면 기초만, 다시 누르면 전체로.
-    await user.click(screen.getByRole('button', { name: '기초' }))
-    let links = within(screen.getByTestId('term-list')).getAllByRole('link')
-    expect(links).toHaveLength(2)
-    expect(links.map((l) => l.textContent).join()).toContain('SSH')
-    expect(links.map((l) => l.textContent).join()).not.toContain('리버스')
-    await user.click(screen.getByRole('button', { name: '기초' }))
-    links = within(screen.getByTestId('term-list')).getAllByRole('link')
-    expect(links).toHaveLength(4)
-  })
-
-  it('opens the detail on #<id> and keeps the list scoped to that category on cold start', async () => {
+  it('redirects a legacy #<id> share link to #/t/<id> without adding history', async () => {
     window.location.hash = '#ssh'
+    const before = history.length
     render(<App />)
     expect((await screen.findByRole('heading', { level: 1 })).textContent).toBe('SSH')
-    const selected = screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')
-    expect(selected?.textContent).toContain('서버')
+    expect(window.location.hash).toBe('#/t/ssh')
+    expect(history.length).toBe(before)
     expect(document.title).toBe('SSH · Devpedia')
-    expect(await screen.findByText('열쇠 달린 뒷문', { exact: false })).toBeTruthy()
   })
 
-  it('unknown term id renders not-found state', async () => {
-    window.location.hash = '#nonexistent'
+  it('redirects a legacy #c/<code> link and shows that category', async () => {
+    window.location.hash = '#c/ai'
     render(<App />)
-    expect(await screen.findByText(/해당 용어가 없/)).toBeTruthy()
-    expect(screen.getByRole('link', { name: /홈으로/ })).toBeTruthy()
+    expect((await screen.findByRole('heading', { level: 1 })).textContent).toContain('AI')
+    expect(window.location.hash).toBe('#/c/ai')
   })
 
-  it('cycles the theme system → light → dark → system on the html element', async () => {
+  it('renders a not-found page for unknown terms, categories and paths', async () => {
+    window.location.hash = '#/t/nonexistent'
+    render(<App />)
+    expect(await screen.findByRole('heading', { level: 1, name: /찾을 수 없/ })).toBeTruthy()
+    expect(screen.getByRole('link', { name: '홈으로' })).toBeTruthy()
+    await setHash('#/c/nope')
+    expect(await screen.findByRole('heading', { level: 1, name: /분야/ })).toBeTruthy()
+    await setHash('#/a/b/c')
+    expect(await screen.findByRole('heading', { level: 1, name: /페이지/ })).toBeTruthy()
+  })
+
+  it('opens the category menu with every category and closes it on Escape', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await screen.findByText('리버스 프록시')
+    await screen.findAllByRole('heading', { level: 1 })
+    const btn = screen.getByRole('button', { name: /분야/ })
+    await user.click(btn)
+    expect(btn.getAttribute('aria-expanded')).toBe('true')
+    const nav = screen.getByRole('navigation', { name: '주 메뉴' })
+    const links = within(nav).getAllByRole('link').filter((a) => a.getAttribute('href')?.startsWith('#/c/'))
+    expect(links).toHaveLength(3)
+    await user.keyboard('{Escape}')
+    expect(btn.getAttribute('aria-expanded')).toBe('false')
+  })
+
+  it('cycles the theme system → light → dark → system and shows the state as text', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await screen.findAllByRole('heading', { level: 1 })
     const toggle = screen.getByRole('button', { name: /테마/ })
-    expect(document.documentElement.dataset.theme).toBeUndefined()
+    expect(toggle.textContent).toContain('시스템')
     await user.click(toggle)
     expect(document.documentElement.dataset.theme).toBe('light')
     await user.click(toggle)
@@ -140,34 +109,10 @@ describe('App', () => {
     expect(document.documentElement.dataset.theme).toBeUndefined()
   })
 
-  it('lists only starred terms on #starred', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    const list = screen.getByTestId('term-list')
-    const stars = within(list).getAllByRole('button', { name: /별표/ })
-    await user.click(stars[1]) // 두 번째 행 (정렬: 포트, SSH, RAG, 리버스 프록시 → SSH)
-    await setHash('#starred')
-    const links = within(screen.getByTestId('term-list')).getAllByRole('link')
-    expect(links).toHaveLength(1)
-    expect(links[0].textContent).toContain('SSH')
-    expect(screen.getAllByRole('tab').find((t) => t.getAttribute('aria-selected') === 'true')?.textContent).toContain('별표')
-  })
-
-  it('shows the stats view on #stats with totals and per-category bars', async () => {
-    render(<App />)
-    await screen.findByText('리버스 프록시')
-    await setHash('#stats')
-    expect(await screen.findByRole('heading', { name: /통계/ })).toBeTruthy()
-    expect(screen.getByTestId('stats-total').textContent).toBe('4')
-    const bars = screen.getAllByTestId('stats-cat-bar')
-    expect(bars).toHaveLength(3)
-    expect(bars[1].getAttribute('aria-valuenow')).toBe('2') // infra
-  })
-
-  it('shows a loading error when the index cannot be fetched', async () => {
+  it('shows a retryable error when the index cannot be fetched', async () => {
     vi.stubGlobal('fetch', fetchStub({ indexOk: false }))
     render(<App />)
     expect(await screen.findByText(/불러오지 못했/)).toBeTruthy()
+    expect(screen.getByRole('button', { name: '다시 시도' })).toBeTruthy()
   })
 })

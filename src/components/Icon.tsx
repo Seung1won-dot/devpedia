@@ -2,7 +2,8 @@ import type { SVGProps } from 'react'
 
 export type IconName =
   | 'search' | 'x' | 'star' | 'star-filled' | 'sun' | 'moon' | 'monitor' | 'chart'
-  | 'link' | 'arrow-left' | 'chevron-right' | 'github' | 'external' | 'book' | 'inbox'
+  | 'link' | 'arrow-left' | 'arrow-right' | 'chevron-right' | 'chevron-left' | 'chevron-down' | 'github' | 'external'
+  | 'book' | 'inbox' | 'grid' | 'clock' | 'check' | 'enter'
 
 const PATHS: Record<IconName, string> = {
   search: 'M11 4a7 7 0 1 0 4.2 12.6l4.6 4.6 1.4-1.4-4.6-4.6A7 7 0 0 0 11 4zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z',
@@ -16,6 +17,13 @@ const PATHS: Record<IconName, string> = {
   link: 'M10.6 13.4a1 1 0 0 1 0 1.4l-.7.7a4 4 0 0 1-5.7-5.7l2.8-2.8a4 4 0 0 1 5.7 0 1 1 0 0 1-1.4 1.4 2 2 0 0 0-2.9 0L5.6 11.2a2 2 0 1 0 2.9 2.9l.7-.7a1 1 0 0 1 1.4 0zm2.8-2.8a1 1 0 0 1 0-1.4l.7-.7a4 4 0 0 1 5.7 5.7l-2.8 2.8a4 4 0 0 1-5.7 0 1 1 0 0 1 1.4-1.4 2 2 0 0 0 2.9 0l2.8-2.8a2 2 0 1 0-2.9-2.9l-.7.7a1 1 0 0 1-1.4 0z',
   'arrow-left': 'M11.3 4.3 12.7 5.7 7.4 11H20v2H7.4l5.3 5.3-1.4 1.4L3.6 12z',
   'chevron-right': 'M9.3 5.3 16 12l-6.7 6.7-1.4-1.4L13.2 12 7.9 6.7z',
+  'arrow-right': 'M12.7 4.3 11.3 5.7 16.6 11H4v2h12.6l-5.3 5.3 1.4 1.4 8.4-8.4z',
+  'chevron-left': 'M14.7 5.3 8 12l6.7 6.7 1.4-1.4L10.8 12l5.3-5.3z',
+  'chevron-down': 'M5.3 9.3 12 16l6.7-6.7-1.4-1.4L12 13.2 6.7 7.9z',
+  grid: 'M4 4h7v7H4V4zm2 2v3h3V6H6zm7-2h7v7h-7V4zm2 2v3h3V6h-3zM4 13h7v7H4v-7zm2 2v3h3v-3H6zm7-2h7v7h-7v-7zm2 2v3h3v-3h-3z',
+  clock: 'M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 2a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm1 2v4.6l3.2 1.9-1 1.7L11 12.7V7h2z',
+  check: 'M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7z',
+  enter: 'M19 6h2v7a3 3 0 0 1-3 3H8.4l3.3 3.3-1.4 1.4L4.6 15l5.7-5.7 1.4 1.4L8.4 14H18a1 1 0 0 0 1-1V6z',
   github: 'M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z',
   external: 'M14 4h6v6h-2V7.4l-7.3 7.3-1.4-1.4L16.6 6H14V4zM5 6h6v2H6v10h10v-5h2v7H4V6h1z',
   book: 'M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v11.2c.3-.1.7-.2 1-.2h10V5H6zm0 13v1h11v-1H7a1 1 0 0 0-1 0z',
