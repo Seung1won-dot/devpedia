@@ -11,15 +11,17 @@ tags:
   - 배포
   - 운영
 level: 3
+kind: pattern
 related:
   - rollback
   - load-balancer
   - reverse-proxy
   - environments
   - kubernetes
+  - feature-flag
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

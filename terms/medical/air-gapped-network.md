@@ -12,15 +12,17 @@ tags:
   - 보안정책
   - 병원시스템
 level: 2
+kind: concept
 related:
   - firewall
   - medical-data-law
   - gpu-cuda
   - container-registry
   - package-manager
+  - isms-p
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

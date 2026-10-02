@@ -11,18 +11,21 @@ tags:
   - 키관리
   - 보안
   - 배포
+  - 시크릿
 level: 1
+kind: concept
 related:
   - environment-variable
   - secret-leak
   - gitignore
   - github-actions
   - environments
+  - api-key
 see_also:
   - https://12factor.net/config
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

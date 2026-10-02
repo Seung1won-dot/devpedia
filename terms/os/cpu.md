@@ -9,15 +9,18 @@ category: os
 tags:
   - 하드웨어
 level: 1
+kind: concept
 related:
   - ram
   - cache-memory
   - process
   - thread
   - gpu-cuda
+  - register
+  - numa
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

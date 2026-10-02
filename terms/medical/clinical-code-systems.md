@@ -12,17 +12,19 @@ tags:
   - 의료데이터
   - 표준화
 level: 2
+kind: protocol
 related:
   - omop-cdm
   - fhir
   - lis
   - emr-ehr
   - primary-foreign-key
+  - claims-edi
 see_also:
   - https://icd.who.int/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

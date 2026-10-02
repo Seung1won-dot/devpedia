@@ -5,10 +5,18 @@ aliases: [Retrieval-Augmented Generation, 검색 증강 생성, 래그]
 category: ai
 tags: [LLM, 검색, 임베딩]
 level: 2
-related: [embedding, vector-db, llm, context-window, hallucination]
+kind: concept
+related:
+  - embedding
+  - vector-db
+  - llm
+  - context-window
+  - hallucination
+  - chunking
+  - reranker
 status: published
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

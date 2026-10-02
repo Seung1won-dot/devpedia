@@ -10,15 +10,18 @@ category: lang
 tags:
   - OOP
 level: 2
+kind: concept
 related:
   - oop
   - class-instance
   - solid
   - design-pattern
   - typescript
+  - abstraction
+  - duck-typing
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -12,17 +12,19 @@ tags:
   - 네트워크
   - TCP/IP
 level: 1
+kind: metric
 related:
   - three-way-handshake
   - cdn
   - tcp-udp
   - monitoring
   - gpu-cuda
+  - slo-sla
 see_also:
   - https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Understanding_latency
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

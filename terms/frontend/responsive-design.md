@@ -5,22 +5,24 @@ aliases:
   - Responsive Web Design
   - RWD
   - 반응형 웹
-  - 미디어 쿼리
 category: frontend
 tags:
   - CSS
   - 브라우저
 level: 1
+kind: pattern
 related:
   - html-css-js
   - pwa
   - a11y
   - dom
+  - flexbox-grid
+  - media-query
 see_also:
   - https://developer.mozilla.org/ko/docs/Learn_web_development/Core/CSS_layout/Responsive_Design
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

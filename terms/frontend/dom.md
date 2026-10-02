@@ -11,17 +11,20 @@ tags:
   - HTML
   - JavaScript
 level: 1
+kind: concept
 related:
   - html-css-js
   - virtual-dom
   - react
   - tree
   - xss
+  - event-bubbling
+  - web-components
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

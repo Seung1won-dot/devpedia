@@ -11,17 +11,19 @@ tags:
   - 정렬
   - 복잡도
 level: 1
+kind: concept
 related:
   - big-o
   - binary-search
   - array
   - recursion
   - index
+  - stable-sort
 see_also:
   - "https://docs.python.org/3/howto/sorting.html"
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

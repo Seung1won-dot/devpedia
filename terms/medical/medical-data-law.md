@@ -11,17 +11,20 @@ tags:
   - 규제
   - 의료데이터
 level: 2
+kind: regulation
 related:
   - de-identification
   - irb
   - air-gapped-network
   - least-privilege
   - emr-ehr
+  - drb
+  - health-data-guideline
 see_also:
   - https://www.pipc.go.kr/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

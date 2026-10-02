@@ -11,15 +11,17 @@ tags:
   - 방법론
   - 문서화
 level: 1
+kind: pattern
 related:
   - requirements-spec
   - agile-scrum
   - mvp
   - sequence-diagram
   - testing-levels
+  - backlog
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

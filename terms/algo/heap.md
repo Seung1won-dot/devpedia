@@ -11,6 +11,7 @@ tags:
   - 트리
   - 정렬
 level: 2
+kind: concept
 related:
   - tree
   - stack-queue

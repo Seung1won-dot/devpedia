@@ -11,17 +11,20 @@ tags:
   - 규제
   - 의료AI
 level: 3
+kind: regulation
 related:
   - cdss
   - medical-data-law
   - testing-levels
   - semver
   - ci-cd
+  - mfds-approval
+  - clinical-trial
 see_also:
   - https://www.mfds.go.kr/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

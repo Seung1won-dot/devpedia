@@ -10,17 +10,20 @@ tags:
   - API설계
   - HTTP
 level: 1
+kind: concept
 related:
   - rest
   - endpoint
   - json
   - http
   - graphql
+  - validation
+  - openapi
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/API
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

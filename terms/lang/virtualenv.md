@@ -11,17 +11,20 @@ tags:
   - Python
   - 개발도구
 level: 1
+kind: tool
 related:
   - package-manager
   - environment-variable
   - docker
   - gpu-cuda
   - gitignore
+  - lockfile
+  - devcontainer
 see_also:
   - https://docs.python.org/3/library/venv.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

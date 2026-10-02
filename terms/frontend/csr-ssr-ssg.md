@@ -12,17 +12,20 @@ tags:
   - 브라우저
   - 배포
 level: 2
+kind: pattern
 related:
   - spa-mpa
   - react
   - static-hosting
   - cdn
   - serverless
+  - browser-rendering
+  - hydration
 see_also:
   - https://web.dev/articles/rendering-on-the-web
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

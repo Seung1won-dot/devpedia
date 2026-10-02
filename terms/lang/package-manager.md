@@ -10,17 +10,20 @@ category: lang
 tags:
   - 개발도구
 level: 1
+kind: tool
 related:
   - virtualenv
   - semver
   - gitignore
   - ci-cd
   - docker-image
+  - lockfile
+  - task-runner
 see_also:
   - https://docs.npmjs.com/about-npm
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

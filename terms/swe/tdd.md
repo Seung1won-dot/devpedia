@@ -10,15 +10,18 @@ tags:
   - 테스트
   - 방법론
 level: 2
+kind: pattern
 related:
   - testing-levels
   - refactoring
   - code-coverage
   - user-story
   - ci-cd
+  - mocking
+  - pair-programming
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

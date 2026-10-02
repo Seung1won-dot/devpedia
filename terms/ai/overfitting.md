@@ -9,16 +9,20 @@ category: ai
 tags:
   - ML기초
   - 학습
+  - 흔한실수
 level: 2
+kind: concept
 related:
   - machine-learning
   - training-inference
   - fine-tuning
   - neural-network
   - medical-image-segmentation
+  - train-validation-test
+  - data-leakage
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

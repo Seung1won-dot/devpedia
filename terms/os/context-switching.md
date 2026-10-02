@@ -10,15 +10,17 @@ tags:
   - 프로세스
   - 스케줄링
 level: 2
+kind: concept
 related:
   - process
   - thread
   - scheduler
   - cpu
   - kernel
+  - pcb
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

@@ -10,18 +10,22 @@ category: database
 tags:
   - 운영
   - 스토리지
+  - 백업
 level: 1
+kind: concept
 related:
   - snapshot-backup
   - replication
   - cron
   - scp-rsync
   - migration
+  - backup-321
+  - raid
 see_also:
   - https://www.postgresql.org/docs/current/backup.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

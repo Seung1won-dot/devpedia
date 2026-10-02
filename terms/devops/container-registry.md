@@ -12,17 +12,19 @@ tags:
   - 배포
   - CI/CD
 level: 2
+kind: tool
 related:
   - docker-image
   - docker
   - github-actions
   - semver
   - kubernetes
+  - helm
 see_also:
   - https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-container-registry
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

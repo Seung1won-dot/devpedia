@@ -11,17 +11,20 @@ tags:
   - 렌더링
   - JavaScript
 level: 1
+kind: tool
 related:
   - component-props-state
   - hooks
   - virtual-dom
   - html-css-js
   - typescript
+  - nextjs
+  - client-routing
 see_also:
   - https://ko.react.dev/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -10,16 +10,19 @@ category: os
 tags:
   - 동기화
   - 프로세스
+  - 면접
 level: 2
+kind: concept
 related:
   - mutex
   - thread
   - transaction-acid
   - process
   - connection-pool
+  - race-condition
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

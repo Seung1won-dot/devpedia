@@ -11,6 +11,7 @@ tags:
   - 탐색
   - 정렬
 level: 2
+kind: concept
 related:
   - dynamic-programming
   - dijkstra

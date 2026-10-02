@@ -11,15 +11,18 @@ tags:
   - 병원시스템
   - 규제
 level: 1
+kind: concept
 related:
   - websocket
   - https
   - emr-ehr
   - medical-data-law
   - samd
+  - wearable
+  - dtx
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

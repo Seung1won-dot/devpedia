@@ -11,6 +11,7 @@ tags:
   - 원격접속
   - 네트워크보안
 level: 1
+kind: concept
 related:
   - tailscale
   - private-ip

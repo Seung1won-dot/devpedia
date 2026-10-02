@@ -11,15 +11,17 @@ tags:
   - 관계형
   - 설계원칙
 level: 2
+kind: concept
 related:
   - rdbms
   - primary-foreign-key
   - join
   - erd
   - dry-kiss-yagni
+  - denormalization
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

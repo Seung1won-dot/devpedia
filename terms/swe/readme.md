@@ -11,15 +11,17 @@ tags:
   - 문서화
   - 협업
 level: 1
+kind: pattern
 related:
   - adr
   - open-source-license
   - git
   - semantic-commit
   - requirements-spec
+  - changelog
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

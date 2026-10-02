@@ -11,6 +11,7 @@ tags:
   - 설계원칙
   - 품질
 level: 1
+kind: pattern
 related:
   - refactoring
   - solid

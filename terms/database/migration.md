@@ -11,6 +11,7 @@ tags:
   - 운영
   - SQL
 level: 2
+kind: concept
 related:
   - sql
   - orm

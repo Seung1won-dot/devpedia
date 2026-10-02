@@ -12,6 +12,7 @@ tags:
   - 아키텍처
   - 배포
 level: 2
+kind: concept
 related:
   - baas
   - endpoint

@@ -6,12 +6,12 @@ import { loadTaxonomy } from './taxonomy'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
 describe('loadTaxonomy', () => {
-  it('loads 13 categories in spec order with icons', () => {
+  it('loads 15 categories in spec order with icons', () => {
     const t = loadTaxonomy(join(ROOT, 'taxonomy'))
-    expect(t.categories).toHaveLength(13)
+    expect(t.categories).toHaveLength(15)
     expect(t.categories.map((c) => c.code)).toEqual([
       'os', 'network', 'algo', 'lang', 'frontend', 'backend', 'database',
-      'infra', 'devops', 'security', 'ai', 'medical', 'swe',
+      'infra', 'devops', 'security', 'ai', 'data', 'medical', 'swe', 'career',
     ])
     expect(t.categories[7]).toMatchObject({ code: 'infra', icon: '🖧', order: 7 })
     for (const c of t.categories) {

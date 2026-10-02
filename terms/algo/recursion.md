@@ -11,15 +11,17 @@ tags:
   - 트리
   - 함수형
 level: 1
+kind: concept
 related:
   - tree
   - dynamic-programming
   - bfs-dfs
   - stack-heap-memory
   - functional-programming
+  - memoization
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

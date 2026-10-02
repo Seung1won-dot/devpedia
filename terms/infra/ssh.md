@@ -10,18 +10,22 @@ tags:
   - 원격접속
   - 보안통신
   - 리눅스운영
+  - 연구실
 level: 1
+kind: protocol
 related:
   - port
   - firewall
   - public-key-cryptography
   - vpn
   - scp-rsync
+  - dotfiles
+  - tmux
 see_also:
   - https://www.openssh.com/manual.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

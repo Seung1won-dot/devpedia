@@ -5,12 +5,19 @@ aliases: [Fast Healthcare Interoperability Resources, 파이어, HL7 FHIR]
 category: medical
 tags: [표준, 의료데이터, 표준화]
 level: 2
-related: [hl7-v2, emr-ehr, rest, json, dicom]
+kind: protocol
+related:
+  - hl7-v2
+  - emr-ehr
+  - rest
+  - json
+  - dicom
+  - hl7-cda
 see_also:
   - https://www.hl7.org/fhir/
 status: published
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

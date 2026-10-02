@@ -10,18 +10,21 @@ tags:
   - 브라우저
   - HTTP
   - 보안
+  - 흔한실수
 level: 2
+kind: concept
 related:
   - http
   - api
   - port
   - reverse-proxy
   - csrf
+  - fetch
 see_also:
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

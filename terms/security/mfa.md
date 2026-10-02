@@ -11,17 +11,19 @@ tags:
   - 인증
   - 인증공격
 level: 1
+kind: concept
 related:
   - authentication-authorization
   - phishing
   - brute-force
   - password-hashing
   - ssh
+  - social-engineering
 see_also:
   - https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

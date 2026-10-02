@@ -12,15 +12,18 @@ tags:
   - REST
   - HTTP
 level: 1
+kind: concept
 related:
   - api
   - rest
   - http
   - port
   - serverless
+  - query-path-param
+  - api-versioning
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

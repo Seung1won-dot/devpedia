@@ -11,17 +11,20 @@ tags:
   - 학습
   - 데이터
 level: 1
+kind: concept
 related:
   - training-inference
   - neural-network
   - overfitting
   - llm
   - cdss
+  - learning-paradigms
+  - feature-engineering
 see_also:
   - https://scikit-learn.org/stable/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

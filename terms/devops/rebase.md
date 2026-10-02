@@ -10,16 +10,19 @@ category: devops
 tags:
   - Git
 level: 2
+kind: concept
 related:
   - commit-branch-merge
   - git
   - pull-request
   - semantic-commit
+  - merge-conflict
+  - cherry-pick-stash
 see_also:
   - https://git-scm.com/docs/git-rebase
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

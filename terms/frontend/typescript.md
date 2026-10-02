@@ -11,17 +11,20 @@ tags:
   - 타입
   - JavaScript
 level: 1
+kind: tool
 related:
   - html-css-js
   - static-dynamic-typing
   - variable-type
   - react
   - bundler
+  - generics
+  - type-inference
 see_also:
   - https://www.typescriptlang.org/ko/docs/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

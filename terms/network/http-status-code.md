@@ -11,17 +11,19 @@ tags:
   - REST
   - API설계
 level: 1
+kind: protocol
 related:
   - http
   - rest
   - api
   - endpoint
   - healthcheck
+  - validation
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/HTTP/Reference/Status
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

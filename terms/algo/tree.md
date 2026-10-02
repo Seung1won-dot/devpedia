@@ -10,15 +10,18 @@ category: algo
 tags:
   - 트리
 level: 1
+kind: concept
 related:
   - binary-search-tree
   - graph
   - recursion
   - file-system
   - dom
+  - trie
+  - segment-tree
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

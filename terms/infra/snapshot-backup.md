@@ -11,18 +11,22 @@ tags:
   - 스토리지
   - 서버운영
   - 가상화
+  - 백업
 level: 1
+kind: concept
 related:
   - proxmox
   - vm
   - backup-restore
   - rollback
   - object-storage
+  - nas
+  - backup-321
 see_also:
   - https://pve.proxmox.com/wiki/Backup_and_Restore
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

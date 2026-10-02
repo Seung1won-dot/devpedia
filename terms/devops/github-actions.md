@@ -11,6 +11,7 @@ tags:
   - Git
   - 배포
 level: 1
+kind: tool
 related:
   - ci-cd
   - git

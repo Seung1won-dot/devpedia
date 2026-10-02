@@ -11,17 +11,20 @@ tags:
   - 방법론
   - 협업
 level: 1
+kind: pattern
 related:
   - mvp
   - user-story
   - requirements-spec
   - pull-request
   - ci-cd
+  - waterfall
+  - kanban
 see_also:
   - https://scrumguides.org/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

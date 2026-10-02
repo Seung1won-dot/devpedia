@@ -10,6 +10,7 @@ tags:
   - 테스트
   - 품질
 level: 2
+kind: metric
 related:
   - testing-levels
   - tdd

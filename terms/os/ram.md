@@ -11,15 +11,17 @@ tags:
   - 하드웨어
   - 메모리
 level: 1
+kind: concept
 related:
   - cpu
   - cache-memory
   - virtual-memory
   - vram
   - process
+  - memory-hierarchy
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

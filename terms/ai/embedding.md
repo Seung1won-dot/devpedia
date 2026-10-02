@@ -11,6 +11,7 @@ tags:
   - RAG
   - 검색
 level: 2
+kind: concept
 related:
   - rag
   - vector-db

@@ -10,17 +10,20 @@ tags:
   - 컨테이너
   - 배포
 level: 1
+kind: tool
 related:
   - docker-image
   - docker-compose
   - lxc
   - vm
   - container-registry
+  - devcontainer
+  - port-mapping
 see_also:
   - https://docs.docker.com/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

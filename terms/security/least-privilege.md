@@ -11,17 +11,20 @@ tags:
   - 보안정책
   - 인가
 level: 1
+kind: pattern
 related:
   - file-permission
   - rls
   - zero-trust
   - authentication-authorization
   - ssh
+  - iam
+  - isms-p
 see_also:
   - https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

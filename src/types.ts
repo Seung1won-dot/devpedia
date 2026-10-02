@@ -4,6 +4,8 @@
 
 export type Level = 1 | 2 | 3
 export type Status = 'draft' | 'review' | 'published'
+/** 개념 · 도구 · 프로토콜/표준/포맷 · 설계/운영 패턴 · 지표 · 법/규제/인증 */
+export type Kind = 'concept' | 'tool' | 'protocol' | 'pattern' | 'metric' | 'regulation'
 
 export interface Category {
   code: string
@@ -21,6 +23,7 @@ export interface Term {
   category: string
   tags: string[]
   level: Level
+  kind: Kind
   related: string[]
   backlinks: string[]
   seeAlso: string[]

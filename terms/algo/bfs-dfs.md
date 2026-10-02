@@ -11,6 +11,7 @@ tags:
   - 그래프
   - 탐색
 level: 2
+kind: concept
 related:
   - graph
   - stack-queue

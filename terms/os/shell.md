@@ -11,6 +11,7 @@ tags:
   - 셸
   - 리눅스
 level: 1
+kind: tool
 related:
   - environment-variable
   - kernel
@@ -18,11 +19,12 @@ related:
   - cron
   - file-permission
   - regex
+  - pipe-redirection
 see_also:
   - https://www.gnu.org/software/bash/manual/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

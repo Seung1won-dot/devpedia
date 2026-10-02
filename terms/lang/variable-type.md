@@ -10,17 +10,20 @@ category: lang
 tags:
   - 타입
 level: 1
+kind: concept
 related:
   - static-dynamic-typing
   - stack-heap-memory
   - typescript
   - json
   - array
+  - scope
+  - null-handling
 see_also:
   - https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

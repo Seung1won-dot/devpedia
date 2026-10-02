@@ -11,17 +11,20 @@ tags:
   - 운영
   - 성능
 level: 3
+kind: concept
 related:
   - backup-restore
   - load-balancer
   - transaction-acid
   - healthcheck
   - rdbms
+  - sharding
+  - cqrs
 see_also:
   - https://www.postgresql.org/docs/current/high-availability.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

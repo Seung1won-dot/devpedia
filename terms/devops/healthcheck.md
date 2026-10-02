@@ -12,17 +12,20 @@ tags:
   - 배포
   - 컨테이너
 level: 2
+kind: pattern
 related:
   - monitoring
   - load-balancer
   - docker-compose
   - http-status-code
   - endpoint
+  - circuit-breaker
+  - alerting
 see_also:
   - "https://docs.docker.com/reference/dockerfile/#healthcheck"
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

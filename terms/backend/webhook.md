@@ -11,17 +11,20 @@ tags:
   - API설계
   - HTTP
 level: 2
+kind: pattern
 related:
   - api
   - endpoint
   - message-queue
   - github-actions
   - idempotency
+  - retry-backoff
+  - alerting
 see_also:
   - https://api.slack.com/messaging/webhooks
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,6 +11,7 @@ tags:
   - LLM
   - RAG
 level: 1
+kind: concept
 related:
   - token
   - llm

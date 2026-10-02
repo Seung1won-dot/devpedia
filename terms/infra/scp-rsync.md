@@ -12,6 +12,7 @@ tags:
   - 리눅스운영
   - 스토리지
 level: 1
+kind: tool
 related:
   - ssh
   - snapshot-backup

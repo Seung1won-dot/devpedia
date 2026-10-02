@@ -12,17 +12,20 @@ tags:
   - CSS
   - JavaScript
 level: 1
+kind: concept
 related:
   - dom
   - react
   - typescript
   - responsive-design
   - http
+  - event-bubbling
+  - tailwind
 see_also:
   - https://developer.mozilla.org/ko/docs/Learn_web_development
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

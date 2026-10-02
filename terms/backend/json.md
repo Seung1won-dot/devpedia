@@ -11,17 +11,20 @@ tags:
   - API설계
   - JavaScript
 level: 1
+kind: protocol
 related:
   - api
   - rest
   - http
   - document-db
   - fhir
+  - csv-parquet
+  - serialization
 see_also:
   - https://www.json.org/json-ko.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

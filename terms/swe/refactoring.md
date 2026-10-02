@@ -10,17 +10,20 @@ tags:
   - 품질
   - 설계원칙
 level: 1
+kind: concept
 related:
   - technical-debt
   - testing-levels
   - tdd
   - dry-kiss-yagni
   - design-pattern
+  - clean-code
+  - code-smell
 see_also:
   - https://refactoring.com/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

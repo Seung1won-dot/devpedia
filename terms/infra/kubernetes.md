@@ -12,17 +12,19 @@ tags:
   - 클라우드
   - 배포
 level: 3
+kind: tool
 related:
   - docker
   - docker-compose
   - load-balancer
   - healthcheck
   - microservices
+  - helm
 see_also:
   - https://kubernetes.io/docs/concepts/overview/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

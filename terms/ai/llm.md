@@ -11,6 +11,7 @@ tags:
   - LLM
   - 딥러닝
 level: 1
+kind: concept
 related:
   - transformer
   - token

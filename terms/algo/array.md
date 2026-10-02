@@ -11,15 +11,17 @@ tags:
   - 선형구조
   - 메모리
 level: 1
+kind: concept
 related:
   - linked-list
   - big-o
   - binary-search
   - ram
   - cache-memory
+  - set-map
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

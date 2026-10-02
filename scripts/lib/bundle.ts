@@ -26,6 +26,7 @@ export function buildBundle(validated: ValidatedTerm[], taxonomy: Taxonomy, now:
     category: fm.category,
     tags: fm.tags,
     level: fm.level,
+    kind: fm.kind,
     related: fm.related,
     backlinks: inbound.get(fm.id) ?? [],
     seeAlso: fm.see_also,

@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.scripts.json",
     "validate": "tsx scripts/validate.ts",
+    "check:cards": "tsx scripts/check-cards.ts",
     "build:terms": "tsx scripts/build-terms.ts",
     "new": "tsx scripts/new-term.ts",
     "icons": "node scripts/make-icons.mjs",

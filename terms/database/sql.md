@@ -11,17 +11,20 @@ tags:
   - SQL
   - 관계형
 level: 1
+kind: concept
 related:
   - rdbms
   - join
   - index
   - sql-injection
   - orm
+  - group-by-aggregate
+  - query-plan
 see_also:
   - https://www.postgresql.org/docs/current/sql.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

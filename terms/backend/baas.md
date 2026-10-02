@@ -12,6 +12,7 @@ tags:
   - 인증
   - 아키텍처
 level: 1
+kind: tool
 related:
   - serverless
   - rls

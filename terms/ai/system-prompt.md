@@ -10,6 +10,7 @@ tags:
   - 프롬프트
   - LLM
 level: 1
+kind: concept
 related:
   - prompt-engineering
   - context-window

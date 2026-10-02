@@ -12,15 +12,18 @@ tags:
   - 배포
   - 테스트
 level: 1
+kind: pattern
 related:
   - github-actions
   - testing-levels
   - rollback
   - environments
   - pull-request
+  - pre-commit
+  - monorepo
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

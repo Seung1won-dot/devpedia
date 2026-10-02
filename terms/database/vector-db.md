@@ -4,7 +4,6 @@ term: 벡터 DB
 aliases:
   - Vector Database
   - 벡터 데이터베이스
-  - pgvector
   - Chroma
 category: database
 tags:
@@ -12,17 +11,19 @@ tags:
   - RAG
   - 검색
 level: 2
+kind: concept
 related:
   - embedding
   - rag
   - index
   - nosql
   - llm
+  - pgvector
 see_also:
   - https://github.com/pgvector/pgvector
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,17 +11,20 @@ tags:
   - 함수형
   - JavaScript
 level: 2
+kind: concept
 related:
   - functional-programming
   - hooks
   - stack-heap-memory
   - garbage-collection
   - event-loop
+  - scope
+  - decorator
 see_also:
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

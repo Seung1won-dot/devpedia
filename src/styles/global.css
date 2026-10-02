@@ -44,8 +44,10 @@
   --hue-devops: 125;
   --hue-security: 25;
   --hue-ai: 320;
+  --hue-data: 180;
   --hue-medical: 5;
   --hue-swe: 145;
+  --hue-career: 105;
   color-scheme: dark;
 }
 

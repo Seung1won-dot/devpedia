@@ -12,17 +12,19 @@ tags:
   - 아키텍처
   - 인증
 level: 2
+kind: concept
 related:
   - api
   - endpoint
   - rate-limit
   - authentication-authorization
   - logging
+  - decorator
 see_also:
   - https://expressjs.com/en/guide/using-middleware.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

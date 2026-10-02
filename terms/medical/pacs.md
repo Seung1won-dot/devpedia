@@ -10,15 +10,18 @@ tags:
   - 병원시스템
   - 의료영상
 level: 1
+kind: concept
 related:
   - dicom
   - medical-image-segmentation
   - object-storage
   - his
   - emr-ehr
+  - imaging-modality
+  - wsi
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

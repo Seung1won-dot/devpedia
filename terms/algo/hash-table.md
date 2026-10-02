@@ -12,15 +12,18 @@ tags:
   - 탐색
   - 검색
 level: 1
+kind: concept
 related:
   - hash
   - array
   - big-o
   - key-value-store
   - cache
+  - hash-collision
+  - set-map
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

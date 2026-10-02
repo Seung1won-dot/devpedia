@@ -10,15 +10,17 @@ tags:
   - 가상화
   - 서버운영
 level: 2
+kind: concept
 related:
   - virtualization
   - vm
   - proxmox
   - kernel
   - cpu
+  - boot-process
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

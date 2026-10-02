@@ -10,6 +10,7 @@ tags:
   - PWA
   - 브라우저
 level: 2
+kind: concept
 related:
   - service-worker
   - responsive-design

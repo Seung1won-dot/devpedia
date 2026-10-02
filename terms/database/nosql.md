@@ -11,6 +11,7 @@ tags:
   - NoSQL
   - 데이터
 level: 1
+kind: concept
 related:
   - rdbms
   - document-db

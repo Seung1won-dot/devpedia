@@ -10,6 +10,7 @@ tags:
   - LLM
   - 프롬프트
 level: 1
+kind: concept
 related:
   - rag
   - prompt-engineering

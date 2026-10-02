@@ -10,15 +10,18 @@ tags:
   - 프로세스
   - 리눅스
 level: 1
+kind: concept
 related:
   - thread
   - cpu
   - ram
   - scheduler
   - docker-image
+  - multiprocess-multithread
+  - daemon
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

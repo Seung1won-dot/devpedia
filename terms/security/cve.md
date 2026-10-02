@@ -11,17 +11,19 @@ tags:
   - 보안
   - 표준화
 level: 2
+kind: concept
 related:
   - owasp-top-10
   - package-manager
   - docker-image
   - monitoring
   - semver
+  - dependabot
 see_also:
   - https://www.cve.org/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

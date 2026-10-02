@@ -12,17 +12,20 @@ tags:
   - 보안통신
   - HTTPS
 level: 1
+kind: protocol
 related:
   - http
   - tls
   - certificate
   - caddy
   - reverse-proxy
+  - lets-encrypt
+  - doh
 see_also:
   - https://developer.mozilla.org/ko/docs/Glossary/HTTPS
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

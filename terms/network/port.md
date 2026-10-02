@@ -11,17 +11,19 @@ tags:
   - 프로토콜
   - 서버운영
 level: 1
+kind: concept
 related:
   - ip-address
   - tcp-udp
   - firewall
   - reverse-proxy
   - docker-compose
+  - port-mapping
 see_also:
   - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

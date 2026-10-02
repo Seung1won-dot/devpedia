@@ -12,17 +12,20 @@ tags:
   - 프로토콜
   - 네트워크
 level: 1
+kind: protocol
 related:
   - ip-address
   - cdn
   - static-hosting
   - tailscale
   - http
+  - url-to-render
+  - doh
 see_also:
   - https://developer.mozilla.org/ko/docs/Glossary/DNS
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

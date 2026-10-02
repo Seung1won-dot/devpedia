@@ -11,15 +11,18 @@ tags:
   - 동기화
   - 스레드
 level: 2
+kind: concept
 related:
   - thread
   - deadlock
   - process
   - connection-pool
   - rate-limit
+  - critical-section
+  - gil
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

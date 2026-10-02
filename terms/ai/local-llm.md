@@ -11,18 +11,21 @@ tags:
   - 서빙
   - LLM
   - GPU
+  - 연구실
 level: 1
+kind: tool
 related:
   - llm
   - quantization
   - vram
   - gpu-cuda
   - air-gapped-network
+  - streaming-response
 see_also:
   - https://github.com/ollama/ollama
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

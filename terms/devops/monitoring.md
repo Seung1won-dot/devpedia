@@ -11,17 +11,20 @@ tags:
   - 모니터링
   - 서버운영
 level: 2
+kind: tool
 related:
   - logging
   - healthcheck
   - gpu-cuda
   - vram
   - webhook
+  - elk-stack
+  - visualization
 see_also:
   - https://prometheus.io/docs/introduction/overview/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

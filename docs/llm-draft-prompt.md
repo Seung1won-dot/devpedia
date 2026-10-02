@@ -20,6 +20,7 @@
 - 헷갈리기 쉬운 것은 비슷한 용어 1~2개와의 차이만 불릿으로.
 - 역사·연도로 시작하지 않는다. 위키백과 문장을 옮기지 않는다.
 - 확신 없는 내용은 [확인 필요] 라고 표시한다.
+- kind 는 concept(개념) / tool(도구) / protocol(프로토콜·표준) / pattern(패턴) / metric(지표) / regulation(규제·인증) 중 하나.
 - status 는 review 로 둔다.
 
 템플릿:
@@ -30,6 +31,7 @@ aliases: [영문 풀네임, 한글 표기, 흔한 별칭]
 category: {category}
 tags: []
 level: 1
+kind: concept
 related: []
 status: review
 created: {오늘}

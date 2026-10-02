@@ -11,17 +11,20 @@ tags:
   - 표준화
   - 의료데이터
 level: 3
+kind: protocol
 related:
   - clinical-code-systems
   - emr-ehr
   - normalization
   - sql
   - de-identification
+  - data-validation
+  - correlation-causation
 see_also:
   - https://ohdsi.github.io/CommonDataModel/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

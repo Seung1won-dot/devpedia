@@ -11,18 +11,22 @@ tags:
   - GPU
   - 서버운영
   - 하드웨어
+  - 연구실
 level: 1
+kind: concept
 related:
   - vram
   - training-inference
   - local-llm
   - docker
   - quantization
+  - tmux
+  - numa
 see_also:
   - https://docs.nvidia.com/cuda/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

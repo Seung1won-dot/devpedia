@@ -9,18 +9,22 @@ category: infra
 tags:
   - 컨테이너
   - 배포
+  - 연구실
 level: 2
+kind: tool
 related:
   - docker
   - docker-image
   - caddy
   - reverse-proxy
   - environment-variable
+  - task-runner
+  - devcontainer
 see_also:
   - https://docs.docker.com/compose/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

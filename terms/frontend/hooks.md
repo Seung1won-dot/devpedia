@@ -11,17 +11,20 @@ tags:
   - React
   - JavaScript
 level: 2
+kind: concept
 related:
   - react
   - component-props-state
   - state-management
   - closure
   - promise-async-await
+  - debounce-throttle
+  - react-memo
 see_also:
   - https://ko.react.dev/reference/react/hooks
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

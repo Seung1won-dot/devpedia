@@ -34,6 +34,7 @@ aliases: [${term}]
 category: ${category}
 tags: []
 level: 1
+kind: concept
 related: []
 see_also: []
 status: draft

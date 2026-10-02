@@ -12,17 +12,19 @@ tags:
   - 세션
   - 보안
 level: 1
+kind: concept
 related:
   - session-auth
   - jwt
   - xss
   - http
   - state-management
+  - i18n
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의
