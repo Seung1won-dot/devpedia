@@ -16,9 +16,17 @@
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* 웹폰트가 붙기 전에 쓰는 대체 폰트를 Pretendard 의 글자 폭에 맞춘다 (바뀔 때 줄바꿈이 달라져 생기는 CLS 방지).
+   맑은 고딕의 한글 문장 폭이 Pretendard 의 1/0.872 배 — 헤드리스 Chrome 에서 실제 카드 문장으로 잰 값. 맥은 다음 후보로 넘어간다. */
+@font-face {
+  font-family: 'Pretendard Fallback';
+  src: local('Malgun Gothic'), local('맑은 고딕');
+  size-adjust: 87.2%;
+}
+
 :root {
   /* ---- 타이포 ---- */
-  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic',
+  --font-sans: 'Pretendard Variable', Pretendard, 'Pretendard Fallback', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic',
     'Noto Sans KR', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, 'D2Coding', monospace;
 

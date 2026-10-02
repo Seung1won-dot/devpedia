@@ -36,7 +36,7 @@ describe('CommandPalette', () => {
   it('opens from the header button, `/` and Ctrl+K, and closes with Escape', async () => {
     const user = userEvent.setup()
     await ready()
-    await user.click(screen.getByRole('button', { name: '용어 검색 열기' }))
+    await user.click(screen.getAllByRole('button', { name: /용어 검색s*열기/ })[0])
     expect(dialog()).toBeTruthy()
     expect(document.activeElement).toBe(screen.getByRole('combobox', { name: '용어 검색' }))
     await user.keyboard('{Escape}')

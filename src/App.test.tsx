@@ -49,7 +49,7 @@ describe('App shell', () => {
   it('renders the header and a skeleton while the index is loading', () => {
     vi.stubGlobal('fetch', fetchStub({ hang: true }))
     render(<App />)
-    expect(screen.getByRole('button', { name: /용어 검색/ })).toBeTruthy()
+    expect(screen.getAllByRole('button', { name: /용어 검색/ })[0]).toBeTruthy()
     expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 

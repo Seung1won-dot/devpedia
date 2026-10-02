@@ -151,6 +151,8 @@ kbd {
 
 .main {
   flex: 1;
+  /* 첫 화면에서 푸터가 보였다가 밀려나는 레이아웃 이동(CLS)을 막는다 */
+  min-height: calc(100dvh - var(--header-h));
 }
 
 .container {
@@ -412,7 +414,15 @@ kbd {
 
 /* 좁은 화면: 검색은 아이콘, 버튼 라벨은 숨김(스크린리더 라벨은 유지) */
 @media (max-width: 860px) {
-  .hbtn__label,
+  /* 라벨은 화면에서만 숨기고 스크린리더 이름으로는 남긴다 */
+  .hbtn__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
   .hbtn__count,
   .hbtn__chev {
     display: none;
@@ -422,14 +432,16 @@ kbd {
     padding: 0;
     justify-content: center;
   }
-  .catmenu .hbtn .hbtn__label {
-    display: none;
-  }
 }
 
 @media (max-width: 560px) {
   .brand__name {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
   .hsearch {
     margin-left: var(--space-1);
@@ -968,6 +980,7 @@ kbd {
 /* ---------- 토스트 (PWA) ---------- */
 
 .toast {
+  pointer-events: none;
   position: fixed;
   left: 50%;
   bottom: max(var(--space-5), env(safe-area-inset-bottom));
@@ -982,6 +995,10 @@ kbd {
   box-shadow: var(--shadow-pop);
   font-size: var(--text-md);
   white-space: nowrap;
+}
+
+.toast > * {
+  pointer-events: auto;
 }
 
 .icon-btn {

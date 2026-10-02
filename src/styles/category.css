@@ -230,9 +230,6 @@
 
 .lettergroup {
   scroll-margin-top: calc(var(--header-h) + var(--filter-stick, 100px) + var(--space-4));
-  /* 화면 밖 섹션은 그리기를 미룬다 (분야당 최대 수십 장이라 가상 스크롤까진 필요 없다) */
-  content-visibility: auto;
-  contain-intrinsic-size: auto 480px;
 }
 
 .lettergroup + .lettergroup {
