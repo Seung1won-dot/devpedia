@@ -20,8 +20,8 @@ export default defineConfig({
         start_url: './',
         scope: './',
         display: 'standalone',
-        background_color: '#141419',
-        theme_color: '#141419',
+        background_color: '#0e0f11',
+        theme_color: '#0e0f11',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -29,21 +29,18 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // terms.json 까지 프리캐시해 오프라인에서도 사전 전체가 열린다 (스펙 F-09)
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2,json,webmanifest}'],
+        // terms.json 까지 프리캐시해 오프라인에서도 사전 전체가 열린다 (스펙 F-09).
+        // 웹폰트(Pretendard 92조각, 3MB)는 프리캐시하지 않고 처음 쓸 때 캐시한다 — 첫 설치를 가볍게.
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,json,webmanifest}'],
+        globIgnores: ['**/*.woff2'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'StaleWhileRevalidate',
-            options: { cacheName: 'google-fonts-stylesheets' },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            urlPattern: ({ url }) => url.pathname.endsWith('.woff2'),
             handler: 'CacheFirst',
             options: {
-              cacheName: 'google-fonts-webfonts',
-              expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheName: 'devpedia-fonts',
+              expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },

@@ -91,6 +91,8 @@
   --text-2: #b0b2b9; /* 보조 */
   --text-3: #8c8f97; /* 메타 */
 
+  --brand: #f2b84b; /* 로고 마크 — 테마와 무관하게 앰버 */
+  --on-brand: #1b1405;
   --accent: #f2b84b; /* 링크·포커스·선택 */
   --accent-strong: #f7c96e; /* 강조 hover */
   --accent-soft: rgb(242 184 75 / 0.12);

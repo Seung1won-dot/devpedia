@@ -9,16 +9,18 @@ interface Props {
   onCycle: () => void
 }
 
+/** 시스템 → 라이트 → 다크 순환. 현재 상태를 글자로도 보인다. */
 export function ThemeToggle({ pref, onCycle }: Props) {
   return (
     <button
       type="button"
-      className="icon-btn"
+      className="hbtn"
       onClick={onCycle}
-      aria-label={`테마: ${LABEL[pref]}`}
-      title={`테마: ${LABEL[pref]} (누르면 바뀜)`}
+      aria-label={`테마: ${LABEL[pref]} (누르면 바뀜)`}
+      title={`테마: ${LABEL[pref]} — 누르면 바뀜`}
     >
-      <Icon name={ICON[pref]} size={18} />
+      <Icon name={ICON[pref]} size={16} />
+      <span className="hbtn__label" aria-hidden="true">{LABEL[pref]}</span>
     </button>
   )
 }

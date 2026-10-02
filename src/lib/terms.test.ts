@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { sortTerms, filterTerms, tagsIn, bundleUrl, bodiesUrl, indexById } from './terms'
+import { sortTerms, filterTerms, tagsIn, bundleUrl, bodiesUrl, indexById, englishName, dailyTerm, neighbors, recentlyAdded, representative, levelCounts } from './terms'
 import { TERMS, makeTerm } from '../test/fixtures'
 
 describe('sortTerms', () => {
@@ -56,5 +56,34 @@ describe('bundleUrl / indexById', () => {
   })
   it('indexes by id', () => {
     expect(indexById(TERMS).get('rag')?.term).toBe('RAG')
+  })
+})
+
+
+describe('card helpers', () => {
+  it('picks the first Latin alias as the English name, none for Latin terms', () => {
+    expect(englishName(makeTerm({ id: 'a', term: '리버스 프록시', aliases: ['Reverse Proxy', '역방향 프록시'] }))).toBe('Reverse Proxy')
+    expect(englishName(makeTerm({ id: 'b', term: 'SSH', aliases: ['Secure Shell'] }))).toBeNull()
+    expect(englishName(makeTerm({ id: 'c', term: '포트', aliases: ['포트 번호'] }))).toBeNull()
+  })
+
+  it('chooses a stable daily term', () => {
+    const d = new Date(2026, 9, 3)
+    expect(dailyTerm(TERMS, d)?.id).toBe(dailyTerm(TERMS, new Date(2026, 9, 3, 23, 0))?.id)
+    expect(dailyTerm([], d)).toBeNull()
+  })
+
+  it('finds previous/next in the same category by name', () => {
+    const ssh = TERMS.find((t) => t.id === 'ssh')!
+    const n = neighbors(TERMS, ssh)
+    expect(n.prev?.id).toBe('reverse-proxy')
+    expect(n.next).toBeNull()
+  })
+
+  it('ranks representative terms by backlinks and recent ones by created date', () => {
+    expect(representative(TERMS, 1)[0].id).toBe('port')
+    const r = recentlyAdded([makeTerm({ id: 'old', created: '2026-01-01' }), makeTerm({ id: 'new', created: '2026-10-01' })], 1)
+    expect(r[0].id).toBe('new')
+    expect(levelCounts(TERMS)).toEqual({ 1: 2, 2: 2, 3: 0 })
   })
 })

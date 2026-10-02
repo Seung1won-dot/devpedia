@@ -1,49 +1,63 @@
 import { describe, it, expect } from 'vitest'
-import { parseHash, toHash } from './route'
+import { parseHash, toHash, canonicalHash, pageKey, type Route } from './route'
 
 describe('parseHash', () => {
   it('maps empty hashes to home', () => {
-    expect(parseHash('')).toEqual({ kind: 'home' })
-    expect(parseHash('#')).toEqual({ kind: 'home' })
-    expect(parseHash('#/')).toEqual({ kind: 'home' })
+    for (const h of ['', '#', '#/', '/']) expect(parseHash(h)).toEqual({ kind: 'home' })
   })
 
-  it('maps a bare id to a term', () => {
+  it('reads the new path-style routes', () => {
+    expect(parseHash('#/t/ssh')).toEqual({ kind: 'term', id: 'ssh' })
+    expect(parseHash('#/c/network')).toEqual({ kind: 'category', code: 'network' })
+    expect(parseHash('#/c/network?p=dns')).toEqual({ kind: 'category', code: 'network', preview: 'dns' })
+    expect(parseHash('#/starred')).toEqual({ kind: 'starred' })
+    expect(parseHash('#/stats')).toEqual({ kind: 'stats' })
+  })
+
+  it('still reads legacy share links', () => {
     expect(parseHash('#ssh')).toEqual({ kind: 'term', id: 'ssh' })
-    expect(parseHash('#reverse-proxy')).toEqual({ kind: 'term', id: 'reverse-proxy' })
-  })
-
-  it('maps c/<code> to a category and rejects an empty code', () => {
-    expect(parseHash('#c/network')).toEqual({ kind: 'category', code: 'network' })
-    expect(parseHash('#c/')).toEqual({ kind: 'home' })
-  })
-
-  it('maps reserved words', () => {
+    expect(parseHash('#/ssh')).toEqual({ kind: 'term', id: 'ssh' })
+    expect(parseHash('#c/ai')).toEqual({ kind: 'category', code: 'ai' })
     expect(parseHash('#starred')).toEqual({ kind: 'starred' })
     expect(parseHash('#stats')).toEqual({ kind: 'stats' })
   })
 
   it('decodes percent-encoded ids', () => {
-    expect(parseHash('#%EC%9A%A9%EC%96%B4')).toEqual({ kind: 'term', id: '용어' })
+    expect(parseHash('#/t/%73sh')).toEqual({ kind: 'term', id: 'ssh' })
   })
 
-  it('parseHash falls back to home on garbage', () => {
-    expect(parseHash('#a/b/c')).toEqual({ kind: 'home' })
-    expect(parseHash('#%E0%A4%A')).toEqual({ kind: 'home' })
+  it('returns notFound for unknown shapes instead of silently going home', () => {
+    expect(parseHash('#/x/y/z').kind).toBe('notFound')
+    expect(parseHash('#/c/').kind).toBe('notFound')
+    expect(parseHash('#/c/Bad_Code').kind).toBe('notFound')
+    expect(parseHash('#%E0%A4%A').kind).toBe('notFound')
   })
 })
 
-describe('toHash', () => {
-  it('produces shareable hashes', () => {
-    expect(toHash({ kind: 'term', id: 'ssh' })).toBe('#ssh')
-    expect(toHash({ kind: 'category', code: 'ai' })).toBe('#c/ai')
-    expect(toHash({ kind: 'home' })).toBe('#/')
-    expect(toHash({ kind: 'starred' })).toBe('#starred')
-    expect(toHash({ kind: 'stats' })).toBe('#stats')
+describe('toHash / canonicalHash', () => {
+  it('round-trips', () => {
+    const routes: Route[] = [
+      { kind: 'home' },
+      { kind: 'category', code: 'infra' },
+      { kind: 'category', code: 'infra', preview: 'ssh' },
+      { kind: 'term', id: 'reverse-proxy' },
+      { kind: 'starred' },
+      { kind: 'stats' },
+    ]
+    for (const r of routes) expect(parseHash(toHash(r))).toEqual(r)
   })
 
-  it('round-trips through parseHash', () => {
-    const routes = [{ kind: 'term', id: 'ssh' }, { kind: 'category', code: 'ai' }, { kind: 'home' }, { kind: 'starred' }] as const
-    for (const r of routes) expect(parseHash(toHash(r))).toEqual(r)
+  it('rewrites legacy hashes to the canonical form and leaves canonical ones alone', () => {
+    expect(canonicalHash('#ssh')).toBe('#/t/ssh')
+    expect(canonicalHash('#c/os')).toBe('#/c/os')
+    expect(canonicalHash('#stats')).toBe('#/stats')
+    expect(canonicalHash('#/t/ssh')).toBeNull()
+    expect(canonicalHash('')).toBeNull()
+    expect(canonicalHash('#/nope/nope')).toBeNull()
+  })
+
+  it('treats the preview param as the same page for scroll purposes', () => {
+    expect(pageKey({ kind: 'category', code: 'os', preview: 'cpu' })).toBe(pageKey({ kind: 'category', code: 'os' }))
+    expect(pageKey({ kind: 'term', id: 'a' })).not.toBe(pageKey({ kind: 'term', id: 'b' }))
   })
 })
