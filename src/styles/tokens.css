@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Devpedia 디자인 토큰
+   - 다크가 기본, 라이트는 시스템 설정 또는 <html data-theme="light">.
+   - 면(surface)은 밝기 3단계로, 경계는 1px hairline 으로 구분한다. 그림자는 쓰지 않는다(팝오버만 예외).
+   - 강조색은 앰버 하나. 링크·포커스·선택 상태에만 쓴다. 카테고리별 색은 없다.
+   - 텍스트 조합의 WCAG 대비는 scripts 가 아니라 docs/redesign/contrast.md 에 측정값으로 남긴다.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url(./fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---- 타이포 ---- */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic',
+    'Noto Sans KR', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, 'D2Coding', monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px; /* 메타 정보 */
+  --text-md: 15px; /* UI 기본 */
+  --text-body: 16.5px; /* 본문 */
+  --text-lg: 18px;
+  --text-lead: 21px; /* 한 줄 정의 리드 */
+  --text-h3: 20px;
+  --text-h2: 24px;
+  --text-h1: 40px;
+  --text-display: 48px;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.45;
+  --leading-body: 1.7;
+  --tracking-title: -0.02em;
+  --tracking-display: -0.03em;
+
+  --weight-regular: 400;
+  --weight-medium: 520;
+  --weight-semibold: 620;
+  --weight-bold: 700;
+
+  /* ---- 간격 (4px 그리드) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  --section-gap: var(--space-16);
+  --gutter: var(--space-4);
+
+  /* ---- 레이아웃 ---- */
+  --page-max: 1200px;
+  --prose-max: 680px;
+  --header-h: 60px;
+  --filter-h: 56px;
+
+  /* ---- 반경 ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* ---- 모션 ---- */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur: 200ms;
+
+  /* ---- 색: 다크 (기본) ---- */
+  --bg: #0e0f11;
+  --surface-1: #15161a; /* 카드·헤더 */
+  --surface-2: #1b1d21; /* hover·입력창 */
+  --surface-3: #23252b; /* 눌림·선택 배경 */
+  --line: rgb(255 255 255 / 0.07);
+  --line-strong: rgb(255 255 255 / 0.13);
+  --line-focus: rgb(255 255 255 / 0.22);
+
+  --text: #ededef;
+  --text-2: #b0b2b9; /* 보조 */
+  --text-3: #8c8f97; /* 메타 */
+
+  --accent: #f2b84b; /* 링크·포커스·선택 */
+  --accent-strong: #f7c96e; /* 강조 hover */
+  --accent-soft: rgb(242 184 75 / 0.12);
+  --accent-line: rgb(242 184 75 / 0.45);
+  --on-accent: #1b1405;
+
+  --mark-bg: rgb(242 184 75 / 0.22);
+  --mark-text: #fde6b4;
+
+  --meter-on: #d9dade;
+  --meter-off: rgb(255 255 255 / 0.14);
+
+  --scrim: rgb(5 6 8 / 0.62);
+  --shadow-pop: 0 16px 48px rgb(0 0 0 / 0.45), 0 0 0 1px var(--line-strong);
+
+  color-scheme: dark;
+}
+
+/* ---- 색: 라이트 ---- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #fafaf7;
+    --surface-1: #ffffff;
+    --surface-2: #f3f2ed;
+    --surface-3: #eae8e1;
+    --line: rgb(28 25 15 / 0.08);
+    --line-strong: rgb(28 25 15 / 0.15);
+    --line-focus: rgb(28 25 15 / 0.28);
+
+    --text: #1a1a17;
+    --text-2: #4f4e48;
+    --text-3: #67655e;
+
+    --accent: #8f5a00;
+    --accent-strong: #754900;
+    --accent-soft: rgb(196 132 20 / 0.12);
+    --accent-line: rgb(143 90 0 / 0.45);
+    --on-accent: #ffffff;
+
+    --mark-bg: rgb(242 184 75 / 0.38);
+    --mark-text: #3d2700;
+
+    --meter-on: #3a3934;
+    --meter-off: rgb(28 25 15 / 0.14);
+
+    --scrim: rgb(26 26 23 / 0.36);
+    --shadow-pop: 0 16px 48px rgb(28 25 15 / 0.14), 0 0 0 1px var(--line-strong);
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme='light'] {
+  --bg: #fafaf7;
+  --surface-1: #ffffff;
+  --surface-2: #f3f2ed;
+  --surface-3: #eae8e1;
+  --line: rgb(28 25 15 / 0.08);
+  --line-strong: rgb(28 25 15 / 0.15);
+  --line-focus: rgb(28 25 15 / 0.28);
+
+  --text: #1a1a17;
+  --text-2: #4f4e48;
+  --text-3: #67655e;
+
+  --accent: #8f5a00;
+  --accent-strong: #754900;
+  --accent-soft: rgb(196 132 20 / 0.12);
+  --accent-line: rgb(143 90 0 / 0.45);
+  --on-accent: #ffffff;
+
+  --mark-bg: rgb(242 184 75 / 0.38);
+  --mark-text: #3d2700;
+
+  --meter-on: #3a3934;
+  --meter-off: rgb(28 25 15 / 0.14);
+
+  --scrim: rgb(26 26 23 / 0.36);
+  --shadow-pop: 0 16px 48px rgb(28 25 15 / 0.14), 0 0 0 1px var(--line-strong);
+
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: var(--space-8);
+    --section-gap: var(--space-20);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --section-gap: var(--space-24);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --text-h1: 32px;
+    --text-display: 36px;
+    --text-lead: 19px;
+    --text-body: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+  }
+}
