@@ -435,3 +435,13 @@
 .doc__more {
   margin-top: var(--space-3);
 }
+
+.doc__pending {
+  margin-top: var(--space-12);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.skeleton--block .skeleton__line {
+  height: 14px;
+}

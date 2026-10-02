@@ -16,11 +16,11 @@ export function ThemeToggle({ pref, onCycle }: Props) {
       type="button"
       className="hbtn"
       onClick={onCycle}
-      aria-label={`테마: ${LABEL[pref]} (누르면 바뀜)`}
       title={`테마: ${LABEL[pref]} — 누르면 바뀜`}
     >
       <Icon name={ICON[pref]} size={16} />
-      <span className="hbtn__label" aria-hidden="true">{LABEL[pref]}</span>
+      <span className="sr-only">테마: </span>
+      <span className="hbtn__label">{LABEL[pref]}</span>
     </button>
   )
 }

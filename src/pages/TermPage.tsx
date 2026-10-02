@@ -95,6 +95,8 @@ export function TermPage({ ctx, term }: { ctx: PageContext; term: Term }) {
   }
 
   const status = STATUS_NOTE[term.status]
+  // 본문이 오기 전에는 리드 아래를 스켈레톤 하나로만 둔다 — 도착할 때 이미 보이는 요소가 밀리지 않게(CLS)
+  const pending = !body && !data.bodiesError
 
   return (
     <div className="container page">
@@ -148,6 +150,13 @@ export function TermPage({ ctx, term }: { ctx: PageContext; term: Term }) {
             <p className="doc__lead">{term.definition}</p>
           )}
 
+          {pending ? (
+            <div className="doc__pending" aria-busy="true">
+              <Skeleton lines={3} />
+              <Skeleton lines={6} className="skeleton--block" />
+            </div>
+          ) : (
+          <>
           <section className="doc__section" id="sec-analogy" tabIndex={-1} aria-labelledby="h-analogy">
             <h2 id="h-analogy">비유</h2>
             {body ? <div className="prose prose--analogy" dangerouslySetInnerHTML={{ __html: body.analogyHtml }} /> : <Skeleton lines={2} />}
@@ -222,6 +231,10 @@ export function TermPage({ ctx, term }: { ctx: PageContext; term: Term }) {
             </nav>
           )}
 
+          </>
+          )}
+
+          {!pending && (
           <footer className="doc__foot">
             {status && <p className="doc__status">{status}</p>}
             <p className="doc__footmeta">
@@ -236,6 +249,7 @@ export function TermPage({ ctx, term }: { ctx: PageContext; term: Term }) {
               )}
             </p>
           </footer>
+          )}
         </article>
 
         <aside className="termpage__aside">

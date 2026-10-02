@@ -18,6 +18,7 @@ function ctxWith(over: Partial<PageContext> = {}, withBodies = true): PageContex
       search: createSearch(TERMS),
       bodies: withBodies ? BODY_MAP : null,
       bodiesError: null,
+      requestBodies: vi.fn(),
     },
     route: { kind: 'home' },
     navigate: vi.fn(),

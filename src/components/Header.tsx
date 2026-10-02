@@ -24,14 +24,17 @@ export function Header({ route, categories, counts, starredCount, onOpenSearch, 
   return (
     <header className="header">
       <div className="header__inner">
-        <a className="brand" href={toHash({ kind: 'home' })} aria-label={`${APP_NAME} 홈`}>
+        <a className="brand" href={toHash({ kind: 'home' })}>
           <span className="brand__mark" aria-hidden="true">D</span>
           <span className="brand__name">{APP_NAME}</span>
+          <span className="sr-only"> 홈</span>
         </a>
 
-        <button type="button" className="hsearch" onClick={onOpenSearch} aria-haspopup="dialog" aria-label="용어 검색 열기">
+        <button type="button" className="hsearch" onClick={onOpenSearch} aria-haspopup="dialog">
           <Icon name="search" size={16} className="hsearch__icon" />
-          <span className="hsearch__text">용어 검색</span>
+          <span className="hsearch__text">
+            용어 검색<span className="sr-only"> 열기</span>
+          </span>
           <span className="hsearch__keys" aria-hidden="true">
             <kbd>{isMac ? '⌘' : 'Ctrl'}</kbd>
             <kbd>K</kbd>

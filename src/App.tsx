@@ -59,6 +59,18 @@ function titleFor(route: Route, data: ReadyData): string {
   }
 }
 
+// 한글 웹폰트(Pretendard 동적 서브셋)는 첫 데이터 화면을 그린 뒤 유휴 시간에 붙인다. 화면에 나온 글자의 조각만 받고(unicode-range),
+// 그 전까지는 시스템 한글 폰트로 그린다. 폰트 수백 KB 가 첫 화면(LCP)과 대역폭을 다투지 않게 하려는 것.
+let fontRequested = false
+function loadWebFontWhenIdle() {
+  if (fontRequested) return
+  fontRequested = true
+  const run = () => void import('./styles/fonts/pretendard.css')
+  const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }
+  if (typeof w.requestIdleCallback === 'function') w.requestIdleCallback(run, { timeout: 1500 })
+  else window.setTimeout(run, 300)
+}
+
 export function App() {
   const data = useBundle()
   const [route, navigate] = useRoute()
@@ -95,6 +107,16 @@ export function App() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
+
+  useEffect(() => {
+    if (data.state !== 'loading') loadWebFontWhenIdle()
+  }, [data.state])
+
+  // 본문이 필요한 화면이면 지금 읽는다 (아니면 useBundle 이 한가할 때 읽는다)
+  const needBodies = paletteOpen || route.kind === 'term' || (route.kind === 'category' && Boolean(route.preview))
+  useEffect(() => {
+    if (data.state === 'ready' && needBodies && !data.bodies) data.requestBodies()
+  }, [data, needBodies])
 
   // 최근 본 용어
   const pushRecent = recentTerms.push
@@ -176,7 +198,7 @@ export function App() {
           {page}
         </div>
       </main>
-      <Footer generatedAt={ready ? data.bundle.generatedAt : null} />
+      {data.state !== 'loading' && <Footer generatedAt={ready ? data.bundle.generatedAt : null} />}
       {paletteOpen && <CommandPalette data={data} onClose={closeSearch} navigate={navigate} recentTerms={recentTerms.list} />}
     </div>
   )

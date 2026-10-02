@@ -86,3 +86,18 @@ export function createSearch(terms: Term[], bodies?: Map<string, TermBody>) {
 }
 
 export type TermSearch = ReturnType<typeof createSearch>
+
+/**
+ * 첫 검색 때 인덱스를 만드는 지연 버전. 첫 화면(홈·분야)은 검색이 필요 없으므로
+ * MiniSearch 인덱싱(615장 기준 모바일에서 수백 ms)을 첫 렌더 경로에서 뺀다.
+ */
+export function createLazySearch(terms: Term[], bodies?: Map<string, TermBody>): TermSearch {
+  let real: TermSearch | null = null
+  return {
+    search(query: string, limit?: number) {
+      real ??= createSearch(terms, bodies)
+      return real.search(query, limit)
+    },
+    hasBodies: Boolean(bodies),
+  }
+}

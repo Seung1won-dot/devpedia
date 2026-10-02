@@ -23,7 +23,8 @@
     <title>Devpedia — IT 용어 사전</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- JS 가 뜨기 전 첫 페인트용 정적 셸. React 가 같은 구조로 덮어쓴다 (레이아웃 이동 없음) -->
+    <div id="root"><div class="app"><header class="header"><div class="header__inner"><a class="brand" href="#/"><span class="brand__mark" aria-hidden="true">D</span><span class="brand__name">Devpedia</span></a></div></header><main class="main"></main></div></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
