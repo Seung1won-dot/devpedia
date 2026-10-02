@@ -20,11 +20,12 @@ related:
   - service-mesh
   - rate-limit
   - monitoring
+  - fallacies-of-distributed-computing
 see_also:
   - https://martinfowler.com/bliki/CircuitBreaker.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

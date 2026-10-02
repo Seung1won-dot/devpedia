@@ -19,11 +19,12 @@ related:
   - nosql
   - llm
   - pgvector
+  - dot-product
 see_also:
   - https://github.com/pgvector/pgvector
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

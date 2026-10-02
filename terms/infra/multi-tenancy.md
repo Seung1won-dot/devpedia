@@ -21,11 +21,12 @@ related:
   - rbac
   - vpc
   - iam
+  - saas-model
 see_also:
   - https://www.postgresql.org/docs/current/ddl-rowsecurity.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

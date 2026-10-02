@@ -19,9 +19,11 @@ related:
   - register
   - memory-hierarchy
   - cache-memory
+  - microcontroller
+  - turing-machine
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

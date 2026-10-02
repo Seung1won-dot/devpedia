@@ -20,9 +20,10 @@ related:
   - index
   - sqld
   - descriptive-stats
+  - dau-mau
 status: review
 created: 2026-09-29
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

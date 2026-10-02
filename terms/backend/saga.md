@@ -21,11 +21,12 @@ related:
   - idempotency
   - message-queue
   - cqrs
+  - two-phase-commit
 see_also:
   - https://microservices.io/patterns/data/saga.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

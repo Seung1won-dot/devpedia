@@ -18,9 +18,11 @@ related:
   - agile-scrum
   - adr
   - erd
+  - prd
+  - user-research
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

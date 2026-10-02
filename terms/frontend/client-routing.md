@@ -21,11 +21,12 @@ related:
   - url-to-render
   - query-path-param
   - lazy-loading
+  - deep-link
 see_also:
   - https://reactrouter.com/start/declarative/routing
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

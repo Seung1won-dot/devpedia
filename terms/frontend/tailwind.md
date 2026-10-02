@@ -20,11 +20,12 @@ related:
   - media-query
   - react
   - bundler
+  - design-system
 see_also:
   - https://tailwindcss.com/docs
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

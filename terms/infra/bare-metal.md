@@ -21,11 +21,12 @@ related:
   - on-premise-vs-cloud
   - proxmox
   - numa
+  - bare-metal-programming
 see_also:
   - https://pve.proxmox.com/wiki/PCI(e)_Passthrough
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

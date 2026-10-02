@@ -20,12 +20,13 @@ related:
   - virtualenv
   - bundler
   - tree-shaking
+  - linker
 see_also:
   - https://docs.python.org/ko/3/tutorial/modules.html
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

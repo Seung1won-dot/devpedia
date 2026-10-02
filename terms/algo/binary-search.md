@@ -18,11 +18,13 @@ related:
   - array
   - binary-search-tree
   - commit-branch-merge
+  - log-exp
+  - proof-by-induction
 see_also:
   - "https://docs.python.org/3/library/bisect.html"
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

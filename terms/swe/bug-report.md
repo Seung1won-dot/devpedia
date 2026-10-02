@@ -23,11 +23,12 @@ related:
   - exception
   - testing-levels
   - troubleshooting-story
+  - mobile-crash-reporting
 see_also:
   - https://stackoverflow.com/help/minimal-reproducible-example
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

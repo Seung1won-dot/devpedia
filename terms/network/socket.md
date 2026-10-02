@@ -22,12 +22,13 @@ related:
   - file-descriptor
   - websocket
   - three-way-handshake
+  - uart
 see_also:
   - https://docs.python.org/ko/3/library/socket.html
   - https://man7.org/linux/man-pages/man7/socket.7.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

@@ -19,11 +19,12 @@ related:
   - thread
   - stack-heap-memory
   - websocket
+  - game-loop
 see_also:
   - https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

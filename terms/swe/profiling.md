@@ -22,11 +22,12 @@ related:
   - performance-improvement-story
   - memory-leak
   - monitoring
+  - compiler-optimization
 see_also:
   - https://docs.python.org/3/library/profile.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

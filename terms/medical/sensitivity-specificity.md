@@ -22,11 +22,12 @@ related:
   - hypothesis-test
   - mfds-approval
   - train-validation-test
+  - bayes-theorem
 see_also:
   - https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

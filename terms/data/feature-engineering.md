@@ -22,11 +22,12 @@ related:
   - outlier
   - machine-learning
   - classification-regression
+  - vector-norm
 see_also:
   - https://scikit-learn.org/stable/modules/preprocessing.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

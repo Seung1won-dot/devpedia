@@ -20,11 +20,12 @@ related:
   - http
   - state-management
   - i18n
+  - mobile-local-storage
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

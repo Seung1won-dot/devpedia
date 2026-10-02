@@ -20,9 +20,10 @@ related:
   - memory-hierarchy
   - array
   - linked-list
+  - ecs
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

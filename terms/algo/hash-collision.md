@@ -20,9 +20,11 @@ related:
   - linked-list
   - big-o
   - balanced-tree
+  - collision-detection
+  - pigeonhole-principle
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

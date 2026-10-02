@@ -23,12 +23,13 @@ related:
   - correlation-causation
   - vital-signs
   - monitoring
+  - svd-pca
 see_also:
   - https://matplotlib.org/stable/users/index.html
   - https://plotly.com/python/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

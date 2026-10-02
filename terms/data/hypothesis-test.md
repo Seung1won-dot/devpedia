@@ -22,11 +22,13 @@ related:
   - clinical-trial
   - pandas-numpy
   - sensitivity-specificity
+  - law-of-large-numbers
+  - ab-test
 see_also:
   - https://docs.scipy.org/doc/scipy/reference/stats.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

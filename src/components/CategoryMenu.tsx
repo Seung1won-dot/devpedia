@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { Category } from '../types'
 import { toHash } from '../lib/route'
+import { groupCategories } from '../lib/groups'
 import { Icon } from './Icon'
 
 interface Props {
@@ -60,22 +61,29 @@ export function CategoryMenu({ categories, counts, activeCode }: Props) {
       </button>
       <div id={panelId} className="catmenu__panel" hidden={!open}>
         <p className="catmenu__title">분야 {categories.length}개</p>
-        <ul className="catmenu__grid">
-          {categories.map((c) => (
-            <li key={c.code}>
-              <a
-                className="catmenu__item"
-                href={toHash({ kind: 'category', code: c.code })}
-                aria-current={activeCode === c.code ? 'page' : undefined}
-                onClick={() => setOpen(false)}
-              >
-                <span className="catmenu__icon" aria-hidden="true">{c.icon}</span>
-                <span className="catmenu__name">{c.name}</span>
-                <span className="catmenu__count">{counts[c.code] ?? 0}</span>
-              </a>
-            </li>
+        <div className="catmenu__groups">
+          {groupCategories(categories).map((g) => (
+            <section key={g.name} className="catmenu__group" aria-label={g.name}>
+              <h2 className="catmenu__gname">{g.name}</h2>
+              <ul className="catmenu__grid">
+                {g.categories.map((c) => (
+                  <li key={c.code}>
+                    <a
+                      className="catmenu__item"
+                      href={toHash({ kind: 'category', code: c.code })}
+                      aria-current={activeCode === c.code ? 'page' : undefined}
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="catmenu__icon" aria-hidden="true">{c.icon}</span>
+                      <span className="catmenu__name">{c.name}</span>
+                      <span className="catmenu__count">{counts[c.code] ?? 0}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   )

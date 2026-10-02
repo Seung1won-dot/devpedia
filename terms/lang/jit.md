@@ -20,12 +20,14 @@ related:
   - profiling
   - pytorch
   - pandas-numpy
+  - ir
+  - compiler-optimization
 see_also:
   - https://numba.readthedocs.io/en/stable/user/5minguide.html
   - https://peps.python.org/pep-0744/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

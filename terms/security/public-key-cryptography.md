@@ -18,11 +18,12 @@ related:
   - certificate
   - ssh
   - tls
+  - modular-arithmetic
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Public-key_cryptography
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

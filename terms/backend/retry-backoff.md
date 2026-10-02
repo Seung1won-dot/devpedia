@@ -22,11 +22,12 @@ related:
   - background-job
   - http-status-code
   - webhook
+  - fallacies-of-distributed-computing
 see_also:
   - https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

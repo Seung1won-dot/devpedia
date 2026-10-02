@@ -7,7 +7,7 @@ aliases:
   - 액티비티 생명주기
   - ViewController Lifecycle
   - 라이프사이클
-category: frontend
+category: mobile
 tags:
   - 모바일
   - 면접
@@ -19,11 +19,13 @@ related:
   - component-props-state
   - process
   - local-storage
+  - android
+  - push-notification
 see_also:
   - https://developer.android.com/guide/components/activities/activity-lifecycle
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

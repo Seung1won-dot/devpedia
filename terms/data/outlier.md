@@ -20,9 +20,10 @@ related:
   - data-validation
   - visualization
   - vital-signs
+  - probability-distribution
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

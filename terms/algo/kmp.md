@@ -22,11 +22,12 @@ related:
   - big-o
   - hash-table
   - full-text-search
+  - finite-automata
 see_also:
   - https://cp-algorithms.com/string/prefix-function.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의
