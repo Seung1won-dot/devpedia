@@ -19,11 +19,12 @@ related:
   - authentication-authorization
   - rest
   - object-storage
+  - push-notification
 see_also:
   - https://supabase.com/docs
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

@@ -23,11 +23,12 @@ related:
   - postmortem
   - healthcheck
   - latency-bandwidth
+  - okr-kpi
 see_also:
   - https://sre.google/sre-book/service-level-objectives/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

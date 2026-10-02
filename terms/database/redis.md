@@ -21,11 +21,12 @@ related:
   - rate-limit
   - message-queue
   - lru-cache
+  - distributed-lock
 see_also:
   - https://redis.io/docs/latest/develop/data-types/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

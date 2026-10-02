@@ -12,6 +12,8 @@ export interface Category {
   name: string
   icon: string
   description: string
+  /** 홈·분야 메뉴에서 묶어 보이는 이름 (taxonomy/categories.yml 의 group) */
+  group?: string
   order: number
 }
 

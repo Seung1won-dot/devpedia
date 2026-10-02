@@ -22,11 +22,12 @@ related:
   - slo-sla
   - webhook
   - log-level
+  - mobile-crash-reporting
 see_also:
   - https://prometheus.io/docs/alerting/latest/overview/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

@@ -17,11 +17,12 @@ related:
   - https
   - static-hosting
   - local-storage
+  - webview
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

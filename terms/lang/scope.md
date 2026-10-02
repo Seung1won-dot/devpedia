@@ -19,11 +19,12 @@ related:
   - module-import
   - stack-heap-memory
   - higher-order-function
+  - symbol-table
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Scope
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

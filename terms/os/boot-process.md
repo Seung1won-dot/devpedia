@@ -22,12 +22,13 @@ related:
   - hypervisor
   - vm
   - cloud-init
+  - firmware
 see_also:
   - https://man7.org/linux/man-pages/man7/boot.7.html
   - https://man7.org/linux/man-pages/man7/bootup.7.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

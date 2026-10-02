@@ -22,12 +22,14 @@ related:
   - ci-cd
   - clean-code
   - code-smell
+  - ast
+  - halting-problem
 see_also:
   - https://docs.astral.sh/ruff/
   - https://prettier.io/docs/en/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

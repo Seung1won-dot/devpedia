@@ -1,62 +1,128 @@
-# Devpedia 15개 대분류. 순서가 곧 탭 순서다. code 는 변경 금지(폴더명·URL 에 쓰임).
+# Devpedia 24개 대분류. 순서가 곧 메뉴·홈 순서다. code 는 변경 금지(폴더명·URL 에 쓰임).
+# group 은 홈·분야 메뉴에서 분야를 묶어 보이는 이름 (선택).
 categories:
+  # ---- CS 기초 ----
   - code: os
     name: 컴퓨터 구조 & 운영체제
     icon: "🧠"
+    group: CS 기초
     description: CPU·메모리·프로세스·파일시스템 — 컴퓨터가 프로그램을 굴리는 방식
   - code: network
     name: 네트워크
     icon: "🌐"
+    group: CS 기초
     description: 인터넷이 동작하는 원리 — 주소, 포트, 프로토콜, 보안 통신
   - code: algo
     name: 자료구조 & 알고리즘
     icon: "🧩"
+    group: CS 기초
     description: 문제를 푸는 도구와 그 비용
+  - code: theory
+    name: 이산수학 & 계산 이론
+    icon: "🧮"
+    group: CS 기초
+    description: 컴퓨터가 풀 수 있는 것과 없는 것 — 논리, 집합, 증명, 오토마타, P vs NP
+  - code: math
+    name: CS를 위한 수학
+    icon: "🔢"
+    group: CS 기초
+    description: ML·그래픽스·암호의 바탕 — 선형대수, 미분, 확률, 정보 이론
   - code: lang
     name: 프로그래밍 언어 & 패러다임
     icon: "💬"
+    group: CS 기초
     description: 언어를 가리지 않는 공통 개념 — 타입, OOP, 함수형, 비동기
+  - code: compiler
+    name: 컴파일러 & 언어 구현
+    icon: "🛠️"
+    group: CS 기초
+    description: 코드가 기계어가 되기까지 — 렉서, 파서, AST, IR, 링커, 가상 머신
+  # ---- 개발 ----
   - code: frontend
     name: 프론트엔드
     icon: "🖥️"
+    group: 개발
     description: 브라우저에서 보이는 것 — HTML/CSS/JS, 프레임워크, 렌더링, PWA
+  - code: mobile
+    name: 모바일 앱 개발
+    icon: "📱"
+    group: 개발
+    description: iOS·Android 앱 — 네이티브와 크로스 플랫폼, 스토어 배포, 푸시, 권한
   - code: backend
     name: 백엔드 & API
     icon: "⚙️"
+    group: 개발
     description: 요청을 받아 처리하는 것 — REST, 인증/인가, 세션, 캐시, 큐
   - code: database
     name: 데이터베이스
     icon: "🗄️"
+    group: 개발
     description: 데이터를 저장하고 조회하는 것 — SQL, 인덱스, 트랜잭션, NoSQL
+  - code: graphics
+    name: 그래픽스 & 게임
+    icon: "🎮"
+    group: 개발
+    description: 화면에 3D 를 그리는 방법과 게임이 돌아가는 구조 — 셰이더, 게임 루프, 엔진
+  - code: embedded
+    name: 임베디드 & IoT
+    icon: "🔌"
+    group: 개발
+    description: 작은 기기 안의 소프트웨어 — 마이크로컨트롤러, 펌웨어, 통신 버스, 센서
+  # ---- 시스템 · 운영 ----
+  - code: distributed
+    name: 분산 시스템
+    icon: "🕸️"
+    group: 시스템 · 운영
+    description: 여러 컴퓨터가 하나처럼 동작하게 — 합의, 일관성, 복제, 장애 허용
   - code: infra
     name: 서버 & 인프라 & 클라우드
     icon: "🖧"
+    group: 시스템 · 운영
     description: 코드가 실제로 돌아가는 곳 — 가상화, 컨테이너, 리눅스 운영, 클라우드
   - code: devops
     name: DevOps & 개발 도구
     icon: "🔧"
+    group: 시스템 · 운영
     description: 만들고 배포하고 지키는 과정 — Git, CI/CD, 모니터링, 크론
   - code: security
     name: 보안
     icon: "🔒"
+    group: 시스템 · 운영
     description: 공격과 방어 — 암호화, 인증 공격, 웹 취약점, 키 관리
+  # ---- 데이터 · AI ----
   - code: ai
     name: AI / ML / LLM
     icon: "🤖"
+    group: 데이터 · AI
     description: 학습하는 소프트웨어 — ML 기초, 딥러닝, LLM, RAG, 에이전트
   - code: data
     name: 데이터 엔지니어링 & 분석
     icon: "📊"
+    group: 데이터 · AI
     description: 데이터를 모으고 다듬고 읽는 것 — pandas, CSV/Parquet, ETL, 결측치, 통계 기초, 시각화
+  # ---- 도메인 · 협업 ----
   - code: medical
     name: 의료 IT
     icon: "🏥"
+    group: 도메인 · 협업
     description: 병원·헬스케어 시스템 — HL7/FHIR/DICOM, EMR/PACS, 규제, 의료 AI
   - code: swe
     name: 소프트웨어 공학 & 협업
     icon: "📐"
+    group: 도메인 · 협업
     description: 함께 잘 만드는 방법 — 방법론, 설계 원칙, 테스트, 문서화
+  - code: ux
+    name: UX/UI 디자인
+    icon: "🎨"
+    group: 도메인 · 협업
+    description: 쓰기 좋은 화면을 만드는 방법 — 사용자 조사, 와이어프레임, 디자인 시스템
+  - code: product
+    name: IT 비즈니스 & 프로덕트
+    icon: "📈"
+    group: 도메인 · 협업
+    description: 제품이 돈이 되는 방식 — 지표, 실험, 성장, 비즈니스 모델
   - code: career
     name: 취업 준비 & 커리어
     icon: "🎯"
+    group: 도메인 · 협업
     description: 개발자로 취업하기 — 채용 과정, 코딩테스트, 면접, 포트폴리오, 자격증, 학년별 로드맵

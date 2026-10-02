@@ -19,11 +19,12 @@ related:
   - html-css-js
   - tailwind
   - a11y
+  - design-token
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

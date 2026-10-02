@@ -3,6 +3,7 @@ import type { Category, Term } from '../types'
 import type { PageContext } from '../App'
 import { toHash } from '../lib/route'
 import { dailyTerm, englishName, levelCounts, recentlyAdded, representative, LEVEL_LABEL, LEVELS } from '../lib/terms'
+import { groupCategories } from '../lib/groups'
 import { TermCard } from '../components/TermCard'
 import { LevelMeter } from '../components/LevelMeter'
 import { Icon } from '../components/Icon'
@@ -154,11 +155,19 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
             </h2>
             <span className="section__note">{categories.length}개</span>
           </div>
-          <ul className="catgrid">
-            {categories.map((c) => (
-              <CategoryTile key={c.code} cat={c} terms={byCat.get(c.code) ?? []} />
-            ))}
-          </ul>
+          {groupCategories(categories).map((g) => (
+            <div key={g.name} className="catgroup">
+              <h3 className="catgroup__name">
+                {g.name}
+                <span className="catgroup__count">{g.categories.length}</span>
+              </h3>
+              <ul className="catgrid">
+                {g.categories.map((c) => (
+                  <CategoryTile key={c.code} cat={c} terms={byCat.get(c.code) ?? []} />
+                ))}
+              </ul>
+            </div>
+          ))}
           <p className="catgrid__legend" aria-hidden="true">
             <span className="mix__seg mix__seg--1" /> 기초 <span className="mix__seg mix__seg--2" /> 중급 <span className="mix__seg mix__seg--3" /> 심화
           </p>

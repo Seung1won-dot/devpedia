@@ -22,11 +22,13 @@ related:
   - visualization
   - clinical-trial
   - data-leakage
+  - probability-basics
+  - growth-hacking
 see_also:
   - https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

@@ -21,12 +21,13 @@ related:
   - proxmox
   - lxc
   - docker-image
+  - raspberry-pi
 see_also:
   - https://ubuntu.com/about/release-cycle
   - https://www.debian.org/releases/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

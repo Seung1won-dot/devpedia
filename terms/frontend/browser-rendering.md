@@ -21,11 +21,12 @@ related:
   - core-web-vitals
   - virtual-dom
   - csr-ssr-ssg
+  - graphics-pipeline
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/Performance/Guides/Critical_rendering_path
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

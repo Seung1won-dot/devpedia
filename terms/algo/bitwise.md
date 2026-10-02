@@ -21,11 +21,12 @@ related:
   - dynamic-programming
   - backtracking
   - subnet-cidr
+  - gpio
 see_also:
   - "https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations"
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

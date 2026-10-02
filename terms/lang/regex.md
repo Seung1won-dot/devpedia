@@ -19,11 +19,13 @@ related:
   - de-identification
   - sql
   - kmp
+  - lexer
+  - finite-automata
 see_also:
   - https://docs.python.org/3/library/re.html
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

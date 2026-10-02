@@ -21,9 +21,10 @@ related:
   - emr-ehr
   - hl7-v2
   - outlier
+  - i2c-spi
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

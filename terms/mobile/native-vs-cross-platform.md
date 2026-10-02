@@ -8,7 +8,7 @@ aliases:
   - Flutter
   - React Native
   - 플러터/리액트 네이티브
-category: frontend
+category: mobile
 tags:
   - 모바일
   - React
@@ -20,11 +20,13 @@ related:
   - pwa
   - typescript
   - web-performance
+  - android
+  - ios
 see_also:
   - https://reactnative.dev/docs/getting-started
 status: review
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

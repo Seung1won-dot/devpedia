@@ -20,11 +20,12 @@ related:
   - github-issues
   - mvp
   - requirements-spec
+  - product-manager
 see_also:
   - https://scrumguides.org/scrum-guide.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

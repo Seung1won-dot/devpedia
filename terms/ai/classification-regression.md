@@ -21,9 +21,10 @@ related:
   - machine-learning
   - medical-image-segmentation
   - sensitivity-specificity
+  - entropy
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

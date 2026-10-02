@@ -22,12 +22,13 @@ related:
   - balanced-tree
   - key-value-store
   - json
+  - set-relation
 see_also:
   - "https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset"
   - "https://docs.python.org/3/library/stdtypes.html#mapping-types-dict"
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

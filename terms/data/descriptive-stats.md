@@ -21,11 +21,13 @@ related:
   - outlier
   - hypothesis-test
   - missing-data
+  - random-variable
+  - probability-distribution
 see_also:
   - https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

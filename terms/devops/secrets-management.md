@@ -21,11 +21,12 @@ related:
   - github-actions
   - environments
   - api-key
+  - app-signing
 see_also:
   - https://12factor.net/config
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

@@ -20,11 +20,12 @@ related:
   - ci-cd
   - environment-variable
   - git-flow
+  - ab-test
 see_also:
   - https://martinfowler.com/articles/feature-toggles.html
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

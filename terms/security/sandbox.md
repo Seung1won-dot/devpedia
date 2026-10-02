@@ -20,11 +20,12 @@ related:
   - agent
   - prompt-injection
   - kernel-user-mode
+  - webassembly
 see_also:
   - https://docs.docker.com/engine/security/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

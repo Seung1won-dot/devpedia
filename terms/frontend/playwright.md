@@ -21,11 +21,12 @@ related:
   - github-actions
   - mocking
   - tdd
+  - usability-test
 see_also:
   - https://playwright.dev/docs/intro
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

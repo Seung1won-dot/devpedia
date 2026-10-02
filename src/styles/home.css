@@ -336,3 +336,26 @@
 .catgrid__legend .mix__seg:first-child {
   margin-left: 0;
 }
+
+/* ---------- 분야 그룹 ---------- */
+
+.catgroup + .catgroup {
+  margin-top: var(--space-8);
+}
+
+.catgroup__name {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  color: var(--text-2);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+}
+
+.catgroup__count {
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+}

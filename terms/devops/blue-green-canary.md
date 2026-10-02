@@ -19,9 +19,10 @@ related:
   - environments
   - kubernetes
   - feature-flag
+  - app-store-review
 status: review
 created: 2026-09-25
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의

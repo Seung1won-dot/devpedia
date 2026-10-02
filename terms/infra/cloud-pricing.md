@@ -21,12 +21,13 @@ related:
   - aws-core-services
   - object-storage
   - region-az
+  - cac-ltv
 see_also:
   - https://aws.amazon.com/pricing/
   - https://calculator.aws/
 status: review
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-03
 ---
 
 ## 한 줄 정의
