@@ -1010,3 +1010,7 @@ kbd {
     scroll-behavior: auto !important;
   }
 }
+
+.notfound__suggest {
+  margin-top: 0;
+}

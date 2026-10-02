@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Term } from './types'
 import { pageKey, type Route } from './lib/route'
 import { RECENT_TERMS_KEY } from './lib/storage'
@@ -72,6 +72,16 @@ export function App() {
   const ready = data.state === 'ready'
   const key = pageKey(route)
   useScrollRestoration(key, ready)
+
+  // 페이지가 바뀌면(첫 로드 제외) 키보드·스크린리더 사용자를 새 본문의 시작으로 옮긴다
+  const firstPage = useRef(true)
+  useEffect(() => {
+    if (firstPage.current) {
+      firstPage.current = false
+      return
+    }
+    document.getElementById('main')?.focus({ preventScroll: true })
+  }, [key])
 
   // 단축키: / 또는 ⌘K·Ctrl+K 로 검색 팔레트
   useEffect(() => {

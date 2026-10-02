@@ -116,3 +116,51 @@ describe('App shell', () => {
     expect(screen.getByRole('button', { name: '다시 시도' })).toBeTruthy()
   })
 })
+
+describe('App pages', () => {
+  beforeEach(() => {
+    stubEnvironment()
+    history.replaceState(null, '', window.location.pathname)
+    try { localStorage.clear() } catch { /* ignore */ }
+  })
+  afterEach(() => {
+    cleanup()
+    vi.unstubAllGlobals()
+  })
+
+  it('shows the stats page with totals and per-category bars', async () => {
+    window.location.hash = '#/stats'
+    render(<App />)
+    expect(await screen.findByRole('heading', { level: 1, name: '통계' })).toBeTruthy()
+    expect(screen.getByTestId('stats-total').textContent).toBe('4')
+    const bars = screen.getAllByTestId('stats-cat-bar')
+    expect(bars).toHaveLength(3)
+    expect(bars[1].getAttribute('aria-valuenow')).toBe('2')
+  })
+
+  it('suggests similar terms on a missing term page', async () => {
+    window.location.hash = '#/t/reverse-proxi'
+    render(<App />)
+    expect(await screen.findByRole('heading', { name: /혹시 이 용어/ })).toBeTruthy()
+    expect(screen.getByRole('link', { name: /리버스 프록시/ })).toBeTruthy()
+  })
+
+  it('shows an empty state on the starred page and lists starred terms', async () => {
+    window.location.hash = '#/starred'
+    render(<App />)
+    expect(await screen.findByText(/아직 별표한 용어가 없어요/)).toBeTruthy()
+    cleanup()
+    localStorage.setItem('devpedia:stars', JSON.stringify(['ssh']))
+    render(<App />)
+    const grid = await screen.findByTestId('term-grid')
+    expect(within(grid).getAllByRole('link')).toHaveLength(1)
+  })
+
+  it('moves focus to the main region after navigating', async () => {
+    render(<App />)
+    await screen.findAllByRole('heading', { level: 1 })
+    await setHash('#/t/ssh')
+    await screen.findByRole('heading', { level: 1, name: 'SSH' })
+    expect(document.activeElement?.id).toBe('main')
+  })
+})
