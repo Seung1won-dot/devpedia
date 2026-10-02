@@ -6,6 +6,7 @@ import './styles/fonts/pretendard.css'
 import './styles/tokens.css'
 import './styles/base.css'
 import './styles/term.css'
+import './styles/category.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
