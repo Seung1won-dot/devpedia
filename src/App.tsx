@@ -167,7 +167,7 @@ export function App() {
         </div>
       </main>
       <Footer generatedAt={ready ? data.bundle.generatedAt : null} />
-      {paletteOpen && <CommandPalette data={data} onClose={closeSearch} navigate={navigate} />}
+      {paletteOpen && <CommandPalette data={data} onClose={closeSearch} navigate={navigate} recentTerms={recentTerms.list} />}
     </div>
   )
 }
