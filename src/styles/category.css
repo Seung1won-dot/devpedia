@@ -63,8 +63,8 @@
   white-space: nowrap;
 }
 
-/* 좁은 화면: 태그는 한 줄 가로 스크롤 (양끝 페이드로 더 있다는 단서) */
-@media (max-width: 767px) {
+/* 좁은 화면·태블릿: 태그는 한 줄 가로 스크롤 (양끝 페이드로 더 있다는 단서) */
+@media (max-width: 1023px) {
   .filterbar__tags {
     order: 3;
     flex: 1 0 100%;

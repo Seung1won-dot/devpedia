@@ -6,29 +6,30 @@
 컴공 3학년까지 배운 것 + 연구실에서 마주치는 것(서버·인프라·LLM·의료 IT)을 15개 카테고리에 담는다.
 설계 문서: [`docs/superpowers/specs/2026-09-25-devpedia-design.md`](docs/superpowers/specs/2026-09-25-devpedia-design.md)
 
-## 지금 상태 (v1 seed)
+## 지금 상태
 
 | 지표 | 값 |
 | :-- | :-- |
 | 등록 용어 (K1) | **615** — 15개 카테고리 모두 14~58장 (K2 15/15) |
 | 관계 밀도 (K7) | 용어당 평균 related **6.05**, 고아 용어 0 |
 | 상태 | published 3 · review 612 · draft 0 |
-| 성능 (K5) | Lighthouse 데스크톱 **100** · LCP 0.7s · CLS 0 / 모바일(저속 4G 에뮬, gzip 없는 로컬 서버) 89 · LCP 3.2s · CLS 0 / 접근성 100 |
+| 성능 (K5) | Lighthouse 데스크톱 **99~100** · 모바일(저속 4G 시뮬레이션, gzip) 홈·분야 **96~97**, 용어 페이지 81 / 접근성 **100** — [측정 기록](docs/redesign/README.md) |
 
 시드 카드 235장(2026-09-25)과 취업 대비 확장 카드 139장(2026-09-29, CS 6과목 심화·디자인 패턴·프론트/모바일·클라우드·AI 기초·`career` 카테고리 28장), v2 확장 카드(2026-10-02, [확장 계획](docs/superpowers/specs/2026-10-01-devpedia-v2-expansion-plan.md)의 후보 290개 중 기존과 겹치지 않는 것 — 횡단 태그·`kind` 필드·`data` 카테고리 신설 포함)은 스펙 9장 워크플로대로 LLM 초안이며 **전부 `status: review`** 다. 한 장씩 읽고 고쳐서 `published` 로 바꾸는 것이 이 프로젝트의 학습 과정이다. 카드 안의 `[확인 필요]` 는 초안 작성자가 확신하지 못한 사실 표시다.
 
 ## 기능
 
-- **카테고리 탭 15개** — 용어가 어느 층에 사는지 먼저 보인다. 기초→심화 정렬, 레벨·태그 필터
-- **즉시 검색** — 한글·영문·약어·**초성(ㄹㅂㅅ → 리버스 프록시)**, 오타 허용, 결과 하이라이트. 300장 기준 1ms 안팎
-- **카드 상세** — 한 줄 정의(60자)·비유·예시(실행되는 명령/코드)·헷갈리기 쉬운 것·관련 용어 칩·역링크
-- **딥링크** — `#ssh` 처럼 카드 하나를 바로 여는 공유 링크
+- **홈** — 큰 검색창, 오늘의 용어, 최근 본·별표한 용어, 분야 15개 그리드(난이도 비율·대표 용어), 최근 추가된 용어
+- **분야 페이지** — 스크롤하면 붙는 필터 바(난이도·태그·정렬), ㄱㄴㄷ·A–Z 섹션과 빠른 이동, 3/2/1열 카드. 1280px 이상에서는 카드를 누르면 오른쪽 미리보기 패널
+- **용어 페이지** — 680px 문서: 한 줄 정의(리드)·비유·예시·헷갈리기 쉬운 것·관련 용어·역링크 카드, 같은 분야 이전/다음, 넓은 화면 목차
+- **검색 팔레트** — `/` 또는 ⌘K·Ctrl+K. 한글·영문·약어·**초성(ㄹㅂㅅ → 리버스 프록시)**, 오타 허용, 하이라이트, 최근 검색
+- **딥링크** — `#/t/ssh` 처럼 카드 하나를 바로 여는 공유 링크. 예전 형식(`#ssh`, `#c/os`)도 새 주소로 바뀐다
 - **별표** — 복습할 용어 표시(이 기기의 localStorage)
 - **다크/라이트** — 시스템 설정 따름 + 토글
 - **PWA** — 홈 화면 설치, 오프라인에서도 사전 전체 열람, 새 버전 안내
-- **통계** — 카테고리별 카드 수, 난이도·상태 분포, 최근 갱신, K 지표
+- **통계** — 분야별 카드 수, 난이도·카드 종류·상태 분포, 최근 갱신, K 지표
 - **빌드 시 검증** — 필드·60자·관계·중복·고아·태그를 검사해 잘못된 카드는 배포되지 않는다
-- 키보드: `/` 검색, `Esc` 검색 지우기/상세 닫기, 목록에서 `↑` `↓` `Enter`
+- 키보드: `/`·⌘K 검색, 팔레트에서 `↑` `↓` `Enter` `Esc`, `Esc` 로 메뉴·팝오버·미리보기 닫기, 본문으로 건너뛰기 링크
 
 ## 빠른 시작
 
@@ -140,7 +141,7 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
   MiniSearch 메모리 인덱스 · 해시 라우팅 · localStorage(별표·테마) · Service Worker 가 둘 다 프리캐시
 ```
 
-- **서버 없음.** JSON 두 개를 내려 클라이언트에서 검색한다. 인덱스가 먼저 와서 목록이 뜨고, 본문은 그 뒤에 온다(도착 전엔 상세가 스켈레톤, 검색은 제목·정의·태그만). GitHub Pages 는 gzip 으로 보내므로 실제 전송량은 615장 기준 인덱스·본문 합쳐 수백 KB (비압축 terms.json 396KB · terms-body.json 2299KB).
+- **서버 없음.** JSON 두 개를 내려 클라이언트에서 검색한다. 인덱스가 먼저 와서 화면이 뜨고, 본문은 필요할 때(용어 페이지·미리보기·검색) 또는 한가할 때 받는다(도착 전엔 상세가 스켈레톤, 검색은 제목·정의·태그만). 검색 인덱스도 첫 검색 때 만든다. GitHub Pages 는 gzip 으로 보내므로 실제 전송량은 615장 기준 인덱스·본문 합쳐 수백 KB (비압축 terms.json 396KB · terms-body.json 2299KB).
 - **콘텐츠와 코드 분리.** `terms/` 만 만지면 사이트가 갱신된다. 마크다운은 빌드 때 한 번만 렌더한다.
 - **검증이 곧 품질.** `scripts/lib/validate.ts` 가 위 규칙을 검사한다. CI 에서 실패하면 배포되지 않는다.
 
@@ -148,11 +149,13 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
 
 | 해시 | 화면 |
 | :-- | :-- |
-| `#/` | 전체 목록 |
-| `#c/network` | 카테고리 |
-| `#ssh` | 카드 하나 (공유용) |
-| `#starred` | 별표 목록 |
-| `#stats` | 통계 |
+| `#/` | 홈 |
+| `#/c/network` | 분야 (`?p=dns` 는 데스크톱 미리보기 패널) |
+| `#/t/ssh` | 용어 하나 (공유용) |
+| `#/starred` | 별표 목록 |
+| `#/stats` | 통계 |
+
+예전 주소 `#ssh` `#/ssh` `#c/network` `#starred` `#stats` 는 방문 기록을 쌓지 않고 새 주소로 바뀐다. 없는 주소는 404 화면(비슷한 용어 추천).
 
 ### 검색
 
@@ -180,8 +183,9 @@ Vercel/Cloudflare Pages 에서는 빌드 명령 `npm run build`, 출력 `dist`, 
 taxonomy/   categories.yml(15개 대분류) · tags.yml(허용 태그)
 terms/      <category>/<id>.md 카드 · _inbox.md 수집함
 scripts/    validate.ts · check-cards.ts(일부 카드만 검증) · build-terms.ts · new-term.ts · make-icons.mjs · lib/(parse·schema·validate·render·bundle)
-src/        App.tsx · components/ · hooks/ · lib/(search·hangul·route·stars·theme·terms) · styles/global.css · types.ts
-docs/       설계 스펙 · 구현 계획 · 시드 목록 · LLM 프롬프트
+src/        App.tsx · pages/(Home·Category·Term·Starred·Stats·NotFound) · components/ · hooks/ · lib/(search·hangul·group·route·storage·stars·theme·terms)
+            styles/(tokens·base·term·category·home·palette·stats .css · fonts/ Pretendard·JetBrains Mono self-host) · types.ts
+docs/       설계 스펙 · 구현 계획 · 시드 목록 · LLM 프롬프트 · redesign/(대비 측정·Lighthouse·스크린샷)
 .github/    CI 워크플로 · PR 템플릿
 ```
 
