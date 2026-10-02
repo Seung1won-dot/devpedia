@@ -11,15 +11,18 @@ tags:
   - API설계
   - 보안
 level: 2
+kind: pattern
 related:
   - api
   - middleware
   - cache
   - brute-force
   - http-status-code
+  - api-key
+  - retry-backoff
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

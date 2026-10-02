@@ -10,18 +10,22 @@ category: network
 tags:
   - TCP/IP
   - 프로토콜
+  - 면접
 level: 1
+kind: protocol
 related:
   - three-way-handshake
   - port
   - http
   - osi-model
   - websocket
+  - http-versions
+  - congestion-control
 see_also:
   - https://datatracker.ietf.org/doc/html/rfc9293
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

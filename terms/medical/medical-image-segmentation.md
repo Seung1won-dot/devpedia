@@ -12,15 +12,18 @@ tags:
   - 의료영상
   - 딥러닝
 level: 2
+kind: concept
 related:
   - dicom
   - neural-network
   - gpu-cuda
   - training-inference
   - cdss
+  - imaging-modality
+  - wsi
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

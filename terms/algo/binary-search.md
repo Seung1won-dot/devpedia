@@ -11,6 +11,7 @@ tags:
   - 탐색
   - 복잡도
 level: 1
+kind: concept
 related:
   - sorting
   - big-o

@@ -11,6 +11,7 @@ tags:
   - 보안정책
   - 네트워크보안
 level: 3
+kind: pattern
 related:
   - least-privilege
   - vpn

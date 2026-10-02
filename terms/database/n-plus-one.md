@@ -10,7 +10,9 @@ category: database
 tags:
   - 성능
   - ORM
+  - 흔한실수
 level: 2
+kind: concept
 related:
   - orm
   - join
@@ -19,7 +21,7 @@ related:
   - latency-bandwidth
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -10,16 +10,20 @@ category: medical
 tags:
   - 규제
   - 의료데이터
+  - 연구실
 level: 1
+kind: regulation
 related:
   - medical-data-law
   - de-identification
   - cdss
   - medical-image-segmentation
   - omop-cdm
+  - correlation-causation
+  - hypothesis-test
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

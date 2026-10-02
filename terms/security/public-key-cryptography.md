@@ -11,6 +11,7 @@ tags:
   - 암호화
   - 키관리
 level: 1
+kind: concept
 related:
   - encryption
   - digital-signature

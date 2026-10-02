@@ -12,17 +12,20 @@ tags:
   - 개발도구
   - 협업
 level: 1
+kind: tool
 related:
   - commit-branch-merge
   - pull-request
   - gitignore
   - github-actions
   - semantic-commit
+  - git-tag-release
+  - pre-commit
 see_also:
   - https://git-scm.com/doc
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

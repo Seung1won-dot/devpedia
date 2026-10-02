@@ -10,6 +10,7 @@ tags:
   - Git
   - 보안
 level: 1
+kind: tool
 related:
   - git
   - secrets-management

@@ -11,15 +11,18 @@ tags:
   - 메모리관리
   - 메모리
 level: 2
+kind: concept
 related:
   - garbage-collection
   - ram
   - recursion
   - process
   - virtual-memory
+  - scope
+  - shallow-deep-copy
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

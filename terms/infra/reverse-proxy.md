@@ -5,10 +5,18 @@ aliases: [Reverse Proxy, 역방향 프록시, Nginx 프록시, 리버스프록�
 category: infra
 tags: [서버운영, 네트워크, HTTPS]
 level: 2
-related: [caddy, load-balancer, https, port, docker-compose]
+kind: concept
+related:
+  - caddy
+  - load-balancer
+  - https
+  - port
+  - docker-compose
+  - proxy
+  - nginx
 status: published
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,17 +11,20 @@ tags:
   - 비동기
   - JavaScript
 level: 2
+kind: concept
 related:
   - sync-async
   - event-loop
   - exception
   - api
   - hooks
+  - callback
+  - fetch
 see_also:
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,15 +11,17 @@ tags:
   - OOP
   - 아키텍처패턴
 level: 2
+kind: pattern
 related:
   - solid
   - oop
   - inheritance-polymorphism
   - refactoring
   - middleware
+  - singleton
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

@@ -9,15 +9,18 @@ category: medical
 tags:
   - 병원시스템
 level: 1
+kind: concept
 related:
   - his
   - emr-ehr
   - lis
   - hl7-v2
   - pacs
+  - order
+  - claims-edi
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

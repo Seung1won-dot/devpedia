@@ -12,17 +12,19 @@ tags:
   - 브라우저
   - React
 level: 2
+kind: pattern
 related:
   - csr-ssr-ssg
   - react
   - dom
   - http
   - pwa
+  - client-routing
 see_also:
   - https://developer.mozilla.org/ko/docs/Glossary/SPA
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

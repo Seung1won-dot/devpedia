@@ -11,6 +11,7 @@ tags:
   - 선형구조
   - 메모리
 level: 1
+kind: concept
 related:
   - array
   - stack-queue

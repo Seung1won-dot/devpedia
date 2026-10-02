@@ -11,15 +11,18 @@ tags:
   - 크론
   - 리눅스
 level: 1
+kind: tool
 related:
   - shell
   - systemd
   - github-actions
   - backup-restore
   - environment-variable
+  - background-job
+  - orchestration
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

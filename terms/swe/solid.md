@@ -10,15 +10,18 @@ tags:
   - 설계원칙
   - OOP
 level: 2
+kind: pattern
 related:
   - oop
   - inheritance-polymorphism
   - design-pattern
   - refactoring
   - class-instance
+  - dependency-injection
+  - dependency-inversion
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

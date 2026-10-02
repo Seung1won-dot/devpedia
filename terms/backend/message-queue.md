@@ -12,15 +12,18 @@ tags:
   - 비동기
   - 아키텍처
 level: 3
+kind: concept
 related:
   - stack-queue
   - microservices
   - sync-async
   - cache
   - webhook
+  - event-driven-architecture
+  - background-job
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

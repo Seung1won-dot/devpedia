@@ -11,15 +11,17 @@ tags:
   - 그래프
   - 탐색
 level: 3
+kind: concept
 related:
   - graph
   - bfs-dfs
   - heap
   - greedy
   - latency-bandwidth
+  - bellman-ford
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

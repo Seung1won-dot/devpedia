@@ -64,6 +64,16 @@ describe('validateTerms', () => {
     expect(errors(r)).toEqual([])
   })
 
+  it('defaults kind to concept and rejects unknown kinds', () => {
+    const ok = validateTerms([parseTermMarkdown(card(), 'terms/infra/ssh.md'), port], TAX)
+    expect(ok.terms[0].fm.kind).toBe('concept')
+    const tool = validateTerms([parseTermMarkdown(card({ kind: 'tool' }), 'terms/infra/ssh.md'), port], TAX)
+    expect(errors(tool)).toEqual([])
+    expect(tool.terms[0].fm.kind).toBe('tool')
+    const bad = validateTerms([parseTermMarkdown(card({ kind: 'gadget' }), 'terms/infra/ssh.md'), port], TAX)
+    expect(errors(bad).join()).toMatch(/kind/)
+  })
+
   it('rejects path mismatch', () => {
     const bad = parseTermMarkdown(card({ id: 'ssh' }), 'terms/network/ssh.md')
     expect(errors(validateTerms([bad, port], TAX)).join()).toMatch(/경로/)

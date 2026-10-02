@@ -11,7 +11,9 @@ tags:
   - TCP/IP
   - 프로토콜
   - 표준화
+  - 면접
 level: 2
+kind: concept
 related:
   - tcp-udp
   - ip-address
@@ -20,7 +22,7 @@ related:
   - port
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

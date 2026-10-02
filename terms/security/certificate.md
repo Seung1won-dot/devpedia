@@ -12,17 +12,19 @@ tags:
   - 키관리
   - 보안통신
 level: 2
+kind: concept
 related:
   - tls
   - https
   - digital-signature
   - public-key-cryptography
   - caddy
+  - lets-encrypt
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Digital_certificate
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -9,18 +9,21 @@ aliases:
 category: lang
 tags:
   - OOP
+  - 면접
 level: 1
+kind: concept
 related:
   - class-instance
   - inheritance-polymorphism
   - functional-programming
   - design-pattern
   - solid
+  - metaprogramming
 see_also:
   - https://docs.python.org/3/tutorial/classes.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

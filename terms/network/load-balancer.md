@@ -12,17 +12,20 @@ tags:
   - 네트워크
   - 아키텍처
 level: 2
+kind: concept
 related:
   - reverse-proxy
   - healthcheck
   - caddy
   - cdn
   - kubernetes
+  - scale-up-out
+  - nginx
 see_also:
   - https://caddyserver.com/docs/caddyfile/directives/reverse_proxy
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

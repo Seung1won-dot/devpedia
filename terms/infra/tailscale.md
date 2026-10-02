@@ -11,18 +11,21 @@ tags:
   - 원격접속
   - 보안통신
   - 네트워크
+  - 연구실
 level: 2
+kind: tool
 related:
   - vpn
   - ssh
   - nat
   - private-ip
   - zero-trust
+  - mdns
 see_also:
   - https://tailscale.com/kb
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

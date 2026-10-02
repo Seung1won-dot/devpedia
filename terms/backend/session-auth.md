@@ -12,15 +12,18 @@ tags:
   - 인증
   - HTTP
 level: 2
+kind: pattern
 related:
   - authentication-authorization
   - jwt
   - local-storage
   - csrf
   - cache
+  - cookie-vs-session
+  - refresh-token
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,17 +11,19 @@ tags:
   - 학습
   - LLM
 level: 2
+kind: concept
 related:
   - lora
   - rag
   - training-inference
   - llm
   - vram
+  - rlhf
 see_also:
   - https://huggingface.co/docs/trl/sft_trainer
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

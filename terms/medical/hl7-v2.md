@@ -10,17 +10,20 @@ tags:
   - 표준
   - 병원시스템
 level: 2
+kind: protocol
 related:
   - fhir
   - his
   - ocs
   - lis
   - message-queue
+  - vital-signs
+  - interface-engine
 see_also:
   - https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

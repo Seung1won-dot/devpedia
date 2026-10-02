@@ -11,6 +11,7 @@ tags:
   - MCP
   - 에이전트
 level: 2
+kind: protocol
 related:
   - tool-calling
   - agent

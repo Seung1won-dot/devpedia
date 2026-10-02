@@ -11,6 +11,7 @@ tags:
   - LLM
   - GPU
 level: 3
+kind: concept
 related:
   - fine-tuning
   - quantization

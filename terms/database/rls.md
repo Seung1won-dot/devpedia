@@ -12,17 +12,19 @@ tags:
   - 관계형
   - 인가
 level: 3
+kind: pattern
 related:
   - authentication-authorization
   - baas
   - jwt
   - least-privilege
   - sql
+  - multi-tenancy
 see_also:
   - https://supabase.com/docs/guides/database/postgres/row-level-security
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

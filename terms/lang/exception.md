@@ -11,17 +11,20 @@ tags:
   - Python
   - JavaScript
 level: 1
+kind: concept
 related:
   - http-status-code
   - logging
   - promise-async-await
   - static-dynamic-typing
   - testing-levels
+  - log-level
+  - null-handling
 see_also:
   - https://docs.python.org/3/tutorial/errors.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

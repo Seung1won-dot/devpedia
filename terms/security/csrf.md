@@ -11,6 +11,7 @@ tags:
   - 웹취약점
   - 세션
 level: 2
+kind: concept
 related:
   - xss
   - session-auth

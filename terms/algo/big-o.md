@@ -9,16 +9,19 @@ aliases:
 category: algo
 tags:
   - 복잡도
+  - 면접
 level: 1
+kind: metric
 related:
   - sorting
   - binary-search
   - hash-table
   - n-plus-one
   - index
+  - space-complexity
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

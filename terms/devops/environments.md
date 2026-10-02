@@ -11,17 +11,19 @@ tags:
   - 배포
   - 운영
 level: 2
+kind: pattern
 related:
   - secrets-management
   - ci-cd
   - blue-green-canary
   - environment-variable
   - iac
+  - feature-flag
 see_also:
   - https://vercel.com/docs/deployments/environments
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

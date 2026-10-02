@@ -11,6 +11,7 @@ tags:
   - 성능
   - 운영
 level: 3
+kind: pattern
 related:
   - serverless
   - baas

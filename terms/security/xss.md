@@ -10,6 +10,7 @@ tags:
   - 웹취약점
   - 브라우저
 level: 2
+kind: concept
 related:
   - csrf
   - sql-injection

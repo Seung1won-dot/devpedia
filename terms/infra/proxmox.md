@@ -10,18 +10,22 @@ tags:
   - 가상화
   - 홈랩
   - 서버운영
+  - 연구실
 level: 1
+kind: tool
 related:
   - hypervisor
   - vm
   - lxc
   - snapshot-backup
   - homelab
+  - ups
+  - linux-distro
 see_also:
   - https://pve.proxmox.com/pve-docs/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

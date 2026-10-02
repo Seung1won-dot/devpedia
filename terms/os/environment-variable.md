@@ -10,16 +10,20 @@ category: os
 tags:
   - 셸
   - 리눅스
+  - 시크릿
+  - 연구실
 level: 1
+kind: concept
 related:
   - shell
   - secrets-management
   - docker-compose
   - secret-leak
   - process
+  - dotfiles
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

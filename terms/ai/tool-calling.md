@@ -11,15 +11,17 @@ tags:
   - 에이전트
   - LLM
 level: 2
+kind: concept
 related:
   - agent
   - mcp
   - json
   - api
   - llm
+  - prompt-injection
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

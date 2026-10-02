@@ -10,17 +10,19 @@ tags:
   - HTTP
   - 프로토콜
 level: 1
+kind: protocol
 related:
   - https
   - http-status-code
   - rest
   - tcp-udp
   - api
+  - http-methods
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/HTTP
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

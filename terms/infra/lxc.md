@@ -11,17 +11,19 @@ tags:
   - 컨테이너
   - 가상화
 level: 2
+kind: tool
 related:
   - vm
   - docker
   - proxmox
   - kernel
   - virtualization
+  - linux-distro
 see_also:
   - https://linuxcontainers.org/lxc/introduction/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

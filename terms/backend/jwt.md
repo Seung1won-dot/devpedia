@@ -12,17 +12,19 @@ tags:
   - 세션
   - 보안
 level: 2
+kind: protocol
 related:
   - session-auth
   - authentication-authorization
   - oauth
   - digital-signature
   - rls
+  - refresh-token
 see_also:
   - https://datatracker.ietf.org/doc/html/rfc7519
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,17 +11,20 @@ tags:
   - 암호화
   - 해시
 level: 1
+kind: concept
 related:
   - encryption
   - password-hashing
   - salt
   - hash-table
   - digital-signature
+  - hashing-vs-encryption
+  - bloom-filter
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Hash
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

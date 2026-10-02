@@ -4,24 +4,25 @@ term: NAT
 aliases:
   - Network Address Translation
   - 네트워크 주소 변환
-  - 포트포워딩
 category: network
 tags:
   - TCP/IP
   - 라우팅
   - 홈랩
 level: 2
+kind: concept
 related:
   - private-ip
   - ip-address
   - port
   - firewall
   - tailscale
+  - port-forwarding
 see_also:
   - https://datatracker.ietf.org/doc/html/rfc3022
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

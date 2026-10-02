@@ -10,15 +10,17 @@ tags:
   - 스케줄링
   - 프로세스
 level: 2
+kind: concept
 related:
   - process
   - thread
   - context-switching
   - kernel
   - cron
+  - scheduling-algorithms
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

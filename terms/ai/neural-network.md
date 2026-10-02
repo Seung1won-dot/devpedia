@@ -11,15 +11,17 @@ tags:
   - 딥러닝
   - ML기초
 level: 1
+kind: concept
 related:
   - machine-learning
   - transformer
   - llm
   - gpu-cuda
   - training-inference
+  - backpropagation
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

@@ -11,6 +11,7 @@ tags:
   - 웹취약점
   - 보안정책
 level: 2
+kind: protocol
 related:
   - sql-injection
   - xss

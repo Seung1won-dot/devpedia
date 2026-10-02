@@ -11,17 +11,20 @@ tags:
   - 스레드
   - 프로세스
 level: 1
+kind: concept
 related:
   - process
   - cpu
   - mutex
   - context-switching
   - event-loop
+  - multiprocess-multithread
+  - gil
 see_also:
   - https://docs.python.org/3/library/threading.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

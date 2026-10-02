@@ -11,16 +11,20 @@ tags:
   - 의료데이터
   - 규제
   - 보안
+  - 연구실
 level: 2
+kind: concept
 related:
   - medical-data-law
   - irb
   - hash
   - salt
   - dicom
+  - data-lineage
+  - mrn
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

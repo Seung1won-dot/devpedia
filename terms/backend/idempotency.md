@@ -11,17 +11,20 @@ tags:
   - API설계
   - REST
 level: 3
+kind: concept
 related:
   - rest
   - webhook
   - message-queue
   - transaction-acid
   - http
+  - retry-backoff
+  - saga
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Idempotent
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -10,15 +10,18 @@ tags:
   - 병원시스템
   - 의료데이터
 level: 1
+kind: concept
 related:
   - ocs
   - his
   - hl7-v2
   - clinical-code-systems
   - emr-ehr
+  - order
+  - interface-engine
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

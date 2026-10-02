@@ -10,17 +10,20 @@ tags:
   - 리눅스
   - 프로세스
 level: 2
+kind: concept
 related:
   - system-call
   - process
   - scheduler
   - virtual-memory
   - lxc
+  - kernel-user-mode
+  - linux-distro
 see_also:
   - https://www.kernel.org/doc/html/latest/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -12,17 +12,20 @@ tags:
   - 개발도구
   - JavaScript
 level: 2
+kind: tool
 related:
   - package-manager
   - typescript
   - react
   - static-hosting
   - csr-ssr-ssg
+  - tree-shaking
+  - module-import
 see_also:
   - https://ko.vite.dev/guide/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

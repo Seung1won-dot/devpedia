@@ -11,15 +11,18 @@ tags:
   - 파일시스템
   - 리눅스
 level: 1
+kind: concept
 related:
   - file-system
   - shell
   - least-privilege
   - ssh
   - docker-compose
+  - linux-basic-commands
+  - bitwise
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

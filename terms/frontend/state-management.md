@@ -11,17 +11,19 @@ tags:
   - React
   - 렌더링
 level: 2
+kind: concept
 related:
   - component-props-state
   - hooks
   - react
   - local-storage
   - cache
+  - react-query
 see_also:
   - https://ko.react.dev/learn/managing-state
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

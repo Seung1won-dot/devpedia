@@ -10,17 +10,19 @@ tags:
   - 문서화
   - 아키텍처
 level: 2
+kind: pattern
 related:
   - readme
   - technical-debt
   - requirements-spec
   - pull-request
   - static-hosting
+  - postmortem
 see_also:
   - https://adr.github.io/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

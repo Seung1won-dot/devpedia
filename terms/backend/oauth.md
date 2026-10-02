@@ -12,17 +12,19 @@ tags:
   - 인가
   - 보안
 level: 2
+kind: protocol
 related:
   - authentication-authorization
   - jwt
   - baas
   - session-auth
   - https
+  - refresh-token
 see_also:
   - https://oauth.net/2/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

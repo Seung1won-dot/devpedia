@@ -11,15 +11,17 @@ tags:
   - ORM
   - SQL
 level: 2
+kind: concept
 related:
   - sql
   - n-plus-one
   - migration
   - oop
   - class-instance
+  - metaprogramming
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

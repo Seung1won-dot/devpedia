@@ -11,15 +11,18 @@ tags:
   - 테스트
   - 품질
 level: 1
+kind: concept
 related:
   - tdd
   - code-coverage
   - ci-cd
   - refactoring
   - github-actions
+  - playwright
+  - mocking
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

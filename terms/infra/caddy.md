@@ -1,28 +1,29 @@
 ---
 id: caddy
-term: Caddy/Nginx
+term: Caddy
 aliases:
   - Caddy
-  - Nginx
   - 캐디
-  - 엔진엑스
 category: infra
 tags:
   - HTTPS
   - 서버운영
   - 네트워크
 level: 2
+kind: tool
 related:
   - reverse-proxy
   - https
   - tls
   - certificate
   - dns
+  - lets-encrypt
+  - nginx
 see_also:
   - https://caddyserver.com/docs/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

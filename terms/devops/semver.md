@@ -12,17 +12,20 @@ tags:
   - 표준화
   - 협업
 level: 1
+kind: protocol
 related:
   - package-manager
   - semantic-commit
   - rollback
   - container-registry
   - api
+  - api-versioning
+  - git-tag-release
 see_also:
   - https://semver.org/lang/ko/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

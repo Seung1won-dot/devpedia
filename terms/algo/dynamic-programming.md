@@ -5,23 +5,24 @@ aliases:
   - Dynamic Programming
   - DP
   - 동적 계획법
-  - 메모이제이션
 category: algo
 tags:
   - DP
   - 복잡도
 level: 3
+kind: concept
 related:
   - recursion
   - greedy
   - big-o
   - hash-table
   - cache
+  - memoization
 see_also:
   - "https://docs.python.org/3/library/functools.html#functools.lru_cache"
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

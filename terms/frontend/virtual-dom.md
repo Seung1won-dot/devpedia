@@ -12,16 +12,19 @@ tags:
   - 렌더링
   - 브라우저
 level: 2
+kind: concept
 related:
   - dom
   - react
   - component-props-state
   - tree
+  - react-memo
+  - hydration
 see_also:
   - https://ko.react.dev/learn/render-and-commit
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

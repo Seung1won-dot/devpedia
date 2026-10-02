@@ -8,6 +8,7 @@ import { StarButton } from './StarButton'
 import { RelatedChips } from './RelatedChips'
 import { Skeleton } from './Skeleton'
 import { LEVEL_LABEL } from './FilterBar'
+import { KIND_LABEL } from '../lib/kind'
 import { STATUS_LABEL } from './TermRow'
 
 interface Props {
@@ -84,6 +85,7 @@ export function TermDetail({ term, body, byId, categories, starred, onToggleStar
             </button>
           )}
           <span className={`badge badge--level-${term.level}`}>{LEVEL_LABEL[term.level]}</span>
+          <span className="badge badge--kind" title="카드 종류">{KIND_LABEL[term.kind]}</span>
           {status && <span className="badge badge--status">{status}</span>}
         </div>
         <h1 className="detail__title" id="detail-title">{term.term}</h1>

@@ -11,17 +11,19 @@ tags:
   - 메모리
   - 리눅스
 level: 2
+kind: concept
 related:
   - ram
   - process
   - kernel
   - cache-memory
   - stack-heap-memory
+  - page-fault
 see_also:
   - https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

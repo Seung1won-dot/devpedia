@@ -12,17 +12,20 @@ tags:
   - 아키텍처패턴
   - 컨테이너
 level: 3
+kind: pattern
 related:
   - message-queue
   - docker-compose
   - kubernetes
   - api
   - reverse-proxy
+  - event-driven-architecture
+  - circuit-breaker
 see_also:
   - https://martinfowler.com/articles/microservices.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

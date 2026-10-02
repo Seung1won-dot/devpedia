@@ -11,17 +11,20 @@ tags:
   - 딥러닝
   - LLM
 level: 2
+kind: concept
 related:
   - neural-network
   - llm
   - token
   - context-window
   - embedding
+  - rnn
+  - moe
 see_also:
   - https://arxiv.org/abs/1706.03762
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

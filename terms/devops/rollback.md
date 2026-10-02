@@ -11,17 +11,20 @@ tags:
   - 배포
   - 운영
 level: 2
+kind: pattern
 related:
   - blue-green-canary
   - ci-cd
   - semver
   - snapshot-backup
   - migration
+  - git-tag-release
+  - feature-flag
 see_also:
   - https://git-scm.com/docs/git-revert
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

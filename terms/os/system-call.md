@@ -10,15 +10,18 @@ tags:
   - 리눅스
   - 프로세스
 level: 2
+kind: concept
 related:
   - kernel
   - process
   - file-system
   - api
   - docker
+  - kernel-user-mode
+  - file-descriptor
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

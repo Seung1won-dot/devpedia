@@ -11,16 +11,20 @@ tags:
   - GPU
   - 하드웨어
   - 서빙
+  - 연구실
 level: 1
+kind: concept
 related:
   - gpu-cuda
   - quantization
   - model-parameters
   - ram
   - local-llm
+  - mixed-precision
+  - kv-cache
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

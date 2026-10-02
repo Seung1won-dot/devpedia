@@ -12,6 +12,7 @@ tags:
   - 서버운영
   - 배포
 level: 3
+kind: tool
 related:
   - docker-compose
   - proxmox

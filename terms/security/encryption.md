@@ -11,17 +11,19 @@ tags:
   - 암호화
   - 보안
 level: 1
+kind: concept
 related:
   - hash
   - public-key-cryptography
   - tls
   - https
   - ssh
+  - hashing-vs-encryption
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Encryption
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

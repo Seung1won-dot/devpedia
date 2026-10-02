@@ -11,6 +11,7 @@ tags:
   - SQL
   - 관계형
 level: 1
+kind: concept
 related:
   - sql
   - primary-foreign-key

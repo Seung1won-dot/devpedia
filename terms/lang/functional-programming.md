@@ -10,15 +10,18 @@ category: lang
 tags:
   - 함수형
 level: 2
+kind: concept
 related:
   - oop
   - closure
   - hooks
   - state-management
   - recursion
+  - immutability
+  - generator-iterator
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -11,15 +11,17 @@ tags:
   - 클라우드
   - 서버운영
 level: 1
+kind: concept
 related:
   - server
   - homelab
   - proxmox
   - serverless
   - static-hosting
+  - cloud-providers
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

@@ -11,17 +11,20 @@ tags:
   - 리눅스
   - 리눅스운영
 level: 2
+kind: tool
 related:
   - process
   - cron
   - docker-compose
   - logging
   - kernel
+  - daemon
+  - boot-process
 see_also:
   - https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

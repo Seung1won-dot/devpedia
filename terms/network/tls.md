@@ -12,6 +12,7 @@ tags:
   - 암호화
   - HTTPS
 level: 2
+kind: protocol
 related:
   - https
   - certificate

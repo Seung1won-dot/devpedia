@@ -10,15 +10,18 @@ category: algo
 tags:
   - 그래프
 level: 1
+kind: concept
 related:
   - tree
   - bfs-dfs
   - dijkstra
   - hash-table
   - commit-branch-merge
+  - adjacency-matrix-list
+  - topological-sort
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

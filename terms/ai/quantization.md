@@ -12,6 +12,7 @@ tags:
   - 서빙
   - GPU
 level: 2
+kind: concept
 related:
   - model-parameters
   - vram

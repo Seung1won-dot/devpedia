@@ -12,6 +12,7 @@ tags:
   - 학습
   - 서빙
 level: 1
+kind: concept
 related:
   - machine-learning
   - fine-tuning

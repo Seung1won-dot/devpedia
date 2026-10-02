@@ -11,6 +11,7 @@ tags:
   - 문서화
   - 방법론
 level: 1
+kind: concept
 related:
   - user-story
   - mvp

@@ -10,15 +10,17 @@ category: algo
 tags:
   - 선형구조
 level: 1
+kind: concept
 related:
   - array
   - recursion
   - bfs-dfs
   - message-queue
   - stack-heap-memory
+  - deque
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-29
 ---
 
 ## 한 줄 정의

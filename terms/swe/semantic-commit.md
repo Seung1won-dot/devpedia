@@ -11,6 +11,7 @@ tags:
   - Git
   - 협업
 level: 1
+kind: pattern
 related:
   - commit-branch-merge
   - semver

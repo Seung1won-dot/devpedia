@@ -12,6 +12,7 @@ tags:
   - 배포
   - HTTP
 level: 1
+kind: tool
 related:
   - csr-ssr-ssg
   - cdn

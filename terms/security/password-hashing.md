@@ -11,6 +11,7 @@ tags:
   - 비밀번호
   - 암호화
 level: 2
+kind: concept
 related:
   - hash
   - salt

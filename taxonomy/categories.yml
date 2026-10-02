@@ -1,4 +1,4 @@
-# Devpedia 13개 대분류. 순서가 곧 탭 순서다. code 는 변경 금지(폴더명·URL 에 쓰임).
+# Devpedia 15개 대분류. 순서가 곧 탭 순서다. code 는 변경 금지(폴더명·URL 에 쓰임).
 categories:
   - code: os
     name: 컴퓨터 구조 & 운영체제
@@ -44,6 +44,10 @@ categories:
     name: AI / ML / LLM
     icon: "🤖"
     description: 학습하는 소프트웨어 — ML 기초, 딥러닝, LLM, RAG, 에이전트
+  - code: data
+    name: 데이터 엔지니어링 & 분석
+    icon: "📊"
+    description: 데이터를 모으고 다듬고 읽는 것 — pandas, CSV/Parquet, ETL, 결측치, 통계 기초, 시각화
   - code: medical
     name: 의료 IT
     icon: "🏥"
@@ -52,3 +56,7 @@ categories:
     name: 소프트웨어 공학 & 협업
     icon: "📐"
     description: 함께 잘 만드는 방법 — 방법론, 설계 원칙, 테스트, 문서화
+  - code: career
+    name: 취업 준비 & 커리어
+    icon: "🎯"
+    description: 개발자로 취업하기 — 채용 과정, 코딩테스트, 면접, 포트폴리오, 자격증, 학년별 로드맵

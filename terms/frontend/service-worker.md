@@ -11,6 +11,7 @@ tags:
   - 브라우저
   - 캐시
 level: 2
+kind: concept
 related:
   - pwa
   - cache

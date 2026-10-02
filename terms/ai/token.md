@@ -10,6 +10,7 @@ category: ai
 tags:
   - LLM
 level: 1
+kind: concept
 related:
   - llm
   - context-window

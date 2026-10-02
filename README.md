@@ -3,23 +3,23 @@
 > SSH 가 뭐고 Proxmox 가 뭐고 RAG 가 뭔지, **한 화면에서 카테고리별로 훑어보고 검색**하는 나만의 용어 사전.
 > 용어 하나 = "한 줄 정의 + 비유 + 예시 + 관련 용어" 카드 하나 = Markdown 파일 하나. 서버 없음, 전부 Git.
 
-컴공 3학년까지 배운 것 + 연구실에서 마주치는 것(서버·인프라·LLM·의료 IT)을 13개 카테고리에 담는다.
+컴공 3학년까지 배운 것 + 연구실에서 마주치는 것(서버·인프라·LLM·의료 IT)을 15개 카테고리에 담는다.
 설계 문서: [`docs/superpowers/specs/2026-09-25-devpedia-design.md`](docs/superpowers/specs/2026-09-25-devpedia-design.md)
 
 ## 지금 상태 (v1 seed)
 
 | 지표 | 값 |
 | :-- | :-- |
-| 등록 용어 (K1) | **238** — 13개 카테고리 모두 16~23장 (K2 13/13) |
-| 관계 밀도 (K7) | 용어당 평균 related **4.97**, 고아 용어 0 |
-| 상태 | published 3 · review 235 · draft 0 |
+| 등록 용어 (K1) | **615** — 15개 카테고리 모두 14~58장 (K2 15/15) |
+| 관계 밀도 (K7) | 용어당 평균 related **6.05**, 고아 용어 0 |
+| 상태 | published 3 · review 612 · draft 0 |
 | 성능 (K5) | Lighthouse 데스크톱 **100** · LCP 0.7s · CLS 0 / 모바일(저속 4G 에뮬, gzip 없는 로컬 서버) 89 · LCP 3.2s · CLS 0 / 접근성 100 |
 
-시드 카드 235장은 스펙 9장 워크플로대로 LLM 초안이며 **전부 `status: review`** 다. 한 장씩 읽고 고쳐서 `published` 로 바꾸는 것이 이 프로젝트의 학습 과정이다. 카드 안의 `[확인 필요]` 는 초안 작성자가 확신하지 못한 사실 표시다.
+시드 카드 235장(2026-09-25)과 취업 대비 확장 카드 139장(2026-09-29, CS 6과목 심화·디자인 패턴·프론트/모바일·클라우드·AI 기초·`career` 카테고리 28장), v2 확장 카드(2026-10-02, [확장 계획](docs/superpowers/specs/2026-10-01-devpedia-v2-expansion-plan.md)의 후보 290개 중 기존과 겹치지 않는 것 — 횡단 태그·`kind` 필드·`data` 카테고리 신설 포함)은 스펙 9장 워크플로대로 LLM 초안이며 **전부 `status: review`** 다. 한 장씩 읽고 고쳐서 `published` 로 바꾸는 것이 이 프로젝트의 학습 과정이다. 카드 안의 `[확인 필요]` 는 초안 작성자가 확신하지 못한 사실 표시다.
 
 ## 기능
 
-- **카테고리 탭 13개** — 용어가 어느 층에 사는지 먼저 보인다. 기초→심화 정렬, 레벨·태그 필터
+- **카테고리 탭 15개** — 용어가 어느 층에 사는지 먼저 보인다. 기초→심화 정렬, 레벨·태그 필터
 - **즉시 검색** — 한글·영문·약어·**초성(ㄹㅂㅅ → 리버스 프록시)**, 오타 허용, 결과 하이라이트. 300장 기준 1ms 안팎
 - **카드 상세** — 한 줄 정의(60자)·비유·예시(실행되는 명령/코드)·헷갈리기 쉬운 것·관련 용어 칩·역링크
 - **딥링크** — `#ssh` 처럼 카드 하나를 바로 여는 공유 링크
@@ -67,9 +67,10 @@ term: SSH                    # 표시 이름
 aliases:                     # 검색용 별칭 — 한글 표기·풀네임 필수
   - Secure Shell
   - 시큐어 셸
-category: infra              # 13개 코드 중 하나 (아래 표)
+category: infra              # 15개 코드 중 하나 (아래 표)
 tags: [원격접속, 리눅스운영]   # taxonomy/tags.yml 에 있는 것만
 level: 1                     # 1 기초 · 2 중급 · 3 심화
+kind: protocol               # concept | tool | protocol | pattern | metric | regulation (기본 concept)
 related: [port, firewall, public-key-cryptography, vpn, scp-rsync]  # 존재하는 id 만, 3~5개 권장
 see_also:                    # 선택
   - https://www.openssh.com/manual.html
@@ -120,10 +121,14 @@ updated: 2026-09-25
 | `devops` | 🔧 DevOps & 개발 도구 | Git·CI/CD·모니터링·크론 |
 | `security` | 🔒 보안 | 암호화·인증 공격·웹 취약점·키 관리 |
 | `ai` | 🤖 AI / ML / LLM | ML 기초·LLM·RAG·에이전트/MCP·서빙 |
+| `data` | 📊 데이터 엔지니어링 & 분석 | pandas·CSV/Parquet·ETL·결측치·통계 기초·시각화 |
 | `medical` | 🏥 의료 IT | HL7/FHIR/DICOM·EMR/PACS·규제·의료 AI |
 | `swe` | 📐 소프트웨어 공학 & 협업 | 방법론·설계 원칙·테스트·문서화 |
+| `career` | 🎯 취업 준비 & 커리어 | 채용 과정·코딩테스트·면접·포트폴리오·자격증·로드맵 |
 
-카테고리는 13개로 고정, 소분류는 `tags` 로. 새 태그는 `taxonomy/tags.yml` 에 먼저 추가한다.
+카테고리는 15개(카드 15장 이상 확실히 나올 때만 추가), 소분류는 `tags` 로. 새 태그는 `taxonomy/tags.yml` 에 먼저 추가한다.
+횡단 태그 — 카테고리 축 하나로 못 잡는 주제는 태그로 묶는다: `연구실`(신입 온보딩) · `면접`(시험 단골) · `흔한실수` · `연구`(재현성·실험 관리) · `Redis` `백업` `시크릿` `컨테이너`(여러 카테고리에 흩어진 같은 주제).
+`kind` — 개념(concept)·도구(tool)·프로토콜/표준(protocol)·패턴(pattern)·지표(metric)·규제/인증(regulation). 도구 카드는 유행 따라 교체되고 개념 카드는 오래 가므로 관리 단위가 다르다. 기존 카드의 kind 는 2026-10-02 에 일괄 추정값을 넣었으니 리뷰 때 고친다.
 
 ## 어떻게 동작하나
 
@@ -135,7 +140,7 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
   MiniSearch 메모리 인덱스 · 해시 라우팅 · localStorage(별표·테마) · Service Worker 가 둘 다 프리캐시
 ```
 
-- **서버 없음.** JSON 두 개를 내려 클라이언트에서 검색한다. 인덱스가 먼저 와서 목록이 뜨고, 본문은 그 뒤에 온다(도착 전엔 상세가 스켈레톤, 검색은 제목·정의·태그만). GitHub Pages 는 gzip 으로 보내므로 실제 전송량은 238장 기준 인덱스 ~40KB, 본문 ~140KB.
+- **서버 없음.** JSON 두 개를 내려 클라이언트에서 검색한다. 인덱스가 먼저 와서 목록이 뜨고, 본문은 그 뒤에 온다(도착 전엔 상세가 스켈레톤, 검색은 제목·정의·태그만). GitHub Pages 는 gzip 으로 보내므로 실제 전송량은 615장 기준 인덱스·본문 합쳐 수백 KB (비압축 terms.json 396KB · terms-body.json 2299KB).
 - **콘텐츠와 코드 분리.** `terms/` 만 만지면 사이트가 갱신된다. 마크다운은 빌드 때 한 번만 렌더한다.
 - **검증이 곧 품질.** `scripts/lib/validate.ts` 가 위 규칙을 검사한다. CI 에서 실패하면 배포되지 않는다.
 
@@ -172,9 +177,9 @@ Vercel/Cloudflare Pages 에서는 빌드 명령 `npm run build`, 출력 `dist`, 
 ## 프로젝트 구조
 
 ```
-taxonomy/   categories.yml(13개 대분류) · tags.yml(허용 태그)
+taxonomy/   categories.yml(15개 대분류) · tags.yml(허용 태그)
 terms/      <category>/<id>.md 카드 · _inbox.md 수집함
-scripts/    validate.ts · build-terms.ts · new-term.ts · make-icons.mjs · lib/(parse·schema·validate·render·bundle)
+scripts/    validate.ts · check-cards.ts(일부 카드만 검증) · build-terms.ts · new-term.ts · make-icons.mjs · lib/(parse·schema·validate·render·bundle)
 src/        App.tsx · components/ · hooks/ · lib/(search·hangul·route·stars·theme·terms) · styles/global.css · types.ts
 docs/       설계 스펙 · 구현 계획 · 시드 목록 · LLM 프롬프트
 .github/    CI 워크플로 · PR 템플릿

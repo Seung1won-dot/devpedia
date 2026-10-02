@@ -12,17 +12,20 @@ tags:
   - 보안정책
   - 서버운영
 level: 1
+kind: concept
 related:
   - port
   - ip-address
   - nat
   - least-privilege
   - ssh
+  - ids-ips
+  - ddos
 see_also:
   - https://documentation.ubuntu.com/server/how-to/security/firewalls/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

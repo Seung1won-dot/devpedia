@@ -11,15 +11,18 @@ tags:
   - 서버운영
   - 가상화
 level: 1
+kind: concept
 related:
   - proxmox
   - on-premise-vs-cloud
   - tailscale
   - snapshot-backup
   - docker-compose
+  - nas
+  - ups
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

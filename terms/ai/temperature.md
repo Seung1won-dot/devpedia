@@ -10,15 +10,17 @@ tags:
   - 프롬프트
   - LLM
 level: 1
+kind: concept
 related:
   - prompt-engineering
   - hallucination
   - llm
   - token
   - local-llm
+  - sampling
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

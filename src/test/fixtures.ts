@@ -13,6 +13,7 @@ export function makeTerm(over: Partial<Term> & { id: string }): Term {
     category: 'infra',
     tags: [],
     level: 1,
+    kind: 'concept',
     related: [],
     backlinks: [],
     seeAlso: [],

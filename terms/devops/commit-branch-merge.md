@@ -11,16 +11,19 @@ tags:
   - Git
   - 협업
 level: 1
+kind: concept
 related:
   - git
   - rebase
   - pull-request
   - semantic-commit
+  - merge-conflict
+  - cherry-pick-stash
 see_also:
   - https://git-scm.com/docs/git-merge
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

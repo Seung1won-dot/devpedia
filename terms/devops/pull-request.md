@@ -11,17 +11,20 @@ tags:
   - Git
   - 협업
 level: 1
+kind: pattern
 related:
   - commit-branch-merge
   - git
   - github-actions
   - testing-levels
   - refactoring
+  - dependabot
+  - codeowners
 see_also:
   - https://docs.github.com/pull-requests
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

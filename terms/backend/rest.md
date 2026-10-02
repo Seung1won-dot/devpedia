@@ -12,17 +12,20 @@ tags:
   - HTTP
   - API설계
 level: 1
+kind: pattern
 related:
   - api
   - endpoint
   - http
   - http-status-code
   - graphql
+  - grpc
+  - query-path-param
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/REST
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

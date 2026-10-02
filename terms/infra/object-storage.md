@@ -11,17 +11,19 @@ tags:
   - 스토리지
   - 클라우드
 level: 2
+kind: concept
 related:
   - file-system
   - backup-restore
   - static-hosting
   - cdn
   - api
+  - nas
 see_also:
   - https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

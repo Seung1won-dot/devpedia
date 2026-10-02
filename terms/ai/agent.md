@@ -10,15 +10,18 @@ tags:
   - 에이전트
   - LLM
 level: 2
+kind: concept
 related:
   - tool-calling
   - mcp
   - llm
   - cron
   - system-prompt
+  - agent-memory
+  - sandbox
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

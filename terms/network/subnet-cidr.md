@@ -12,17 +12,20 @@ tags:
   - 라우팅
   - 네트워크
 level: 2
+kind: concept
 related:
   - ip-address
   - private-ip
   - nat
   - firewall
   - tailscale
+  - bgp
+  - mdns
 see_also:
   - https://datatracker.ietf.org/doc/html/rfc4632
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

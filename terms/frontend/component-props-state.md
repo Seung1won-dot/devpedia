@@ -11,16 +11,19 @@ tags:
   - React
   - 렌더링
 level: 1
+kind: concept
 related:
   - react
   - hooks
   - state-management
   - virtual-dom
+  - form-handling
+  - web-components
 see_also:
   - https://ko.react.dev/learn/passing-props-to-a-component
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

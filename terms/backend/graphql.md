@@ -10,6 +10,7 @@ tags:
   - GraphQL
   - API설계
 level: 2
+kind: protocol
 related:
   - rest
   - api

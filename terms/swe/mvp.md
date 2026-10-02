@@ -9,6 +9,7 @@ category: swe
 tags:
   - 방법론
 level: 1
+kind: concept
 related:
   - agile-scrum
   - user-story

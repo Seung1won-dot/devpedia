@@ -11,17 +11,19 @@ tags:
   - 프로토콜
   - 비동기
 level: 2
+kind: protocol
 related:
   - http
   - tcp-udp
   - event-loop
   - reverse-proxy
   - baas
+  - streaming-response
 see_also:
   - https://developer.mozilla.org/ko/docs/Web/API/WebSockets_API
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

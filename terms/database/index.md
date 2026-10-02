@@ -10,18 +10,22 @@ category: database
 tags:
   - 인덱스
   - 성능
+  - 면접
 level: 2
+kind: concept
 related:
   - sql
   - primary-foreign-key
   - binary-search-tree
   - big-o
   - vector-db
+  - pagination
+  - query-plan
 see_also:
   - https://www.postgresql.org/docs/current/indexes.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

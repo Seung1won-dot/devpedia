@@ -9,18 +9,21 @@ aliases:
 category: lang
 tags:
   - 메모리관리
+  - 면접
 level: 2
+kind: concept
 related:
   - stack-heap-memory
   - ram
   - closure
   - virtual-memory
   - process
+  - memory-leak
 see_also:
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

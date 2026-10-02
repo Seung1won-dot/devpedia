@@ -10,18 +10,23 @@ category: security
 tags:
   - 키관리
   - Git
+  - 시크릿
+  - 흔한실수
 level: 1
+kind: concept
 related:
   - secrets-management
   - gitignore
   - environment-variable
   - git
   - least-privilege
+  - pre-commit
+  - key-rotation
 see_also:
   - https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

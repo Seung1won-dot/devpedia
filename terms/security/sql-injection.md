@@ -11,6 +11,7 @@ tags:
   - 웹취약점
   - SQL
 level: 1
+kind: concept
 related:
   - sql
   - orm

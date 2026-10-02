@@ -11,6 +11,7 @@ tags:
   - 인증공격
   - 비밀번호
 level: 1
+kind: concept
 related:
   - password-hashing
   - mfa

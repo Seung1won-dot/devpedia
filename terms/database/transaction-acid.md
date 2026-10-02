@@ -10,18 +10,22 @@ category: database
 tags:
   - 트랜잭션
   - 관계형
+  - 면접
 level: 2
+kind: concept
 related:
   - rdbms
   - sql
   - idempotency
   - deadlock
   - migration
+  - isolation-level
+  - saga
 see_also:
   - https://www.postgresql.org/docs/current/tutorial-transactions.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

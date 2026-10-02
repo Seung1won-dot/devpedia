@@ -11,6 +11,7 @@ tags:
   - 관계형
   - SQL
 level: 1
+kind: concept
 related:
   - rdbms
   - join

@@ -12,17 +12,19 @@ tags:
   - 네트워크
   - 성능
 level: 2
+kind: concept
 related:
   - dns
   - cache
   - static-hosting
   - latency-bandwidth
   - load-balancer
+  - ddos
 see_also:
   - https://developer.mozilla.org/ko/docs/Glossary/CDN
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

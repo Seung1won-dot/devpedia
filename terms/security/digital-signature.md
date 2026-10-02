@@ -11,17 +11,19 @@ tags:
   - 암호화
   - 키관리
 level: 2
+kind: concept
 related:
   - public-key-cryptography
   - hash
   - certificate
   - git
   - jwt
+  - e-consent
 see_also:
   - https://developer.mozilla.org/en-US/docs/Glossary/Signature/Security
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

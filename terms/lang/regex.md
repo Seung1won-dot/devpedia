@@ -12,16 +12,18 @@ tags:
   - JavaScript
   - 검색
 level: 2
+kind: concept
 related:
   - shell
   - logging
   - de-identification
   - sql
+  - kmp
 see_also:
   - https://docs.python.org/3/library/re.html
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

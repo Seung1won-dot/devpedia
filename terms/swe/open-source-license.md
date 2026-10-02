@@ -11,6 +11,7 @@ tags:
   - 협업
   - 문서화
 level: 1
+kind: regulation
 related:
   - readme
   - package-manager

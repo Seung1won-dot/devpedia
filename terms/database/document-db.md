@@ -11,6 +11,7 @@ tags:
   - NoSQL
   - 데이터
 level: 2
+kind: tool
 related:
   - nosql
   - json

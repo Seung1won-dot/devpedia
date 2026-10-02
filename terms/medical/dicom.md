@@ -10,17 +10,20 @@ tags:
   - 표준
   - 의료영상
 level: 2
+kind: protocol
 related:
   - pacs
   - medical-image-segmentation
   - fhir
   - de-identification
   - object-storage
+  - imaging-modality
+  - wsi
 see_also:
   - https://www.dicomstandard.org/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

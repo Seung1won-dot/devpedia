@@ -11,17 +11,20 @@ tags:
   - 로깅
   - 서버운영
 level: 1
+kind: concept
 related:
   - monitoring
   - docker
   - systemd
   - cron
   - exception
+  - elk-stack
+  - log-level
 see_also:
   - https://12factor.net/logs
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

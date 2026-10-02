@@ -10,15 +10,17 @@ tags:
   - 서버운영
   - 리눅스운영
 level: 1
+kind: concept
 related:
   - on-premise-vs-cloud
   - port
   - ssh
   - homelab
   - api
+  - vps
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

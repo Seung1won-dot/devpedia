@@ -11,15 +11,17 @@ tags:
   - 컴파일
   - 개발도구
 level: 1
+kind: concept
 related:
   - static-dynamic-typing
   - bundler
   - typescript
   - cpu
   - process
+  - jit
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의

@@ -1,28 +1,31 @@
 ---
 id: cache
-term: 캐시(Redis)
+term: 캐시
 aliases:
   - Cache
   - 캐시
   - 캐싱
-  - 레디스
 category: backend
 tags:
   - 캐시
   - 성능
   - 메모리
+  - Redis
 level: 2
+kind: concept
 related:
   - cache-memory
   - key-value-store
   - cdn
   - session-auth
   - rate-limit
+  - lru-cache
+  - bloom-filter
 see_also:
   - https://redis.io/docs/latest/
 status: review
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-10-02
 ---
 
 ## 한 줄 정의
