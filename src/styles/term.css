@@ -1,0 +1,437 @@
+/* ==========================================================================
+   용어 페이지 — 680px 문서 + 넓은 화면 sticky 목차
+   ========================================================================== */
+
+.termpage {
+  display: grid;
+  grid-template-columns: minmax(0, var(--prose-max));
+  justify-content: center;
+  gap: var(--space-16);
+}
+
+.termpage__aside {
+  display: none;
+}
+
+@media (min-width: 1120px) {
+  .termpage {
+    grid-template-columns: minmax(0, var(--prose-max)) 200px;
+  }
+  .termpage__aside {
+    display: block;
+  }
+}
+
+.doc {
+  min-width: 0;
+}
+
+.doc__head {
+  margin-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.doc__title {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.12;
+}
+
+.doc__aliases {
+  margin-top: var(--space-3);
+  color: var(--text-3);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.doc__meta {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  color: var(--text-2);
+  font-size: var(--text-sm);
+}
+
+.doc__meta .meter {
+  color: var(--text-2);
+}
+
+.doc__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-3);
+  opacity: 0.6;
+}
+
+.doc__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.doc__actions {
+  margin-top: var(--space-5);
+  display: flex;
+  gap: var(--space-1);
+  margin-left: -10px;
+}
+
+.doc__lead {
+  padding: var(--space-6) 0 var(--space-2);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.doc__lead strong {
+  font-weight: var(--weight-bold);
+  background: linear-gradient(transparent 62%, var(--mark-bg) 62%);
+}
+
+.doc__section {
+  margin-top: var(--space-12);
+  scroll-margin-top: calc(var(--header-h) + var(--space-6));
+}
+
+.doc__section:focus-visible {
+  outline-offset: 8px;
+}
+
+.doc__section > h2 {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-title);
+  line-height: var(--leading-tight);
+}
+
+.doc__missing {
+  margin-top: var(--space-3);
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+.doc__missing code {
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.doc__links {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.doc__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: var(--text-md);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 3px;
+}
+
+.doc__links a:hover {
+  text-decoration-color: currentColor;
+}
+
+.grid--related {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 560px) {
+  .grid--related {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.grid--related > li {
+  display: flex;
+}
+
+.grid--related .tcard {
+  flex: 1;
+}
+
+/* ---------- 본문 prose ---------- */
+
+.prose {
+  color: var(--text);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.prose > * + * {
+  margin-top: var(--space-4);
+}
+
+.prose p {
+  margin: 0;
+}
+
+.prose strong {
+  font-weight: var(--weight-semibold);
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 3px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+  margin: 0;
+}
+
+.prose li + li {
+  margin-top: var(--space-2);
+}
+
+.prose li::marker {
+  color: var(--text-3);
+}
+
+.prose :not(pre) > code {
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  font-size: 0.86em;
+  word-break: break-all;
+}
+
+.prose pre {
+  margin-left: 0;
+  margin-right: 0;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.65;
+  tab-size: 2;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.prose pre code {
+  font-size: inherit;
+  white-space: pre;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: var(--text-md);
+}
+
+.prose th,
+.prose td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  color: var(--text-2);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.prose blockquote {
+  margin: 0;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-2);
+}
+
+.prose--analogy {
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  font-size: var(--text-lg);
+  line-height: 1.75;
+}
+
+.prose--confusions ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose--confusions li {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.prose--confusions li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.75em;
+  width: 8px;
+  height: 1px;
+  background: var(--text-3);
+}
+
+/* ---------- 이전 / 다음 ---------- */
+
+.pager {
+  margin-top: var(--space-16);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.pager__link {
+  display: grid;
+  gap: 4px;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.pager__link:hover {
+  background: var(--surface-1);
+  border-color: var(--line-strong);
+}
+
+.pager__link--next {
+  text-align: right;
+  grid-column: 2;
+}
+
+.pager__dir {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+}
+
+.pager__link--next .pager__dir {
+  justify-content: flex-end;
+}
+
+.pager__term {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-md);
+}
+
+/* ---------- 문서 꼬리 ---------- */
+
+.doc__foot {
+  margin-top: var(--space-12);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-3);
+  color: var(--text-3);
+  font-size: var(--text-sm);
+}
+
+.doc__status {
+  line-height: 1.6;
+}
+
+.doc__footmeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+}
+
+.doc__footmeta code {
+  font-size: 12px;
+}
+
+.doc__footmeta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-2);
+  border-radius: 4px;
+}
+
+.doc__footmeta a:hover {
+  color: var(--accent);
+}
+
+/* ---------- 목차 ---------- */
+
+.toc {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-10));
+  padding-top: var(--space-12);
+}
+
+.toc__title {
+  margin-bottom: var(--space-3);
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.toc__list {
+  display: grid;
+  gap: 2px;
+  border-left: 1px solid var(--line);
+}
+
+.toc__link {
+  display: block;
+  width: 100%;
+  margin-left: -1px;
+  padding: 6px 0 6px var(--space-3);
+  border: 0;
+  border-left: 1px solid transparent;
+  background: none;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  text-align: left;
+  line-height: 1.4;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.toc__link:hover {
+  color: var(--text);
+}
+
+.toc__link[aria-current='location'] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.doc__more {
+  margin-top: var(--space-3);
+}

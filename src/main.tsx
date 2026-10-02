@@ -5,6 +5,7 @@ import { UpdatePrompt } from './components/UpdatePrompt'
 import './styles/fonts/pretendard.css'
 import './styles/tokens.css'
 import './styles/base.css'
+import './styles/term.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
