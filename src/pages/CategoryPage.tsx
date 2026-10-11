@@ -11,6 +11,7 @@ import { FilterBar } from '../components/FilterBar'
 import { TermCard } from '../components/TermCard'
 import { PreviewPanel } from '../components/PreviewPanel'
 import { EmptyState } from '../components/EmptyState'
+import { SectionHead } from '../components/SectionHead'
 
 const PREVIEW_MQ = '(min-width: 1280px)'
 
@@ -75,18 +76,22 @@ export function CategoryPage({ ctx, code, preview }: { ctx: PageContext; code: s
   return (
     <div className="container page">
       <Breadcrumb items={[{ label: '홈', href: toHash({ kind: 'home' }) }, { label: cat.name }]} />
-      <header className="pagehead pagehead--cat">
-        <h1 className="pagehead__title">
-          <span className="pagehead__icon" aria-hidden="true">
-            {cat.icon}
-          </span>
-          {cat.name}
-        </h1>
-        <p className="pagehead__desc">{cat.description}</p>
-        <p className="pagehead__meta">
-          {scoped.length}개 용어 · {LEVEL_LABEL[1]} {counts[1]} · {LEVEL_LABEL[2]} {counts[2]} · {LEVEL_LABEL[3]} {counts[3]}
-        </p>
-      </header>
+      <SectionHead
+        level={1}
+        size="lg"
+        className="sechead--page"
+        eyebrow={cat.group ?? '분야'}
+        title={
+          <>
+            <span className="sechead__icon" aria-hidden="true">
+              {cat.icon}
+            </span>
+            {cat.name}
+          </>
+        }
+        lead={cat.description}
+        aside={`${scoped.length}개 용어 · ${LEVEL_LABEL[1]} ${counts[1]} · ${LEVEL_LABEL[2]} ${counts[2]} · ${LEVEL_LABEL[3]} ${counts[3]}`}
+      />
 
       <FilterBar
         level={level}

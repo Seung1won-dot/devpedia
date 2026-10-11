@@ -100,13 +100,20 @@ export function FilterBar({ level, onLevel, levelCounts, total, tags, tag, onTag
   return (
     <div className="filterbar" ref={barRef}>
       <div className="filterbar__row">
-        <div className="seg" role="group" aria-label="난이도">
-          <button type="button" aria-pressed={level === null} onClick={() => onLevel(null)}>
-            전체 <span className="seg__count">{total}</span>
+        <div className="tabs" role="group" aria-label="난이도">
+          <button type="button" className="tab" aria-pressed={level === null} onClick={() => onLevel(null)}>
+            전체 <span className="tab__count">{total}</span>
           </button>
           {LEVELS.map((l) => (
-            <button key={l} type="button" aria-pressed={level === l} onClick={() => onLevel(level === l ? null : l)} disabled={levelCounts[l] === 0}>
-              {LEVEL_LABEL[l]} <span className="seg__count">{levelCounts[l]}</span>
+            <button
+              key={l}
+              type="button"
+              className="tab"
+              aria-pressed={level === l}
+              onClick={() => onLevel(level === l ? null : l)}
+              disabled={levelCounts[l] === 0}
+            >
+              {LEVEL_LABEL[l]} <span className="tab__count">{levelCounts[l]}</span>
             </button>
           ))}
         </div>

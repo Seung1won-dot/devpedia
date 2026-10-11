@@ -83,50 +83,6 @@
   }
 }
 
-.seg {
-  display: inline-flex;
-  padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface-1);
-}
-
-.seg button {
-  height: 30px;
-  padding: 0 10px;
-  border: 0;
-  border-radius: 7px;
-  background: transparent;
-  color: var(--text-2);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  white-space: nowrap;
-  transition:
-    background var(--dur-fast) var(--ease),
-    color var(--dur-fast) var(--ease);
-}
-
-.seg button:hover:not(:disabled) {
-  color: var(--text);
-}
-
-.seg button[aria-pressed='true'] {
-  background: var(--surface-3);
-  color: var(--text);
-}
-
-.seg button:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
-.seg__count {
-  margin-left: 2px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-3);
-}
-
 .chip--ghost {
   border-style: dashed;
 }
@@ -385,10 +341,10 @@
   .filterbar__count {
     display: none;
   }
-  .seg button {
+  .tab {
     padding: 0 8px;
   }
-  .seg__count {
+  .tab__count {
     display: none;
   }
   /* 첫 글자 머리글이 섹션마다 있으니 좁은 화면에선 빠른 이동 줄을 숨긴다 */

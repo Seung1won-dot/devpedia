@@ -5,24 +5,31 @@
 .hero {
   padding: var(--space-20) 0 var(--space-16);
   border-bottom: 1px solid var(--line);
-  background:
-    linear-gradient(to bottom, transparent, var(--bg)),
-    radial-gradient(ellipse 60% 80% at 15% 0%, var(--surface-1), transparent 70%);
+  /* 위쪽 가운데에서 번지는 오렌지 10% 발광 하나. 영상·입자 배경은 쓰지 않는다 */
+  background: radial-gradient(ellipse 70% 70% at 50% -20%, var(--accent-soft), transparent 70%);
 }
 
 .hero__eyebrow {
   color: var(--accent);
-  font-size: var(--text-sm);
+  font-size: 16px;
   font-weight: var(--weight-semibold);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
 .hero__title {
-  margin-top: var(--space-3);
-  font-size: clamp(36px, 6vw, 60px);
-  font-weight: var(--weight-bold);
+  margin-top: var(--space-4);
+  width: fit-content;
+  padding-bottom: 0.06em; /* 그라데이션 클립이 받침을 자르지 않게 */
+  font-size: clamp(40px, 6.5vw, 72px);
+  font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display);
-  line-height: 1.08;
+  line-height: 1.05;
+  /* 흰색이 아래로 갈수록 살짝 오렌지로 물드는 제목 */
+  background: linear-gradient(180deg, var(--text) 30%, var(--accent-strong) 170%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .hero__lead {
@@ -34,7 +41,7 @@
 }
 
 .hero__search {
-  margin-top: var(--space-8);
+  margin-top: var(--space-10);
   width: 100%;
   max-width: 640px;
   height: 60px;
@@ -43,7 +50,7 @@
   gap: var(--space-3);
   padding: 0 var(--space-4) 0 var(--space-5);
   border: 1px solid var(--line-strong);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--surface-1);
   color: var(--text-3);
   text-align: left;
@@ -113,18 +120,19 @@
 .today {
   display: grid;
   gap: var(--space-2);
-  padding: var(--space-8) var(--space-8) var(--space-6);
-  border: 1px solid var(--line);
+  padding: var(--space-8) var(--space-8) var(--space-7);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  background: var(--surface-1);
-  transition:
-    background var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
+  /* 유리 카드 + 왼쪽 위 오렌지 발광 */
+  background:
+    radial-gradient(ellipse 60% 70% at 0% 0%, var(--accent-soft), transparent 70%),
+    var(--glass-bg),
+    var(--surface-1);
+  transition: border-color var(--dur-color) var(--ease-out);
 }
 
 .today:hover {
-  background: var(--surface-2);
-  border-color: var(--line-strong);
+  border-color: var(--accent-line);
 }
 
 .today:focus-visible {
@@ -146,9 +154,17 @@
   font-size: var(--text-sm);
 }
 
+/* 카드 안 라벨: 오렌지 한 줄 (해커톤 카드의 ZERO-BASE 식 라벨) */
+.today__cat {
+  color: var(--accent);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+}
+
 .today__term {
   margin-top: var(--space-3);
-  font-size: clamp(30px, 4vw, 40px);
+  font-size: clamp(28px, 3.5vw, 36px);
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-title);
   line-height: 1.15;
@@ -209,13 +225,13 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: var(--space-3) var(--space-3);
-  padding: var(--space-5);
+  padding: var(--space-6);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--surface-1);
   transition:
-    background var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
+    background var(--dur-color) var(--ease-out),
+    border-color var(--dur-color) var(--ease-out);
 }
 
 .cattile:hover {
@@ -243,7 +259,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 .cattile__link:focus-visible {

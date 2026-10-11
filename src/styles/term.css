@@ -313,7 +313,7 @@
   gap: 4px;
   padding: var(--space-4) var(--space-5);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition:
     background var(--dur-fast) var(--ease),
     border-color var(--dur-fast) var(--ease);
