@@ -645,15 +645,15 @@ kbd {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   min-height: 148px;
-  padding: var(--space-5);
+  padding: var(--space-6);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--surface-1);
   transition:
-    background var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
+    background var(--dur-color) var(--ease-out),
+    border-color var(--dur-color) var(--ease-out);
 }
 
 .tcard:hover {
@@ -663,11 +663,11 @@ kbd {
 
 .tcard[aria-current='true'] {
   border-color: var(--accent-line);
-  background: var(--surface-2);
+  background: var(--accent-soft);
 }
 
 .tcard:focus-visible {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 .tcard__head {
@@ -723,8 +723,8 @@ kbd {
 
 .tcard--compact {
   min-height: 0;
-  padding: var(--space-4);
-  gap: 6px;
+  padding: var(--space-5);
+  gap: var(--space-2);
 }
 
 .tcard--compact .tcard__term {
@@ -750,7 +750,7 @@ kbd {
   height: 30px;
   padding: 0 12px;
   border: 1px solid var(--line-strong);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-2);
   font-size: var(--text-sm);
@@ -767,9 +767,10 @@ kbd {
 }
 
 .chip[aria-pressed='true'] {
-  background: var(--accent-soft);
-  border-color: var(--accent-line);
-  color: var(--accent);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: var(--weight-semibold);
 }
 
 .chip__count {
@@ -787,7 +788,7 @@ kbd {
   align-items: center;
   height: 24px;
   padding: 0 9px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: var(--surface-2);
   color: var(--text-2);
   font-size: var(--text-sm);
@@ -1057,4 +1058,148 @@ kbd {
 .catmenu__group + .catmenu__group {
   padding-top: var(--space-3);
   border-top: 1px solid var(--line);
+}
+
+/* ---------- 섹션 헤더: 라벨 → 제목 → 설명 (모든 섹션이 같은 리듬) ---------- */
+
+.sechead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.sechead__main {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.sechead__eyebrow {
+  color: var(--accent);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.sechead__title {
+  font-size: clamp(24px, 3vw, 28px);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-title);
+  line-height: 1.25;
+}
+
+/* 제목 속 한 단어만 강조색 */
+.sechead__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sechead__lead {
+  max-width: 56ch;
+  color: var(--text-2);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.sechead__aside {
+  flex: none;
+  padding-bottom: 4px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.sechead--lg .sechead__title {
+  font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.sechead--lg .sechead__lead {
+  font-size: var(--text-lg);
+}
+
+.sechead--page {
+  margin: var(--space-6) 0 var(--space-10);
+}
+
+.sechead__icon {
+  margin-right: 12px;
+  font-size: 0.85em;
+}
+
+/* ---------- 밑줄 탭 ---------- */
+
+.tabs {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.tab {
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.tab:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.tab[aria-pressed='true'] {
+  color: var(--accent);
+  font-weight: var(--weight-bold);
+  border-bottom-color: var(--accent);
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.tab__count {
+  margin-left: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--weight-regular);
+  color: var(--text-3);
+}
+
+.tab[aria-pressed='true'] .tab__count {
+  color: inherit;
+}
+
+/* ---------- 유리 카드 (강조용) ---------- */
+
+.card--glass {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg), var(--surface-1);
+}
+
+/* ---------- 섹션 진입 페이드인 (Reveal 컴포넌트) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
 }

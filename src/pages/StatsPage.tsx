@@ -5,6 +5,7 @@ import { toHash } from '../lib/route'
 import { LEVEL_LABEL, LEVELS } from '../lib/terms'
 import { KIND_LABEL } from '../lib/kind'
 import { Breadcrumb } from '../components/Breadcrumb'
+import { SectionHead } from '../components/SectionHead'
 
 const MIN_PER_CATEGORY = 10
 const KINDS: Kind[] = ['concept', 'tool', 'protocol', 'pattern', 'metric', 'regulation']
@@ -38,12 +39,19 @@ export function StatsPage({ ctx }: { ctx: PageContext }) {
   return (
     <div className="container page stats">
       <Breadcrumb items={[{ label: '홈', href: toHash({ kind: 'home' }) }, { label: '통계' }]} />
-      <header className="pagehead pagehead--cat">
-        <h1 className="pagehead__title">통계</h1>
-        <p className="pagehead__meta">
-          빌드 <time dateTime={bundle.generatedAt}>{generated.toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' })}</time> 기준
-        </p>
-      </header>
+      <SectionHead
+        level={1}
+        size="lg"
+        className="sechead--page"
+        eyebrow="숫자로 보는 Devpedia"
+        title="통계"
+        lead="카드 수·분야 커버·관계 밀도처럼 사전이 얼마나 채워졌는지를 빌드 시점 기준으로 보여 줍니다."
+        aside={
+          <>
+            빌드 <time dateTime={bundle.generatedAt}>{generated.toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' })}</time> 기준
+          </>
+        }
+      />
 
       <section className="kpis" aria-label="핵심 지표">
         <div className="kpi">

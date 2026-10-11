@@ -16,22 +16,24 @@
 
 .kpi {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   align-content: start;
-  padding: var(--space-5);
-  border: 1px solid var(--line);
+  padding: var(--space-6);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  background: var(--surface-1);
+  background: var(--glass-bg), var(--surface-1);
 }
 
 .kpi__label {
-  color: var(--text-3);
+  color: var(--accent);
   font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.01em;
 }
 
 .kpi__value {
-  font-size: 32px;
-  font-weight: var(--weight-bold);
+  font-size: 36px;
+  font-weight: var(--weight-black);
   letter-spacing: var(--tracking-title);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;

@@ -7,6 +7,8 @@ import { groupCategories } from '../lib/groups'
 import { TermCard } from '../components/TermCard'
 import { LevelMeter } from '../components/LevelMeter'
 import { Icon } from '../components/Icon'
+import { SectionHead } from '../components/SectionHead'
+import { Reveal } from '../components/Reveal'
 
 const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)
 
@@ -43,7 +45,7 @@ function CategoryTile({ cat, terms }: { cat: Category; terms: Term[] }) {
 function TermRail({ title, terms, ctx, more }: { title: string; terms: Term[]; ctx: PageContext; more?: { href: string; label: string } }) {
   const hid = useId()
   return (
-    <section className="section" aria-labelledby={hid}>
+    <Reveal className="section" aria-labelledby={hid}>
       <div className="section__head">
         <h2 className="section__title" id={hid}>
           {title}
@@ -61,7 +63,7 @@ function TermRail({ title, terms, ctx, more }: { title: string; terms: Term[]; c
           </li>
         ))}
       </ul>
-    </section>
+    </Reveal>
   )
 }
 
@@ -110,19 +112,17 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
 
       <div className="container home__body">
         {today && (
-          <section className="section" aria-labelledby="h-today">
-            <div className="section__head">
-              <h2 className="section__title" id="h-today">
-                오늘의 용어
-              </h2>
-              <span className="section__note">
-                {new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}
-              </span>
-            </div>
+          <Reveal className="section" aria-labelledby="h-today">
+            <SectionHead
+              id="h-today"
+              eyebrow={new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}
+              title="오늘의 용어"
+              aside="매일 자정에 바뀝니다"
+            />
             <a className="today" href={toHash({ kind: 'term', id: today.id })}>
               <span className="today__meta">
                 {todayCat && (
-                  <span>
+                  <span className="today__cat">
                     <span aria-hidden="true">{todayCat.icon}</span> {todayCat.name}
                   </span>
                 )}
@@ -135,7 +135,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
                 읽어 보기 <Icon name="arrow-right" size={16} />
               </span>
             </a>
-          </section>
+          </Reveal>
         )}
 
         {recentViewed.length > 0 && <TermRail title="최근 본 용어" terms={recentViewed} ctx={ctx} />}
@@ -148,13 +148,18 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
           />
         )}
 
-        <section className="section" aria-labelledby="h-cats">
-          <div className="section__head">
-            <h2 className="section__title" id="h-cats">
-              분야
-            </h2>
-            <span className="section__note">{categories.length}개</span>
-          </div>
+        <Reveal className="section" aria-label="분야">
+          <SectionHead
+            size="lg"
+            eyebrow="분야"
+            title={
+              <>
+                {categories.length}개 분야를 <em>한 화면</em>에
+              </>
+            }
+            lead="CS 기초부터 서버·인프라, AI, 의료 IT까지. 그룹별로 훑어보고 막대로 난이도 분포를 가늠하세요."
+            aside={`${stats.total}개 용어`}
+          />
           {groupCategories(categories).map((g) => (
             <div key={g.name} className="catgroup">
               <h3 className="catgroup__name">
@@ -171,7 +176,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
           <p className="catgrid__legend" aria-hidden="true">
             <span className="mix__seg mix__seg--1" /> 기초 <span className="mix__seg mix__seg--2" /> 중급 <span className="mix__seg mix__seg--3" /> 심화
           </p>
-        </section>
+        </Reveal>
 
         <TermRail title="최근 추가된 용어" terms={added} ctx={ctx} more={{ href: toHash({ kind: 'stats' }), label: '통계' }} />
       </div>

@@ -5,6 +5,7 @@ import { sortTerms } from '../lib/terms'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { TermCard } from '../components/TermCard'
 import { EmptyState } from '../components/EmptyState'
+import { SectionHead } from '../components/SectionHead'
 
 export function StarredPage({ ctx }: { ctx: PageContext }) {
   const { data, stars } = ctx
@@ -12,11 +13,15 @@ export function StarredPage({ ctx }: { ctx: PageContext }) {
   return (
     <div className="container page">
       <Breadcrumb items={[{ label: '홈', href: toHash({ kind: 'home' }) }, { label: '별표' }]} />
-      <header className="pagehead pagehead--cat">
-        <h1 className="pagehead__title">별표한 용어</h1>
-        <p className="pagehead__desc">복습할 용어 목록. 이 기기의 브라우저에만 저장돼요.</p>
-        {terms.length > 0 && <p className="pagehead__meta">{terms.length}개</p>}
-      </header>
+      <SectionHead
+        level={1}
+        size="lg"
+        className="sechead--page"
+        eyebrow="복습"
+        title="별표한 용어"
+        lead="복습할 용어 목록. 이 기기의 브라우저에만 저장돼요."
+        aside={terms.length > 0 ? `${terms.length}개` : undefined}
+      />
       {terms.length === 0 ? (
         <EmptyState
           icon="star"
