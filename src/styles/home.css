@@ -10,12 +10,50 @@
   border-bottom: 1px solid var(--line);
 }
 
-/* 히어로 라벨: 알약 배지 대신 작은 강조색 글자 한 줄 */
+/* 위쪽 가운데에서 번지는 오렌지 발광 하나 + 아래로 사라지는 hairline 격자. 영상·입자 배경은 쓰지 않는다 */
+.hero__glow,
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__glow {
+  background: radial-gradient(ellipse 70% 75% at 50% -25%, var(--accent-soft), transparent 70%);
+}
+
+.hero__grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+  opacity: 0.55;
+}
+
 .hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 30px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
   color: var(--accent);
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   letter-spacing: -0.005em;
+}
+
+.hero__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .hero__title {
@@ -32,18 +70,29 @@
   white-space: nowrap;
 }
 
-/* 제목은 단색. 강조 단어 하나만 강조색 (그라데이션 글자 없음) */
+/* 글자 조각마다 같은 세로 그라데이션: 흰색이 아래로 갈수록 살짝 오렌지로 물든다 */
 .hero__char {
   display: inline-block;
+  padding-bottom: 0.06em; /* 그라데이션 클립이 받침을 자르지 않게 */
+  margin-bottom: -0.06em;
+  background: linear-gradient(180deg, var(--text) 35%, var(--accent-strong) 190%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
+/* 제목 속 한 단어만 강조색 */
 .hero__word--accent .hero__char {
-  color: var(--accent);
+  background: linear-gradient(180deg, var(--accent-strong) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* 인트로(anime.js)가 돌기 전 한 프레임: 글자·설명·검색창을 숨겨 둔다. 스크립트가 늦으면 lib/intro.ts 가 바로 푼다 */
 .hero.is-intro .hero__char,
-.hero.is-intro [data-intro] {
+.hero.is-intro [data-intro],
+.hero.is-intro .hero__glow {
   opacity: 0;
 }
 
@@ -105,6 +154,9 @@
 @media (max-width: 560px) {
   .hero {
     padding: var(--space-16) 0 var(--space-12);
+  }
+  .hero__grid {
+    background-size: 40px 40px;
   }
   .hero__keys {
     display: none;
@@ -290,6 +342,25 @@
 .cattile__link:focus-visible::after {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.cattile__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  font-size: 19px;
+}
+
+.cattile:hover .cattile__icon {
+  background: var(--accent-soft);
+}
+
+.cattile__icon {
+  transition: background var(--dur-color) var(--ease-out);
 }
 
 .cattile__count {

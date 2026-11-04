@@ -84,6 +84,7 @@ export function CategoryMenu({ categories, counts, activeCode }: Props) {
                       aria-current={activeCode === c.code ? 'page' : undefined}
                       onClick={() => setOpen(false)}
                     >
+                      <span className="catmenu__icon" aria-hidden="true">{c.icon}</span>
                       <span className="catmenu__name">{c.name}</span>
                       <span className="catmenu__count">{counts[c.code] ?? 0}</span>
                     </a>

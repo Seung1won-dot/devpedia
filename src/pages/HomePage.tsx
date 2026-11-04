@@ -70,6 +70,9 @@ function CategoryTile({ cat, terms }: { cat: Category; terms: Term[] }) {
   return (
     <m.li className="cattile" variants={TILE}>
       <a className="cattile__link" href={toHash({ kind: 'category', code: cat.code })}>
+        <span className="cattile__icon" aria-hidden="true">
+          {cat.icon}
+        </span>
         <span className="cattile__name">{cat.name}</span>
       </a>
       <span className="cattile__count">{terms.length}</span>
@@ -137,8 +140,11 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
   return (
     <div className="home">
       <section className="hero" ref={heroRef}>
+        <span className="hero__glow" aria-hidden="true" />
+        <span className="hero__grid" aria-hidden="true" />
         <div className="container hero__inner">
           <p className="hero__eyebrow" data-intro>
+            <span className="hero__dot" aria-hidden="true" />
             IT 용어 사전
           </p>
           <h1 className="hero__title">
@@ -175,7 +181,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
               <span className="today__meta">
                 {todayCat && (
                   <span className="today__cat">
-                    {todayCat.name}
+                    <span aria-hidden="true">{todayCat.icon}</span> {todayCat.name}
                   </span>
                 )}
                 <LevelMeter level={today.level} showLabel />
@@ -207,7 +213,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
             eyebrow="분야"
             title={
               <>
-                {categories.length}개 분야를 한 화면에
+                {categories.length}개 분야를 <em>한 화면</em>에
               </>
             }
             lead="CS 기초부터 서버·인프라, AI, 의료 IT까지. 그룹별로 훑어보고 막대로 난이도 분포를 가늠하세요."
