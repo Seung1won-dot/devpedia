@@ -1,4 +1,6 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type RefObject } from 'react'
+import { m } from 'motion/react'
+import { SPRING } from '../lib/motion'
 import type { Level } from '../types'
 import { LEVEL_LABEL, LEVELS, SORT_LABEL, type SortMode } from '../lib/terms'
 import { Icon } from './Icon'
@@ -19,6 +21,41 @@ interface Props {
   resultCount: number
   /** 가나다순일 때 빠른 이동 인덱스 */
   index?: { keys: string[]; onJump: (key: string) => void }
+}
+
+/**
+ * 밑줄 탭의 오렌지 밑줄 하나가 고른 탭으로 미끄러져 간다 (Motion 스프링).
+ * 위치는 눌린 탭(aria-pressed)의 offsetLeft/offsetWidth 로 잰다. 처음 그릴 때는 움직이지 않는다.
+ */
+function TabInk({ groupRef, activeKey }: { groupRef: RefObject<HTMLDivElement | null>; activeKey: string }) {
+  const [box, setBox] = useState<{ x: number; w: number } | null>(null)
+  const first = useRef(true)
+  useLayoutEffect(() => {
+    const group = groupRef.current
+    if (!group) return
+    const measure = () => {
+      const el = group.querySelector<HTMLElement>('.tab[aria-pressed="true"]')
+      setBox(el ? { x: el.offsetLeft, w: el.offsetWidth } : null)
+    }
+    measure()
+    if (typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(measure)
+    ro.observe(group)
+    return () => ro.disconnect()
+  }, [groupRef, activeKey])
+  useEffect(() => {
+    if (box) first.current = false
+  }, [box])
+  if (!box) return null
+  return (
+    <m.span
+      className="tabs__ink"
+      aria-hidden="true"
+      initial={false}
+      animate={{ x: box.x, width: box.w }}
+      transition={first.current ? { duration: 0 } : SPRING}
+    />
+  )
 }
 
 function TagMore({ tags, tag, onTag }: { tags: { tag: string; count: number }[]; tag: string | null; onTag: (t: string | null) => void }) {
@@ -91,6 +128,7 @@ function useStickHeight() {
 
 export function FilterBar({ level, onLevel, levelCounts, total, tags, tag, onTag, sort, onSort, resultCount, index }: Props) {
   const barRef = useStickHeight()
+  const tabsRef = useRef<HTMLDivElement | null>(null)
   const top = tags.slice(0, TOP_TAGS)
   // 고른 태그가 상위 8개 밖이면 앞에 붙여 보이게 한다
   const selectedOutside = tag && !top.some((t) => t.tag === tag) ? tags.find((t) => t.tag === tag) : undefined
@@ -100,7 +138,8 @@ export function FilterBar({ level, onLevel, levelCounts, total, tags, tag, onTag
   return (
     <div className="filterbar" ref={barRef}>
       <div className="filterbar__row">
-        <div className="tabs" role="group" aria-label="난이도">
+        <div className="tabs tabs--ink" role="group" aria-label="난이도" ref={tabsRef}>
+          <TabInk groupRef={tabsRef} activeKey={String(level)} />
           <button type="button" className="tab" aria-pressed={level === null} onClick={() => onLevel(null)}>
             전체 <span className="tab__count">{total}</span>
           </button>

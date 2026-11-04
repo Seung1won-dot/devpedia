@@ -3,6 +3,8 @@ import type { Category } from '../types'
 import { toHash } from '../lib/route'
 import { groupCategories } from '../lib/groups'
 import { Icon } from './Icon'
+import { m } from 'motion/react'
+import { SPRING } from '../lib/motion'
 
 interface Props {
   categories: Category[]
@@ -59,7 +61,15 @@ export function CategoryMenu({ categories, counts, activeCode }: Props) {
         <span className="hbtn__label">분야</span>
         <Icon name="chevron-down" size={14} className="hbtn__chev" />
       </button>
-      <div id={panelId} className="catmenu__panel" hidden={!open}>
+      {/* 열릴 때만 짧게 떨어지며 나타난다 (닫힘은 hidden 으로 즉시 — 포커스 이동과 다투지 않게) */}
+      <m.div
+        id={panelId}
+        className="catmenu__panel"
+        hidden={!open}
+        initial={false}
+        animate={open ? { opacity: 1, y: 0 } : { opacity: 0, y: -6 }}
+        transition={open ? SPRING : { duration: 0 }}
+      >
         <p className="catmenu__title">분야 {categories.length}개</p>
         <div className="catmenu__groups">
           {groupCategories(categories).map((g) => (
@@ -84,7 +94,7 @@ export function CategoryMenu({ categories, counts, activeCode }: Props) {
             </section>
           ))}
         </div>
-      </div>
+      </m.div>
     </div>
   )
 }

@@ -6,25 +6,16 @@ import { LEVEL_LABEL, LEVELS } from '../lib/terms'
 import { KIND_LABEL } from '../lib/kind'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { SectionHead } from '../components/SectionHead'
+import { BarChart, type BarGroup } from '../components/BarChart'
+import { groupCategories } from '../lib/groups'
 
 const MIN_PER_CATEGORY = 10
 const KINDS: Kind[] = ['concept', 'tool', 'protocol', 'pattern', 'metric', 'regulation']
-
-function Bar({ value, max, label, testId }: { value: number; max: number; label: string; testId?: string }) {
-  const pct = max > 0 ? Math.round((value / max) * 100) : 0
-  return (
-    <span className="bar" role="meter" aria-valuemin={0} aria-valuemax={max} aria-valuenow={value} aria-label={label} data-testid={testId}>
-      <span className="bar__fill" style={{ width: `${pct}%` }} />
-    </span>
-  )
-}
 
 /** 통계 (스펙 F-11). 막대는 한 가지 색이고, 식별은 행 라벨(아이콘·이름)이 맡는다. */
 export function StatsPage({ ctx }: { ctx: PageContext }) {
   const { bundle } = ctx.data
   const { stats, categories, terms } = bundle
-  const maxCat = Math.max(1, ...Object.values(stats.byCategory))
-  const maxLevel = Math.max(1, ...LEVELS.map((l) => stats.byLevel[l]))
   const covered = categories.filter((c) => (stats.byCategory[c.code] ?? 0) >= MIN_PER_CATEGORY).length
   const starredCount = terms.filter((t) => ctx.stars.has(t.id)).length
   const byKind = useMemo(() => {
@@ -32,7 +23,28 @@ export function StatsPage({ ctx }: { ctx: PageContext }) {
     for (const t of terms) m[t.kind]++
     return m
   }, [terms])
-  const maxKind = Math.max(1, ...Object.values(byKind))
+  const catGroups: BarGroup[] = useMemo(
+    () =>
+      groupCategories(categories).map((g) => ({
+        name: g.name,
+        rows: g.categories.map((c) => {
+          const n = stats.byCategory[c.code] ?? 0
+          return {
+            key: c.code,
+            name: c.name,
+            value: n,
+            href: toHash({ kind: 'category', code: c.code }),
+            flag: n < MIN_PER_CATEGORY,
+            label: (
+              <>
+                <span aria-hidden="true">{c.icon}</span> {c.name}
+              </>
+            ),
+          }
+        }),
+      })),
+    [categories, stats.byCategory],
+  )
   const generated = new Date(bundle.generatedAt)
   const published = stats.total ? Math.round((stats.byStatus.published / stats.total) * 100) : 0
 
@@ -96,45 +108,20 @@ export function StatsPage({ ctx }: { ctx: PageContext }) {
           <h2 className="stats__h" id="h-bycat">
             분야별 카드 수
           </h2>
-          <ul className="bars">
-            {categories.map((c) => {
-              const n = stats.byCategory[c.code] ?? 0
-              return (
-                <li key={c.code} className="bars__row">
-                  <a className="bars__label" href={toHash({ kind: 'category', code: c.code })}>
-                    <span aria-hidden="true">{c.icon}</span> {c.name}
-                  </a>
-                  <Bar value={n} max={maxCat} label={`${c.name} ${n}개`} testId="stats-cat-bar" />
-                  <span className={`bars__value${n < MIN_PER_CATEGORY ? ' bars__value--low' : ''}`}>{n}</span>
-                </li>
-              )
-            })}
-          </ul>
+          <p className="stats__sub">그룹별로 묶었습니다. 막대에 올리면 전체 대비 비율이 보이고, 이름을 누르면 그 분야로 갑니다.</p>
+          <BarChart groups={catGroups} total={stats.total} testId="stats-cat-bar" axis />
         </section>
 
         <section className="stats__card" aria-labelledby="h-level">
           <h2 className="stats__h" id="h-level">
             난이도
           </h2>
-          <ul className="bars">
-            {LEVELS.map((l) => (
-              <li key={l} className="bars__row">
-                <span className="bars__label">{LEVEL_LABEL[l]}</span>
-                <Bar value={stats.byLevel[l]} max={maxLevel} label={`${LEVEL_LABEL[l]} ${stats.byLevel[l]}개`} />
-                <span className="bars__value">{stats.byLevel[l]}</span>
-              </li>
-            ))}
-          </ul>
+          <BarChart
+            groups={[{ name: '난이도', rows: LEVELS.map((l) => ({ key: String(l), name: LEVEL_LABEL[l], label: LEVEL_LABEL[l], value: stats.byLevel[l] })) }]}
+            total={stats.total}
+          />
           <h2 className="stats__h stats__h--gap">카드 종류</h2>
-          <ul className="bars">
-            {KINDS.map((k) => (
-              <li key={k} className="bars__row">
-                <span className="bars__label">{KIND_LABEL[k]}</span>
-                <Bar value={byKind[k]} max={maxKind} label={`${KIND_LABEL[k]} ${byKind[k]}개`} />
-                <span className="bars__value">{byKind[k]}</span>
-              </li>
-            ))}
-          </ul>
+          <BarChart groups={[{ name: '카드 종류', rows: KINDS.map((k) => ({ key: k, name: KIND_LABEL[k], label: KIND_LABEL[k], value: byKind[k] })) }]} total={stats.total} />
         </section>
 
         {stats.recent.length > 0 && (

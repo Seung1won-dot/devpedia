@@ -168,7 +168,8 @@ kbd {
 }
 
 .page-enter {
-  animation: page-in var(--dur) var(--ease) both;
+  /* 화면 전환은 App.tsx 의 Motion 이 맡는다 (투명도 + 6px 상승, 240ms) */
+  min-width: 0;
 }
 
 @keyframes page-in {
@@ -466,7 +467,6 @@ kbd {
   border-radius: var(--radius-lg);
   background: var(--surface-1);
   box-shadow: var(--shadow-pop);
-  animation: pop-in var(--dur-fast) var(--ease) both;
 }
 
 @media (max-width: 860px) {
@@ -594,6 +594,10 @@ kbd {
   height: 30px;
   padding: 0 10px;
   font-size: var(--text-sm);
+}
+
+.star__icon {
+  display: inline-flex;
 }
 
 .star[aria-pressed='true'] {
@@ -1169,6 +1173,25 @@ kbd {
   cursor: default;
 }
 
+/* 밑줄 하나가 고른 탭으로 미끄러진다 (FilterBar 의 TabInk, Motion). 탭 자체의 밑줄은 숨긴다 */
+.tabs--ink {
+  position: relative;
+}
+
+.tabs--ink .tab[aria-pressed='true'] {
+  border-bottom-color: transparent;
+}
+
+.tabs__ink {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
 .tab__count {
   margin-left: 3px;
   font-family: var(--font-mono);
@@ -1191,15 +1214,7 @@ kbd {
 
 /* ---------- 섹션 진입 페이드인 (Reveal 컴포넌트) ---------- */
 
+/* 진입 애니메이션은 Motion(whileInView)이 인라인 스타일로 맡는다. 여기엔 레이아웃만 둔다. */
 .reveal {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity var(--dur-reveal) var(--ease-out),
-    transform var(--dur-reveal) var(--ease-out);
-}
-
-.reveal.is-in {
-  opacity: 1;
-  transform: none;
+  min-width: 0;
 }

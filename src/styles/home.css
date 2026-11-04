@@ -3,33 +3,97 @@
    ========================================================================== */
 
 .hero {
-  padding: var(--space-20) 0 var(--space-16);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--space-24) 0 var(--space-20);
   border-bottom: 1px solid var(--line);
-  /* 위쪽 가운데에서 번지는 오렌지 10% 발광 하나. 영상·입자 배경은 쓰지 않는다 */
-  background: radial-gradient(ellipse 70% 70% at 50% -20%, var(--accent-soft), transparent 70%);
+}
+
+/* 위쪽 가운데에서 번지는 오렌지 발광 하나 + 아래로 사라지는 hairline 격자. 영상·입자 배경은 쓰지 않는다 */
+.hero__glow,
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__glow {
+  background: radial-gradient(ellipse 70% 75% at 50% -25%, var(--accent-soft), transparent 70%);
+}
+
+.hero__grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+  opacity: 0.55;
 }
 
 .hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 30px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
   color: var(--accent);
-  font-size: 16px;
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
+}
+
+.hero__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .hero__title {
-  margin-top: var(--space-4);
-  width: fit-content;
-  padding-bottom: 0.06em; /* 그라데이션 클립이 받침을 자르지 않게 */
-  font-size: clamp(40px, 6.5vw, 72px);
+  margin-top: var(--space-5);
+  font-size: clamp(40px, 6.5vw, 76px);
   font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display);
-  line-height: 1.05;
-  /* 흰색이 아래로 갈수록 살짝 오렌지로 물드는 제목 */
-  background: linear-gradient(180deg, var(--text) 30%, var(--accent-strong) 170%);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.hero__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 글자 조각마다 같은 세로 그라데이션: 흰색이 아래로 갈수록 살짝 오렌지로 물든다 */
+.hero__char {
+  display: inline-block;
+  padding-bottom: 0.06em; /* 그라데이션 클립이 받침을 자르지 않게 */
+  margin-bottom: -0.06em;
+  background: linear-gradient(180deg, var(--text) 35%, var(--accent-strong) 190%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/* 제목 속 한 단어만 강조색 */
+.hero__word--accent .hero__char {
+  background: linear-gradient(180deg, var(--accent-strong) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* 인트로(anime.js)가 돌기 전 한 프레임: 글자·설명·검색창을 숨겨 둔다. 스크립트가 늦으면 lib/intro.ts 가 바로 푼다 */
+.hero.is-intro .hero__char,
+.hero.is-intro [data-intro],
+.hero.is-intro .hero__glow {
+  opacity: 0;
 }
 
 .hero__lead {
@@ -42,6 +106,7 @@
 
 .hero__search {
   margin-top: var(--space-10);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset;
   width: 100%;
   max-width: 640px;
   height: 60px;
@@ -60,8 +125,13 @@
 }
 
 .hero__search:hover {
-  border-color: var(--line-focus);
+  border-color: var(--accent-line);
   background: var(--surface-2);
+}
+
+.hero__search:hover > svg,
+.hero__search:focus-visible > svg {
+  color: var(--accent);
 }
 
 .hero__placeholder {
@@ -83,7 +153,10 @@
 
 @media (max-width: 560px) {
   .hero {
-    padding: var(--space-12) 0 var(--space-10);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  .hero__grid {
+    background-size: 40px 40px;
   }
   .hero__keys {
     display: none;
@@ -283,7 +356,11 @@
 }
 
 .cattile:hover .cattile__icon {
-  background: var(--surface-3);
+  background: var(--accent-soft);
+}
+
+.cattile__icon {
+  transition: background var(--dur-color) var(--ease-out);
 }
 
 .cattile__count {
@@ -356,14 +433,14 @@
 /* ---------- 분야 그룹 ---------- */
 
 .catgroup + .catgroup {
-  margin-top: var(--space-8);
+  margin-top: var(--space-10);
 }
 
 .catgroup__name {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-2);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   color: var(--text-2);
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
@@ -374,4 +451,13 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: var(--weight-regular);
+}
+
+/* 그룹 이름 뒤로 이어지는 hairline — 다섯 그룹의 경계를 표시 */
+.catgroup__name::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  margin-left: var(--space-2);
+  background: var(--line);
 }

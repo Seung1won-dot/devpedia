@@ -1,36 +1,21 @@
-import { useEffect, useRef, type ComponentPropsWithoutRef } from 'react'
+import { m, type HTMLMotionProps } from 'motion/react'
+import { canObserve, REVEAL } from '../lib/motion'
+
+const HIDDEN = { opacity: 0, y: 12 }
+const SHOWN = { opacity: 1, y: 0 }
 
 /**
- * 뷰포트에 들어올 때 한 번 페이드인하는 <section>.
- * - 이미 화면 안이거나 위에 있는 요소(뒤로 가기 복원 등)는 즉시 보인다.
- * - IntersectionObserver 가 없거나(테스트 환경) 모션 축소 설정이면 애니메이션 없이 보인다.
+ * 뷰포트에 들어올 때 한 번 떠오르는 <section> (Motion whileInView).
+ * - 모션 축소 설정이면 MotionConfig(reducedMotion="user") 가 이동을 빼고 투명도만 바꾼다.
+ * - IntersectionObserver 가 없으면 바로 보인다.
  */
-export function Reveal({ className = '', children, ...rest }: ComponentPropsWithoutRef<'section'>) {
-  const ref = useRef<HTMLElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const show = () => el.classList.add('is-in')
-    const reduce = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (typeof IntersectionObserver === 'undefined' || reduce || el.getBoundingClientRect().top < window.innerHeight) {
-      show()
-      return
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          show()
-          io.disconnect()
-        }
-      },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
+export function Reveal({ className = '', children, ...rest }: HTMLMotionProps<'section'>) {
+  const view = canObserve()
+    ? { whileInView: SHOWN, viewport: { once: true, margin: '0px 0px -8% 0px' } }
+    : { animate: SHOWN }
   return (
-    <section ref={ref} className={`reveal${className ? ` ${className}` : ''}`} {...rest}>
+    <m.section className={`reveal${className ? ` ${className}` : ''}`} initial={HIDDEN} transition={REVEAL} {...view} {...rest}>
       {children}
-    </section>
+    </m.section>
   )
 }

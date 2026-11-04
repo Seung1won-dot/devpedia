@@ -84,7 +84,8 @@
   --radius-lg: 12px;
   --radius-pill: 999px;
 
-  /* ---- 모션: 호버는 빠르게, 색 전환은 느긋하게, 크기·그림자 변화는 쓰지 않는다 ---- */
+  /* ---- 모션: 호버는 빠르게, 색 전환은 느긋하게, 크기·그림자 변화는 쓰지 않는다.
+     JS 모션(Motion·anime.js)의 규칙과 공통값은 src/lib/motion.ts, docs/redesign/README.md "모션 규칙" ---- */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --dur-fast: 150ms;

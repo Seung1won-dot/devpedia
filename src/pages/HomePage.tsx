@@ -1,4 +1,5 @@
-import { useId, useMemo } from 'react'
+import { useId, useLayoutEffect, useMemo, useRef, type ReactNode } from 'react'
+import { m } from 'motion/react'
 import type { Category, Term } from '../types'
 import type { PageContext } from '../App'
 import { toHash } from '../lib/route'
@@ -9,6 +10,8 @@ import { LevelMeter } from '../components/LevelMeter'
 import { Icon } from '../components/Icon'
 import { SectionHead } from '../components/SectionHead'
 import { Reveal } from '../components/Reveal'
+import { canObserve, EASE_OUT } from '../lib/motion'
+import { playHeroIntro, shouldPlayIntro } from '../lib/intro'
 
 const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)
 
@@ -24,11 +27,48 @@ function LevelMix({ counts, total }: { counts: Record<1 | 2 | 3, number>; total:
   )
 }
 
+// 분야 타일: 그룹이 화면에 들어오면 타일이 순서대로 떠오른다 (그룹당 한 번)
+const TILE = { hidden: { opacity: 0, y: 8 }, shown: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE_OUT } } }
+const TILE_LIST = { hidden: {}, shown: { transition: { staggerChildren: 0.04 } } }
+
+function TileList({ children }: { children: ReactNode }) {
+  const view = canObserve() ? { whileInView: 'shown', viewport: { once: true, margin: '0px 0px -10% 0px' } } : { animate: 'shown' }
+  return (
+    <m.ul className="catgrid" variants={TILE_LIST} initial="hidden" {...view}>
+      {children}
+    </m.ul>
+  )
+}
+
+/** 제목을 단어 → 글자 조각으로 나눈다. 글자는 화면에만 쓰고, 스크린리더는 원문 한 줄을 읽는다. */
+function SplitTitle({ text, accent }: { text: string; accent?: string }) {
+  const words = text.split(' ')
+  return (
+    <>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
+        {words.map((w, wi) => (
+          <span key={wi}>
+            <span className={`hero__word${accent && w.startsWith(accent) ? ' hero__word--accent' : ''}`}>
+              {Array.from(w).map((ch, ci) => (
+                <span key={ci} className="hero__char">
+                  {ch}
+                </span>
+              ))}
+            </span>
+            {wi < words.length - 1 ? ' ' : null}
+          </span>
+        ))}
+      </span>
+    </>
+  )
+}
+
 function CategoryTile({ cat, terms }: { cat: Category; terms: Term[] }) {
   const counts = levelCounts(terms)
   const reps = representative(terms, 3)
   return (
-    <li className="cattile">
+    <m.li className="cattile" variants={TILE}>
       <a className="cattile__link" href={toHash({ kind: 'category', code: cat.code })}>
         <span className="cattile__icon" aria-hidden="true">
           {cat.icon}
@@ -38,24 +78,26 @@ function CategoryTile({ cat, terms }: { cat: Category; terms: Term[] }) {
       <span className="cattile__count">{terms.length}</span>
       <LevelMix counts={counts} total={terms.length} />
       <p className="cattile__reps">{reps.map((t) => t.term).join(' · ')}</p>
-    </li>
+    </m.li>
   )
 }
 
-function TermRail({ title, terms, ctx, more }: { title: string; terms: Term[]; ctx: PageContext; more?: { href: string; label: string } }) {
+function TermRail({ eyebrow, title, terms, ctx, more }: { eyebrow: string; title: string; terms: Term[]; ctx: PageContext; more?: { href: string; label: string } }) {
   const hid = useId()
   return (
     <Reveal className="section" aria-labelledby={hid}>
-      <div className="section__head">
-        <h2 className="section__title" id={hid}>
-          {title}
-        </h2>
-        {more && (
-          <a className="section__more" href={more.href}>
-            {more.label} <Icon name="arrow-right" size={14} />
-          </a>
-        )}
-      </div>
+      <SectionHead
+        id={hid}
+        eyebrow={eyebrow}
+        title={title}
+        aside={
+          more && (
+            <a className="section__more" href={more.href}>
+              {more.label} <Icon name="arrow-right" size={14} />
+            </a>
+          )
+        }
+      />
       <ul className="grid grid--cards grid--rail">
         {terms.map((t) => (
           <li key={t.id}>
@@ -86,14 +128,30 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
   const added = useMemo(() => recentlyAdded(terms, 6), [terms])
   const todayCat = today ? data.categories.get(today.category) : undefined
 
+  // 첫 화면 인트로 (anime.js): 페인트 전에 숨겨 두고, 글자 하나씩 떠오르게 한다. 세션당 한 번.
+  const heroRef = useRef<HTMLElement>(null)
+  useLayoutEffect(() => {
+    const el = heroRef.current
+    if (!el || !shouldPlayIntro()) return
+    el.classList.add('is-intro')
+    return playHeroIntro(el)
+  }, [])
+
   return (
     <div className="home">
-      <section className="hero">
-        <div className="container">
-          <p className="hero__eyebrow">IT 용어 사전</p>
-          <h1 className="hero__title">모르는 용어를, 10초 안에.</h1>
-          <p className="hero__lead">한 줄 정의 · 비유 · 예시 · 헷갈리기 쉬운 것. 컴공 학부생과 연구실 신입을 위한 용어 사전.</p>
-          <button type="button" className="hero__search" onClick={openSearch} aria-haspopup="dialog">
+      <section className="hero" ref={heroRef}>
+        <span className="hero__glow" aria-hidden="true" />
+        <span className="hero__grid" aria-hidden="true" />
+        <div className="container hero__inner">
+          <p className="hero__eyebrow" data-intro>
+            <span className="hero__dot" aria-hidden="true" />
+            IT 용어 사전
+          </p>
+          <h1 className="hero__title">
+            <SplitTitle text="모르는 용어를, 10초 안에." accent="10초" />
+          </h1>
+          <p className="hero__lead" data-intro>한 줄 정의 · 비유 · 예시 · 헷갈리기 쉬운 것. 컴공 학부생과 연구실 신입을 위한 용어 사전.</p>
+          <button type="button" className="hero__search" onClick={openSearch} aria-haspopup="dialog" data-intro>
             <Icon name="search" size={20} />
             <span className="hero__placeholder">SSH, 리버스 프록시, ㄹㅂㅅ …</span>
             <span className="hero__keys" aria-hidden="true">
@@ -104,7 +162,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
             </span>
             <span className="sr-only">용어 검색 열기</span>
           </button>
-          <p className="hero__stats">
+          <p className="hero__stats" data-intro>
             <strong>{stats.total}</strong>개 용어 · <strong>{categories.length}</strong>개 분야 · 한글·영문·약어·초성 검색
           </p>
         </div>
@@ -138,9 +196,10 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
           </Reveal>
         )}
 
-        {recentViewed.length > 0 && <TermRail title="최근 본 용어" terms={recentViewed} ctx={ctx} />}
+        {recentViewed.length > 0 && <TermRail eyebrow="이 기기에서" title="최근 본 용어" terms={recentViewed} ctx={ctx} />}
         {starred.length > 0 && (
           <TermRail
+            eyebrow="복습"
             title="별표한 용어"
             terms={starred.slice(0, 6)}
             ctx={ctx}
@@ -166,11 +225,11 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
                 {g.name}
                 <span className="catgroup__count">{g.categories.length}</span>
               </h3>
-              <ul className="catgrid">
+              <TileList>
                 {g.categories.map((c) => (
                   <CategoryTile key={c.code} cat={c} terms={byCat.get(c.code) ?? []} />
                 ))}
-              </ul>
+              </TileList>
             </div>
           ))}
           <p className="catgrid__legend" aria-hidden="true">
@@ -178,7 +237,7 @@ export function HomePage({ ctx }: { ctx: PageContext }) {
           </p>
         </Reveal>
 
-        <TermRail title="최근 추가된 용어" terms={added} ctx={ctx} more={{ href: toHash({ kind: 'stats' }), label: '통계' }} />
+        <TermRail eyebrow="새 카드" title="최근 추가된 용어" terms={added} ctx={ctx} more={{ href: toHash({ kind: 'stats' }), label: '통계' }} />
       </div>
     </div>
   )

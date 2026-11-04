@@ -6,7 +6,7 @@ IT 용어를 "한 줄 정의 + 비유 + 예시 + 관련 용어" 카드로 정리
 | :-- | :-- |
 | 기간 | 2026.09 ~ (설계 문서 2026-09-25) |
 | 규모 | 용어 카드 760장 · 24개 분야(5개 그룹) |
-| 기술 스택 | React · TypeScript · Vite · MiniSearch · vite-plugin-pwa · zod · marked · Vitest |
+| 기술 스택 | React · TypeScript · Vite · Motion · anime.js · MiniSearch · vite-plugin-pwa · zod · marked · Vitest |
 | 배포 | GitHub Pages (GitHub Actions) |
 | 라이선스 | 코드 MIT · 용어 카드 CC BY 4.0 |
 
@@ -32,7 +32,7 @@ IT 용어를 "한 줄 정의 + 비유 + 예시 + 관련 용어" 카드로 정리
 컴공 3학년까지 배운 것 + 연구실에서 마주치는 것(서버·인프라·LLM·의료 IT)을 24개 분야(5개 그룹)에 담는다.
 
 - 설계 문서: [`docs/superpowers/specs/2026-09-25-devpedia-design.md`](docs/superpowers/specs/2026-09-25-devpedia-design.md)
-- 리디자인 측정 기록(대비·Lighthouse·스크린샷): [`docs/redesign/README.md`](docs/redesign/README.md)
+- 리디자인 측정 기록(대비·Lighthouse·스크린샷)과 모션 규칙: [`docs/redesign/README.md`](docs/redesign/README.md)
 
 ## 스크린샷
 

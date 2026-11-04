@@ -30,7 +30,9 @@
   "author": "Seung1_dot (ECLAB)",
   "license": "MIT",
   "dependencies": {
+    "animejs": "^4.5.0",
     "minisearch": "^7.2.0",
+    "motion": "^14.9.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },

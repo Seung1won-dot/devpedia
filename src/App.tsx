@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { LazyMotion, MotionConfig, m } from 'motion/react'
 import type { Term } from './types'
 import { pageKey, type Route } from './lib/route'
 import { RECENT_TERMS_KEY } from './lib/storage'
@@ -20,6 +21,8 @@ import { StarredPage } from './pages/StarredPage'
 import { StatsPage } from './pages/StatsPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { APP_NAME } from './config'
+import { PAGE } from './lib/motion'
+import { preloadIntro } from './lib/intro'
 
 export type ReadyData = Extract<BundleState, { state: 'ready' }>
 
@@ -61,6 +64,10 @@ function titleFor(route: Route, data: ReadyData): string {
 
 // 한글 웹폰트(Pretendard 동적 서브셋)는 첫 데이터 화면을 그린 뒤 유휴 시간에 붙인다. 화면에 나온 글자의 조각만 받고(unicode-range),
 // 그 전까지는 시스템 한글 폰트로 그린다. 폰트 수백 KB 가 첫 화면(LCP)과 대역폭을 다투지 않게 하려는 것.
+// Motion 기능 묶음(domAnimation, gzip 18KB)은 따로 받는다. 앱이 마운트될 때(용어 JSON 을 받는 동안) 요청하므로 첫 데이터 화면 전에 도착한다.
+// 서비스 워커가 프리캐시해 재방문·오프라인에서도 바로 열린다.
+const loadMotionFeatures = () => import('./lib/motion-features').then((r) => r.default)
+
 let fontRequested = false
 function loadWebFontWhenIdle() {
   if (fontRequested) return
@@ -111,6 +118,11 @@ export function App() {
   useEffect(() => {
     if (data.state !== 'loading') loadWebFontWhenIdle()
   }, [data.state])
+
+  // 홈 첫 화면 인트로(anime.js)는 데이터를 받는 동안 따로 받아 둔다 — 첫 번들에 넣지 않는다
+  useEffect(() => {
+    if (route.kind === 'home') preloadIntro()
+  }, [route.kind])
 
   // 본문이 필요한 화면이면 지금 읽는다 (아니면 useBundle 이 한가할 때 읽는다)
   const needBodies = paletteOpen || route.kind === 'term' || (route.kind === 'category' && Boolean(route.preview))
@@ -180,6 +192,8 @@ export function App() {
   }
 
   return (
+    <LazyMotion features={loadMotionFeatures}>
+    <MotionConfig reducedMotion="user">
     <div className="app">
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus() }}>
         본문으로 건너뛰기
@@ -194,12 +208,15 @@ export function App() {
         onCycleTheme={theme.cycle}
       />
       <main id="main" className="main" tabIndex={-1}>
-        <div key={key} className="page-enter">
+        {/* 화면 전환: 새 화면만 짧게 떠오른다 (나가는 화면은 기다리지 않는다 — 스크롤 복원과 다투지 않게) */}
+        <m.div key={key} className="page-enter" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={PAGE}>
           {page}
-        </div>
+        </m.div>
       </main>
       {data.state !== 'loading' && <Footer generatedAt={ready ? data.bundle.generatedAt : null} />}
       {paletteOpen && <CommandPalette data={data} onClose={closeSearch} navigate={navigate} recentTerms={recentTerms.list} />}
     </div>
+    </MotionConfig>
+    </LazyMotion>
   )
 }
