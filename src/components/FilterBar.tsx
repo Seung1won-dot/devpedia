@@ -24,7 +24,7 @@ interface Props {
 }
 
 /**
- * 밑줄 탭의 오렌지 밑줄 하나가 고른 탭으로 미끄러져 간다 (Motion 스프링).
+ * 밑줄 탭의 강조색 밑줄 하나가 고른 탭으로 미끄러져 간다 (Motion 스프링).
  * 위치는 눌린 탭(aria-pressed)의 offsetLeft/offsetWidth 로 잰다. 처음 그릴 때는 움직이지 않는다.
  */
 function TabInk({ groupRef, activeKey }: { groupRef: RefObject<HTMLDivElement | null>; activeKey: string }) {

@@ -36,9 +36,7 @@ export function StatsPage({ ctx }: { ctx: PageContext }) {
             href: toHash({ kind: 'category', code: c.code }),
             flag: n < MIN_PER_CATEGORY,
             label: (
-              <>
-                <span aria-hidden="true">{c.icon}</span> {c.name}
-              </>
+c.name
             ),
           }
         }),

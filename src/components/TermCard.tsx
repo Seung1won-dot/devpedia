@@ -37,7 +37,7 @@ export function TermCard({ term, category, compact = false, selected = false, on
         <LevelMeter level={term.level} />
         {category && (
           <span className="tcard__cat">
-            <span aria-hidden="true">{category.icon}</span> {category.name}
+            {category.name}
           </span>
         )}
       </span>

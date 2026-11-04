@@ -508,7 +508,7 @@ kbd {
 
 .catmenu__item {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: var(--space-2);
   min-height: 44px;
@@ -525,11 +525,6 @@ kbd {
 
 .catmenu__item[aria-current='page'] {
   background: var(--accent-soft);
-}
-
-.catmenu__icon {
-  font-size: 18px;
-  text-align: center;
 }
 
 .catmenu__name {
@@ -1096,10 +1091,9 @@ kbd {
   line-height: 1.25;
 }
 
-/* 제목 속 한 단어만 강조색 */
+/* 섹션 제목은 단색. 강조색은 히어로 한 곳에만 쓴다 */
 .sechead__title em {
   font-style: normal;
-  color: var(--accent);
 }
 
 .sechead__lead {
@@ -1129,11 +1123,6 @@ kbd {
 
 .sechead--page {
   margin: var(--space-6) 0 var(--space-10);
-}
-
-.sechead__icon {
-  margin-right: 12px;
-  font-size: 0.85em;
 }
 
 /* ---------- 밑줄 탭 ---------- */

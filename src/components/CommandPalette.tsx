@@ -137,7 +137,7 @@ export function CommandPalette({ data, onClose, navigate, recentTerms }: Props) 
         <span className="presult__side">
           {cat && (
             <span className="presult__cat">
-              <span aria-hidden="true">{cat.icon}</span> {cat.name}
+              {cat.name}
             </span>
           )}
           <LevelMeter level={t.level} />

@@ -82,12 +82,7 @@ export function CategoryPage({ ctx, code, preview }: { ctx: PageContext; code: s
         className="sechead--page"
         eyebrow={cat.group ?? '분야'}
         title={
-          <>
-            <span className="sechead__icon" aria-hidden="true">
-              {cat.icon}
-            </span>
-            {cat.name}
-          </>
+cat.name
         }
         lead={cat.description}
         aside={`${scoped.length}개 용어 · ${LEVEL_LABEL[1]} ${counts[1]} · ${LEVEL_LABEL[2]} ${counts[2]} · ${LEVEL_LABEL[3]} ${counts[3]}`}

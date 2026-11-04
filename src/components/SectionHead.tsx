@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 interface Props {
   /** 제목 요소 id — section 의 aria-labelledby 와 짝 */
   id?: string
-  /** 작은 오렌지 라벨 (분야 그룹 이름, 날짜 등) */
+  /** 작은 강조색 라벨 (분야 그룹 이름, 날짜 등) */
   eyebrow?: ReactNode
   /** 제목. 강조할 한 단어만 <em> 으로 감싼다 */
   title: ReactNode

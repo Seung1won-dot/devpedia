@@ -105,7 +105,7 @@ export function TermPage({ ctx, term }: { ctx: PageContext; term: Term }) {
           <Breadcrumb
             items={[
               { label: '홈', href: toHash({ kind: 'home' }) },
-              ...(cat ? [{ label: `${cat.icon} ${cat.name}`, href: toHash({ kind: 'category', code: cat.code }) }] : []),
+              ...(cat ? [{ label: cat.name, href: toHash({ kind: 'category', code: cat.code }) }] : []),
               { label: term.term },
             ]}
           />
