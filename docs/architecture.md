@@ -46,5 +46,7 @@ terms/**/*.md ──validate(zod)──▶ scripts/build-terms.ts ──▶ publ
 2. `main` 에 push 하면 `.github/workflows/ci.yml` 이 validate → typecheck → test → build → Lighthouse(경고만) → Pages 배포를 돈다.
 3. 하위 경로 `/devpedia/` 는 CI 가 저장소 이름으로 `BASE_PATH` 를 넣는다. 저장소 이름을 바꾸면 주소도 따라간다. 커스텀 도메인이면 `BASE_PATH=/` 로 바꾼다.
 4. 카드 하단 "GitHub에서 편집" 링크는 `src/config.ts` 의 `REPO_URL` 을 쓴다.
+5. 빌드가 `dist/404.html` 을 만든다. 해시 없이 붙여 넣은 주소(`/devpedia/t/ssh`)나 오타 경로를 `/devpedia/#/t/ssh` 로 옮겨 앱 안의 화면(용어·분야·찾을 수 없음)으로 보낸다. 서비스 워커의 오프라인 대체(`index.html`)는 앱 루트에만 걸려 있어 이 흐름을 가로채지 않는다.
+6. 공유 미리보기(Open Graph) 주소는 `index.html` 에 배포 주소로 적혀 있다. 주소가 바뀌면 `og:url`·`og:image` 도 고친다.
 
 Vercel/Cloudflare Pages 에서는 빌드 명령 `npm run build`, 출력 `dist`, `BASE_PATH` 없이 그대로 된다.

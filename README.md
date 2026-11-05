@@ -75,6 +75,8 @@ npm run dev        # 카드 → public/terms.json 생성 후 개발 서버
 npm run build && npm run preview   # http://localhost:4173
 ```
 
+배포는 `main` 에 push 하면 CI(검증·테스트·빌드)를 거쳐 GitHub Pages 로 자동으로 나갑니다. 처음 한 번 저장소 Settings → Pages → Source 를 "GitHub Actions" 로 바꿔야 합니다 — [배포 설명](docs/architecture.md#배포-github-pages).
+
 | 명령 | 하는 일 |
 | :-- | :-- |
 | `npm run validate` | 카드 규칙 검사 (`-- --lenient`로 없는 related id를 경고로 낮춤) |

@@ -20,6 +20,7 @@ export type BundleState =
     }
 
 const IDLE_TIMEOUT_MS = 4000
+const IDLE_MIN_DELAY_MS = 1500
 
 async function fetchOk(url: string): Promise<Response> {
   const res = await fetch(url)
@@ -27,14 +28,18 @@ async function fetchOk(url: string): Promise<Response> {
   return res
 }
 
+/** 첫 화면이 자리 잡을 때까지(화면 전환·인트로 약 1초) 기다린 뒤, 한가할 때 fn 을 부른다. 반환값은 취소 함수. */
 function onIdle(fn: () => void): () => void {
   const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void }
-  if (typeof w.requestIdleCallback === 'function') {
-    const id = w.requestIdleCallback(fn, { timeout: IDLE_TIMEOUT_MS })
-    return () => w.cancelIdleCallback?.(id)
+  let idleId: number | null = null
+  const timer = window.setTimeout(() => {
+    if (typeof w.requestIdleCallback === 'function') idleId = w.requestIdleCallback(fn, { timeout: IDLE_TIMEOUT_MS })
+    else fn()
+  }, IDLE_MIN_DELAY_MS)
+  return () => {
+    window.clearTimeout(timer)
+    if (idleId !== null) w.cancelIdleCallback?.(idleId)
   }
-  const id = window.setTimeout(fn, 1500)
-  return () => window.clearTimeout(id)
 }
 
 /**

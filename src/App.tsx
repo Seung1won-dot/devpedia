@@ -68,14 +68,20 @@ function titleFor(route: Route, data: ReadyData): string {
 // 서비스 워커가 프리캐시해 재방문·오프라인에서도 바로 열린다.
 const loadMotionFeatures = () => import('./lib/motion-features').then((r) => r.default)
 
+const FONT_DELAY_MS = 1500
 let fontRequested = false
 function loadWebFontWhenIdle() {
   if (fontRequested) return
   fontRequested = true
   const run = () => void import('./styles/fonts/pretendard.css')
   const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }
-  if (typeof w.requestIdleCallback === 'function') w.requestIdleCallback(run, { timeout: 1500 })
-  else window.setTimeout(run, 300)
+  const whenIdle = () => {
+    if (typeof w.requestIdleCallback === 'function') w.requestIdleCallback(run, { timeout: 2000 })
+    else run()
+  }
+  // 홈 인트로·화면 전환(최대 약 1초)이 끝나 첫 화면이 자리 잡은 뒤에 받기 시작한다.
+  // 저속 모바일에서 한글 조각 수십 개가 인트로·본문 JSON 과 대역폭을 다투면 LCP 가 수 초 늦어진다.
+  window.setTimeout(whenIdle, FONT_DELAY_MS)
 }
 
 export function App() {

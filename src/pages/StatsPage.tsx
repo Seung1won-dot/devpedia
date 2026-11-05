@@ -44,7 +44,9 @@ c.name
     [categories, stats.byCategory],
   )
   const generated = new Date(bundle.generatedAt)
-  const published = stats.total ? Math.round((stats.byStatus.published / stats.total) * 100) : 0
+  // 발행 비율이 1% 미만이면 0% 로 뭉개지지 않게 소수 한 자리까지 보인다 (3/760 → 0.4%)
+  const publishedPct = stats.total ? (stats.byStatus.published / stats.total) * 100 : 0
+  const published = publishedPct > 0 && publishedPct < 1 ? publishedPct.toFixed(1) : Math.round(publishedPct)
 
   return (
     <div className="container page stats">
